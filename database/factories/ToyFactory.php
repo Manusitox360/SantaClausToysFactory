@@ -18,9 +18,9 @@ class ToyFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'picture' => $this->faker->imageUrl(640, 480, 'toys', true),
-            'descreption' => $this->faker->sentence(),
-            'min_age' => $this->faker->randomElement(['0', '+7', '+12']),
+            'image' => $this->faker->imageUrl(640, 480, 'toys', true),
+            'description' => $this->faker->sentence(),
+            'minimum_age_id' => $this->faker->integer()
         ];
     }
 }

@@ -2,19 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Kid;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Toy;
 use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\ToySeeder;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Database\Seeders\MinimumAgeSeeder;
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Seed the application's database.
-     */
-    public function run()
-    {
-        // Generate 20 kids
-        Kid::factory(10)->create();
+class DatabaseSeeder extends Seeder {
+    public function run(): void {
+        $this->call([
+            MinimumAgeSeeder::class,
+            ToySeeder::class
+        ]);
     }
 }

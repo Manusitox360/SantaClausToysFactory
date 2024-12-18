@@ -13,39 +13,55 @@ class ToyController extends Controller
         return response()->json(Toy::all(), 200);
     }
 
-    public function store(Request $request, string $id)
+    public function store(Request $request)
     {
-        $toys = Toy::create([
-            'toy_id' => (int)$id,
-            'toy' => $request->toy,
-            'image' => $request->image,
-            'description' => $request->description,
-            'min_age' => $request->min_age
+        $validated = $request->validate([
+            'name' => 'string',
+            'image' => 'string',
+            'description' => 'string',
+            'minimum_age_id' => 'integer'
         ]);
-        return response()->json($toys, 200); 
+        
+        $toy = Toy::create([
+            'name' => $validated['name'],
+            'image' => $validated['image'],
+            'description' => $validated['description'],
+            'minimum_age_id' => $validated['minimum_age_id']
+        ]);
+        $toy->save();
+        return response()->json($toy, 201);
     }
 
     public function show(string $id)
     {
-        return response()->json(Toy::find($id));
+        $toy = Toy::find($id);
+        return response()->json($toy, 200);
     }
  
     public function update(Request $request, string $id)
     {
-        $toy = Toy::find($id)->toy;
+        $toy = Toy::find($id);
+
+        $validated = $request->validate([
+            'name' => 'string',
+            'image' => 'string',
+            'description' => 'string',
+            'minimum_age_id' => 'integer'
+        ]);
 
         $toy->update([
-            'toy_id' => $request->id,
-            'toy' => $request->toy,
-            'image' => $request->image,
-            'description' => $request->description,
-            'min_age' => $request->min_age
+            'name' => $validated['name'],
+            'image' => $validated['image'],
+            'description' => $validated['description'],
+            'minimum_age_id' => $validated['minimum_age_id']
         ]);
-        return response()->json($toy, 200); 
+        $toy->save();
+        return response()->json($toy, 200);
     }
-    
+
     public function destroy(string $id)
     {
-        Toy::find($id)->toy->delete();
+        $toy = Toy::find($id);
+        $toy->delete();
     }
 }

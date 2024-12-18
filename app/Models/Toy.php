@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\Kid;
+use App\Models\MinimumAge;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Toy extends Model
 {
-    //
     use HasFactory;
+
     protected $fillable = [
         "name",
-        "picture",
-        "descreption" ,
-        "min_age",
+        "image",
+        "description" ,
+        "minimum_age_id",
     ];
     public function Toy (){
-        
-        return $this->hasMany(Toy::class);
+        return $this->belongsTo(MinimumAge::class);
     }
 }

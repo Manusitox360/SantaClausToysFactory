@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('toys', function (Blueprint $table) {
+        Schema::create('minimum_age', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('image')->nullable();
-            $table->text('description');
-            $table->foreignId('minimum_age_id')->constrained('minimum_age')->onDelete('cascade');
+            $table->string('age');
             $table->timestamps();
         });
     }
@@ -24,8 +21,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('toys');
+    public function down(): void{
+        Schema::dropIfExists('minimum_age');
     }
 };
