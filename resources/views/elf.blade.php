@@ -16,17 +16,14 @@
         </thead>
         <tbody>
             @foreach ($toys as $toy)
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$toys->id}}
-                    </th>
-                    <td class="px-6 py-4">{{$toys->id}}</td>
-                    <td class="px-6 py-4">{{$toys->name}}</td>
-                    <td class="px-6 py-4">{{$toys->picture}}</td>
-                    <td class="px-6 py-4">{{$toys->description}}</td>
-                    <td class="px-6 py-4">{{$toys->min_age}}</td>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">  
+                    <td class="px-6 py-4">{{$toy->id}}</td>
+                    <td class="px-6 py-4">{{$toy->name}}</td>
+                    <td class="px-6 py-4">{{$toy->picture}}</td>
+                    <td class="px-6 py-4">{{$toy->description}}</td>
+                    <td class="px-6 py-4">{{$toy->min_age}}</td>
                     <td class="px-6 py-4 text-right">
-                    <a href="{{route('elfshow', [id => $toys->id])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
+                        <a href="{{route('elfShow', $toy->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
                     </td>
                 </tr>  
             @endforeach  
