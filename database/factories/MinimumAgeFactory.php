@@ -17,7 +17,8 @@ class MinimumAgeFactory extends Factory
     public function definition(): array
     {
         return [
-            'age' => $this->faker->sentence(),
+            'min' => $this->faker->bigInteger(),
+            'max' => $this->faker->bigInteger()
         ];
     }
 }

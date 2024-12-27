@@ -12,7 +12,8 @@ class MinimumAge extends Model
     protected $table = 'minimum_age';
 
     protected $fillable = [
-        'age',
+        'min',
+        'max',
     ];
 
     function toys(){
