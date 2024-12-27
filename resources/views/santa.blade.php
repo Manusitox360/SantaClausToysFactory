@@ -26,7 +26,7 @@
                 <td class="px-6 py-4">{{$kid->foto}}</td>
                 <td class="px-6 py-4">{{$kid->age}}</td>
                 <td class="px-6 py-4">{{$kid->gender}}</td>
-                <td class="px-6 py-4">{{$kid->atitude}}</td>
+                <td class="px-6 py-4">{{$kid->attitude}}</td>
                 <td class="px-6 py-4">
                     <a href="{{ route('santashow', ['id' => $kid->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
                 </td>
@@ -40,7 +40,7 @@
     <td class="px-6 py-4">{{$kid->foto}}</td>
     <td class="px-6 py-4">{{$kid->age}}</td>
     <td class="px-6 py-4">{{$kid->gender}}</td>
-    <td class="px-6 py-4">{{$kid->atitude}}</td>
+    <td class="px-6 py-4">{{$kid->attitude}}</td>
     <td class="px-6 py-4">
         <a href="{{ route('santashow', ['id' => $kid->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
     </td>

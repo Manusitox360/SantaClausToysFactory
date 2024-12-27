@@ -22,7 +22,7 @@ class KidFactory extends Factory
             'foto' => $this->faker->imageUrl(640, 480, 'kids', true),
             'age' => $this->faker->numberBetween(1, 15),
             'gender' => $this->faker->randomElement(['boy', 'girl']),
-            'atitude' => $this->faker->randomElement(['good', 'bad']),
+            'attitude' => $this->faker->randomElement(['good', 'bad']),
         ];
     }
 }

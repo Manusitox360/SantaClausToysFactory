@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('foto');          
             $table->integer('age');
             $table->enum('gender', ['boy', 'girl']);
-            $table->enum('atitude', ['good', 'bad']);
+            $table->enum('attitude', ['good', 'bad']);
             $table->timestamps();
         });
     }

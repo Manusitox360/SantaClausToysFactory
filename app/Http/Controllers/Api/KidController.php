@@ -24,7 +24,7 @@ class KidController extends Controller
             'photo' => $request->photo,
             'age' => $request->age,
             'gender' => $request->gender,
-            'atitude' => $request->atitude
+            'attitude' => $request->attitude
         ]);
         $kid->save();
         return response()->json($kid, 200);
@@ -52,7 +52,7 @@ class KidController extends Controller
             'photo' => $request->photo,
             'age' => $request->age,
             'gender' => $request->gender,
-            'atitude' => $request->atitude
+            'attitude' => $request->attitude
         ]);
         $kid->save();
         return response()->json($kid, 200);

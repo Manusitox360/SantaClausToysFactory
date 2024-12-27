@@ -16,7 +16,7 @@ class Kid extends Model
         'foto',
         'age',
         'gender', "boy", "girl",
-        "atitude", "good", "bad",
+        "attitude", "good", "bad",
         
     ];
 
