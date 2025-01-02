@@ -21,4 +21,4 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
-coverage_report/
+coverage-report/
