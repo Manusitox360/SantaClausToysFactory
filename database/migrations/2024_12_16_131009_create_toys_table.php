@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('toys', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image')->nullable();
+            $table->text('image')->nullable();
             $table->text('description');
             $table->foreignId('minimum_age_id')->constrained('minimum_age')->onDelete('cascade');
             $table->timestamps();

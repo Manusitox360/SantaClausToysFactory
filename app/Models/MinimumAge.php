@@ -16,7 +16,8 @@ class MinimumAge extends Model
         'max'
     ];
 
-    function toys(){
+    public function toys()
+    {
         return $this->hasMany(Toy::class);
     }
 }

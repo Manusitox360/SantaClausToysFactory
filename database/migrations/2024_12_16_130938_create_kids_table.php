@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('foto');          
+            $table->text('image')->nullable();          
             $table->integer('age');
-            $table->enum('gender', ['boy', 'girl']);
-            $table->enum('attitude', ['good', 'bad']);
+            $table->boolean('attitude');
             $table->timestamps();
         });
     }

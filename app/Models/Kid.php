@@ -10,17 +10,13 @@ class Kid extends Model
 {
     use HasFactory;
 
-    protected $fillable =
-    [
+    protected $table = 'kid';
+
+    protected $fillable = [
         'name',
         'surname',
         'image',
         'age',
         'attitude'
     ];
-
-    public function Toy()
-    {
-        return $this->hasMany(Toy::class);
-    }
 }
