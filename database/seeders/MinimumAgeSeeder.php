@@ -16,10 +16,6 @@ class MinimumAgeSeeder extends Seeder
         $ages = [
                     [
                         'min' => 0,
-                        'max' => 99
-                    ],
-                    [
-                        'min' => 0,
                         'max' => 3
                     ],
                     [
@@ -40,7 +36,7 @@ class MinimumAgeSeeder extends Seeder
                     ],
                     [
                         'min' => 18,
-                        'max' => 99
+                        'max' => null
                     ]
                 ];
 

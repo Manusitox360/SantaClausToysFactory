@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('minimum_age', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('min');
-            $table->bigInteger('max');
+            $table->bigInteger('max')->nullable();
             $table->timestamps();
         });
     }
