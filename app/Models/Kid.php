@@ -19,4 +19,11 @@ class Kid extends Model
         'age',
         'attitude'
     ];
+
+    public function toys()
+    {
+        return $this->belongsToMany(Toy::class)
+            ->as('gift')
+            ->withTimestamps();
+    }
 }
