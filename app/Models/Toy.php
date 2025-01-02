@@ -13,7 +13,7 @@ class Toy extends Model
     protected $fillable = [
         'name',
         'image',
-        'description' ,
+        'description',
         'minimum_age_id'
     ];
     public function Toy (){
