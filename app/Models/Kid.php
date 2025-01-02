@@ -13,11 +13,10 @@ class Kid extends Model
     protected $fillable =
     [
         'name',
-        'foto',
+        'surname',
+        'image',
         'age',
-        'gender', "boy", "girl",
-        "attitude", "good", "bad",
-        
+        'attitude'
     ];
 
     public function Toy()

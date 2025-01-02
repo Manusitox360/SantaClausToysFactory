@@ -13,7 +13,7 @@ class MinimumAge extends Model
 
     protected $fillable = [
         'min',
-        'max',
+        'max'
     ];
 
     function toys(){
