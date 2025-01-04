@@ -18,6 +18,7 @@ class Toy extends Model
         'name',
         'image',
         'description',
+        'toy_type_id',
         'minimum_age_id'
     ];
 
