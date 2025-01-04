@@ -1,34 +1,43 @@
 @extends('layouts.index')
 @section('content')
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<div class="flex justify-center px-[6rem] py-12">
+    <table class="text-white w-full">
+        <thead class="text-xs bg-candy-cane uppercase text-black sticky top-[4.7rem]">
             <tr>
-                <th scope="col" class="px-6 py-3">Id</th>
+                <th scope="col" class="px-6 py-3 rounded-tl-lg">Id</th>
                 <th scope="col" class="px-6 py-3">Name</th>
                 <th scope="col" class="px-6 py-3">Picture</th>
                 <th scope="col" class="px-6 py-3">Description</th>
-                <th scope="col" class="px-6 py-3">Age</th>
-                    <span class="sr-only">More</span>
-                </th>
+                <th scope="col" class="px-5 py-3 rounded-tr-lg">Age</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($toys as $toy)
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">  
-                    <td class="px-6 py-4">{{$toy->id}}</td>
-                    <td class="px-6 py-4">{{$toy->name}}</td>
-                    <td class="px-6 py-4">{{$toy->picture}}</td>
-                    <td class="px-6 py-4">{{$toy->description}}</td>
-                    <td class="px-6 py-4">{{$toy->min_age}}</td>
-                    <td class="px-6 py-4 text-right">
-                        <a href="{{route('elfShow', $toy->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
+              <tr class="border-b text-white hover:bg-[#ffffff80]">
+                    <td class="text-center p-4">
+                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->id}}</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->name}}</a>
+                    </td>
+                    <td class="flex flex-wrap items-center justify-center">
+                        <a href="{{route('elfShow', $toy->id)}}">
+                            <img class="py-2 w-[10rem]" src="{{$toy->image}}" alt="image">
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->description}}</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->minimumAge->min}}-{{$toy->minimumAge->max}}
+                            <br>
+                            Years
+                        </a>
                     </td>
                 </tr>  
             @endforeach  
         </tbody>
     </table>
 </div>
-
 @endsection

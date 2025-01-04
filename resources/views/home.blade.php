@@ -1,13 +1,31 @@
 @extends('layouts.index')
 @section('content')
+<section class="flex items-center justify-center h-[28.8rem]">
+    <div class="text-center">
+        <h1 class="text-4xl font-bold text-white p-2">🎅 Welcome to Santa Claus Toys Factory! 🎁</h1>
+        <p class="text-lg text-white">
+            From the heart of the North Pole, Father Christmas and his faithful elves work tirelessly to make this Christmas an unforgettable moment. 
+            <br>
+            Here, in the Magic Workshop, they create the toys
+            that will make millions of children around the world smile.
+        </p>
+    <div class="flex flex-wrap items-center justify-center gap-24 pt-7 pb-8 h-full ">
+        <a href="{{ route('santa') }}"> <button
+            class="flex justify-center bg-[#ffffff80] p-6 rounded-lg bg-center bg-cover transform hover:scale-110 transition-transform duration-500 h-[17rem] w-[18rem]">
+            <div class="font-bold text-3xl">
+                <img class="h-[13rem] w-[13rem]" src="img/GitanoSupremo.png" alt="" />
+            </div>
+            </button>
+        </a>
+        <a href="{{ route('elf') }}"> <button
+            class="flex justify-center bg-[#ffffff80] p-6 rounded-lg bg-center bg-cover transform hover:scale-110 transition-transform duration-500 h-[17rem] w-[18rem]">
 
-<section class="flex items-center justify-center min-h-screen bg-gray-200 dark:bg-gray-900">
-    <div class="text-center p-6 md:p-12">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">🎅 Welcome to Santa Claus Toys Factory! 🎁</h1>
-        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">From the heart of the North Pole, Father Christmas and his faithful elves work tirelessly to make this Christmas an unforgettable moment. Here, in the Magic Workshop, they create the toys that will make millions of children around the world smile.</p>
-         <a href="{{route('santa')}}" class="inline-block px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-900 transition-all">Santa Claus</a>
-         <a href="{{route('elf')}}" class="inline-block px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-900 transition-all">Elfs</a>
+            <div class="font-bold text-3xl">
+                <img class="pl-3 h-[13rem] w-[13rem]" src="img/Gitanillo.png" alt="" />
+            </div>
+
+            </button>
+        </a>
     </div>
 </section>
-
 @endsection

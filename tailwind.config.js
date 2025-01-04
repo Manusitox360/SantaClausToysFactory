@@ -14,6 +14,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'candy-cane': "repeating-linear-gradient(-45deg, #ff0000 0px, #ff0000 20px, #ffffff 20px, #ffffff 40px)",
+            },
         },
     },
     plugins: [],
