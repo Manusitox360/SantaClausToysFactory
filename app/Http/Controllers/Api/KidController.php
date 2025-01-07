@@ -15,19 +15,17 @@ class KidController extends Controller
         return response()->json($kids , 200);
     }
 
-    public function store(Request $request, string $id)
+    public function store(Request $request)
     {
         $kid = Kid::create([
-            'kid_id' => (int)$id,
             'name' => $request->name,
             'surname' => $request->surname,
-            'photo' => $request->photo,
+            'image' => $request->photo,
             'age' => $request->age,
-            'gender' => $request->gender,
             'attitude' => $request->attitude
         ]);
         $kid->save();
-        return response()->json($kid, 200);
+        return response()->json($kid, 201);
     }
 
     /**
@@ -37,21 +35,25 @@ class KidController extends Controller
     {
         //
         $kid = Kid::find($id);
+        if(!$kid){
+            return response()->json(['message' => 'Kid not found'], 404);
+        }
         return response()->json($kid, 200);
+        
     }
 
     
     public function update(Request $request, string $id)
     {
         $kid = Kid::find($id);
-
+        if(!$kid){
+            return response()->json(['message' => 'Kid not found'], 404);
+        }
         $kid->update([
-            'kid_id' => (int)$id,
             'name' => $request->name,
             'surname' => $request->surname,
-            'photo' => $request->photo,
+            'image' => $request->photo,
             'age' => $request->age,
-            'gender' => $request->gender,
             'attitude' => $request->attitude
         ]);
         $kid->save();
@@ -64,7 +66,10 @@ class KidController extends Controller
     public function destroy(string $id)
     {
         //
-        $kids = Kid::find($id);
-        $kids->delete();
+        $kid = Kid::find($id);
+        if(!$kid){
+            return response()->json(['message' => 'Kid not found'], 404);
+        }
+        $kid->delete();
     }
 }
