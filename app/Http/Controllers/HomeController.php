@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kid;
+use App\Models\Toy;
+use App\Models\MinimumAge;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +19,10 @@ class HomeController extends Controller
         $badKids = Kid::where('attitude', false)->count();
         $kids = Kid::all();
 
-        return view('home', compact('totalKids', 'goodKids', 'badKids', 'kids'));
+        $ageRanges = MinimumAge::withCount('toys')->get();
+        $totalToys = Toy::count();
+
+        return view('home', compact('totalKids', 'goodKids', 'badKids', 'kids', 'ageRanges', 'totalToys'));
     }
 
     /**
