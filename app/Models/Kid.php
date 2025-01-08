@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\KidToy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Testing\Fluent\Concerns\Has;
@@ -26,6 +27,7 @@ class Kid extends Model
     {
         return $this->belongsToMany(Toy::class)
             ->as('gift')
-            ->withTimestamps();
+            ->withTimestamps()
+            ->using(KidToy::class);
     }
 }

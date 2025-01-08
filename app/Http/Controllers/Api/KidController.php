@@ -67,7 +67,7 @@ class KidController extends Controller
         $validated = $request->validate([
             'name' => 'string',
             'surname' => 'string',
-            'image' => 'text',
+            'image' => 'string',
             'age' => 'integer',
             'attitude' => 'boolean',
             'gender_id' => 'integer',
