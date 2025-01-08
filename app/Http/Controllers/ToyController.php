@@ -19,18 +19,18 @@ class ToyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    /* public function create()
     {
         //
-    }
+    } */
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    /* public function store(Request $request)
     {
         //
-    }
+    } */
 
     /**
      * Display the specified resource.
@@ -38,30 +38,34 @@ class ToyController extends Controller
     public function show(string $id)
     {
         $toy=Toy::find($id);
-        return view('show',compact('elf'));
+        if(!$toy){
+            return $this->index();
+        };
+        
+        return view('show', compact('elf'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Toy $toy)
+    /* public function edit(Toy $toy)
     {
         //
-    }
+    } */
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Toy $toy)
+    /* public function update(Request $request, Toy $toy)
     {
         //
-    }
+    } */
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Toy $toy)
+    /* public function destroy(Toy $toy)
     {
         //
-    }
+    } */
 }
