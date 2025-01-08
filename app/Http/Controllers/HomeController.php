@@ -17,7 +17,7 @@ class HomeController extends Controller
         $badKids = Kid::where('attitude', false)->count();
         $kids = Kid::all();
 
-        return view('kidCount', compact('totalKids', 'goodKids', 'badKids', 'kids'));
+        return view('home', compact('totalKids', 'goodKids', 'badKids', 'kids'));
     }
 
     /**
