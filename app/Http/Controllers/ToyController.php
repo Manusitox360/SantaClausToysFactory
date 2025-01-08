@@ -13,6 +13,7 @@ class ToyController extends Controller
     public function index()
     {
         $toys = Toy::get();
+
         return view('elf', compact('toys'));
     }
 
@@ -38,11 +39,12 @@ class ToyController extends Controller
     public function show(string $id)
     {
         $toy=Toy::find($id);
+
         if(!$toy){
             return $this->index();
-        };
+        }
         
-        return view('show', compact('elf'));
+        return view('elfShow', compact('toy'));
     }
 
     /**
