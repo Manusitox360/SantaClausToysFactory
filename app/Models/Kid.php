@@ -17,7 +17,9 @@ class Kid extends Model
         'surname',
         'image',
         'age',
-        'attitude'
+        'attitude',
+        'gender_id',
+        'country_id'
     ];
 
     public function toys()
