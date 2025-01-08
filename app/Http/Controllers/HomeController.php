@@ -22,13 +22,20 @@ class HomeController extends Controller
         $ageRanges = MinimumAge::withCount('toys')->get();
         $totalToys = Toy::count();
 
-        return view('home', compact('totalKids', 'goodKids', 'badKids', 'kids', 'ageRanges', 'totalToys'));
+        return view('home', [
+            'totalKids' => $totalKids,
+            'goodKids' => $goodKids,
+            'badKids' => $badKids,
+            'kids' => $kids,
+            'ageRanges' => $ageRanges,
+            'totalToys' => $totalToys
+        ]);
     }
 
-    /**
+    /* /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    /* public function create()
     {
         //
     }
@@ -36,40 +43,40 @@ class HomeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    /* public function store(Request $request)
     {
         //
-    }
+    } */
 
     /**
      * Display the specified resource.
      */
-    public function show(Kid $kid)
+    /* public function show(Kid $kid)
     {
         //
-    }
+    } */
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kid $kid)
+    /* public function edit(Kid $kid)
     {
         //
-    }
+    } */
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kid $kid)
+    /* public function update(Request $request, Kid $kid)
     {
         //
-    }
+    } */
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kid $kid)
+    /* public function destroy(Kid $kid)
     {
         //
-    }
+    } */
 }
