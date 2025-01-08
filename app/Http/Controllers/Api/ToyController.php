@@ -10,7 +10,8 @@ class ToyController extends Controller
 {
     public function index()
     {
-        return response()->json(Toy::all(), 200);
+        $toys = Toy::all();
+        return response()->json($toys, 200);
     }
 
     public function store(Request $request)
@@ -19,6 +20,7 @@ class ToyController extends Controller
             'name' => 'string',
             'image' => 'string',
             'description' => 'string',
+            'toy_type_id' => 'integer',
             'minimum_age_id' => 'integer'
         ]);
         
@@ -26,6 +28,7 @@ class ToyController extends Controller
             'name' => $validated['name'],
             'image' => $validated['image'],
             'description' => $validated['description'],
+            'toy_type_id' => $validated['toy_type_id'],
             'minimum_age_id' => $validated['minimum_age_id']
         ]);
         $toy->save();
@@ -35,6 +38,11 @@ class ToyController extends Controller
     public function show(string $id)
     {
         $toy = Toy::find($id);
+
+        if (!$toy){
+            return response()->json(['message' => 'Toy not found'], 404);
+        }
+
         return response()->json($toy, 200);
     }
  
@@ -46,6 +54,7 @@ class ToyController extends Controller
             'name' => 'string',
             'image' => 'string',
             'description' => 'string',
+            'toy_type_id' => 'integer',
             'minimum_age_id' => 'integer'
         ]);
 
@@ -53,6 +62,7 @@ class ToyController extends Controller
             'name' => $validated['name'],
             'image' => $validated['image'],
             'description' => $validated['description'],
+            'toy_type_id' => $validated['toy_type_id'],
             'minimum_age_id' => $validated['minimum_age_id']
         ]);
         $toy->save();
@@ -62,6 +72,12 @@ class ToyController extends Controller
     public function destroy(string $id)
     {
         $toy = Toy::find($id);
+
+        if (!$toy){
+            return response()->json(['message' => 'Toy not found'], 404);
+        }
+
         $toy->delete();
+        return response()->json(['message' => 'Toy deleted succesfully'], 200);
     }
 }

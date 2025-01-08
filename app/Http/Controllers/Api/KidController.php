@@ -10,19 +10,31 @@ class KidController extends Controller
 {
     public function index()
     {
-        //
         $kids = Kid::all();
         return response()->json($kids , 200);
     }
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'string',
+            'surname' => 'string',
+            'image' => 'string',
+            'age' => 'integer',
+            'attitude' => 'boolean',
+            'gender_id' => 'integer',
+            'country_id' => 'integer'
+        ]);
+        
         $kid = Kid::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'image' => $request->photo,
-            'age' => $request->age,
-            'attitude' => $request->attitude
+            'name' => $validated['name'],
+            'surname' => $validated['surname'],
+            'image' => $validated['image'],
+            'age' => $validated['age'],
+            'attitude' => $validated['attitude'],
+            'gender_id' => $validated['gender_id'],
+            'country_id' => $validated['country_id']
+
         ]);
         $kid->save();
         return response()->json($kid, 201);
@@ -33,11 +45,12 @@ class KidController extends Controller
      */
     public function show(string $id)
     {
-        //
         $kid = Kid::find($id);
+
         if(!$kid){
             return response()->json(['message' => 'Kid not found'], 404);
         }
+        
         return response()->json($kid, 200);
         
     }
@@ -46,18 +59,33 @@ class KidController extends Controller
     public function update(Request $request, string $id)
     {
         $kid = Kid::find($id);
+
         if(!$kid){
             return response()->json(['message' => 'Kid not found'], 404);
         }
-        $kid->update([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'image' => $request->photo,
-            'age' => $request->age,
-            'attitude' => $request->attitude
+
+        $validated = $request->validate([
+            'name' => 'string',
+            'surname' => 'string',
+            'image' => 'text',
+            'age' => 'integer',
+            'attitude' => 'boolean',
+            'gender_id' => 'integer',
+            'country_id' => 'integer'
         ]);
+        
+        $kid->update([
+            'name' => $validated['name'],
+            'surname' => $validated['surname'],
+            'image' => $validated['image'],
+            'age' => $validated['age'],
+            'attitude' => $validated['attitude'],
+            'gender_id' => $validated['gender_id'],
+            'country_id' => $validated['country_id']
+        ]);
+
         $kid->save();
-        return response()->json($kid, 200);
+        return response()->json($kid, 201);
     }
 
     /**
@@ -65,11 +93,13 @@ class KidController extends Controller
      */
     public function destroy(string $id)
     {
-        //
         $kid = Kid::find($id);
+
         if(!$kid){
             return response()->json(['message' => 'Kid not found'], 404);
         }
+
         $kid->delete();
+        return response()->json(['message' => 'Kid deleted succesfully'], 200);
     }
 }
