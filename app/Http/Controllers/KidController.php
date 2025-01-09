@@ -17,7 +17,7 @@ class KidController extends Controller
         $kids = Kid::get();
         $genders = Gender::get();
         $countries = Country::get();
-        return view('santa', compact('kids', 'gender', 'countries'));
+        return view('santa', compact('kids', 'genders', 'countries'));
     }
 
     /**
