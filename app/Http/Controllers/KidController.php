@@ -88,6 +88,9 @@ class KidController extends Controller
 
         $listOfGifts = [];
 
+        if ($goodKids)
+            $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything');
+
         if ($goodAdults)
             $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip');
 
@@ -130,7 +133,7 @@ class KidController extends Controller
         return $listOfGifts;
     }
 
-    private function generateSpecialGifts($modelNameSpace)
+    private function generateNormalGifts($modelNameSpace)
     {
         do {
             $toy = Toy::with('toyType')
@@ -143,7 +146,7 @@ class KidController extends Controller
         return $toy;
     }
 
-    private function generateNormalGifts($modelNameSpace)
+    private function generateSpecialGifts($modelNameSpace)
     {
         do {
             $toy = Toy::with('toyType')
