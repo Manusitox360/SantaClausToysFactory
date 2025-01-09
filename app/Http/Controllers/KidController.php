@@ -91,11 +91,11 @@ class KidController extends Controller
         if ($goodKids)
             $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything');
 
-        if ($goodAdults)
+        /* if ($goodAdults)
             $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip');
 
         if ($badKids)
-            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal');
+            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal'); */
 
         /* $toy = Toy::with('toyType')->inRandomOrder()->first();
 
@@ -119,9 +119,9 @@ class KidController extends Controller
         $playthingModelNameSpace = $MODELBASENAMESPACE . 'Plaything';
         $modelNameSpace = $MODELBASENAMESPACE . $toyType;
 
-        foreach ($kids as $kid) {
+        foreach ($kids as $key => $kid) {
             $toy = $modelNameSpace == $playthingModelNameSpace
-                ? $this->generateNormalGifts($modelNameSpace)
+                ? $this->generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
                 : $this->generateSpecialGifts($modelNameSpace);
 
             $listOfGifts[] = [
@@ -133,15 +133,22 @@ class KidController extends Controller
         return $listOfGifts;
     }
 
-    private function generateNormalGifts($modelNameSpace)
+    private function generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
     {
         do {
             $toy = Toy::with('toyType')
                 ->inRandomOrder()
                 ->first();
 
+            $gift = [
+                $kid,
+                $toy
+            ];
+
+            $exists = in_array($gift, $listOfGifts);
+
             $type = $toy->toyType->associated_type;
-        } while ($modelNameSpace != $type);
+        } while ($modelNameSpace != $type && !$exists);
 
         return $toy;
     }
