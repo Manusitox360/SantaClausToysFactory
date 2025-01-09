@@ -188,6 +188,29 @@ class ToySeeder extends Seeder
                     'image' => "https://res.cloudinary.com/dierpqujk/image/upload/v1736410423/vegetal_kojyju.webp",
                     'minimum_age_id' => 7,
                     'toy_type_id' => 22
+                ],
+
+                // Toys for adults kids
+                [
+                    'name' => "Trip",
+                    'description' => "A magical visit to Disneyland, the happiest place on Earth, filled with rides, parades, and unforgettable memories.",
+                    'image' => "https://res.cloudinary.com/dierpqujk/image/upload/v1736411202/disneyland_pngyqb.jpg",
+                    'minimum_age_id' => 6,
+                    'toy_type_id' => 18
+                ],
+                [
+                    'name' => "Trip",
+                    'description' => "An exciting adventure to Warner Bros Studios, where you can meet your favorite characters and explore behind-the-scenes magic.",
+                    'image' => "https://res.cloudinary.com/dierpqujk/image/upload/v1736411087/parque-warner-madrid_qy9cm6.jpg",
+                    'minimum_age_id' => 6,
+                    'toy_type_id' => 19
+                ],
+                [
+                    'name' => "Trip",
+                    'description' => "A thrilling journey to the Moon, exploring the vastness of space and experiencing zero gravity. Perfect for aspiring astronauts.",
+                    'image' => "https://res.cloudinary.com/dierpqujk/image/upload/v1736411102/8407_xodiwm.jpg",
+                    'minimum_age_id' => 6,
+                    'toy_type_id' => 23
                 ]
             ];
 
