@@ -88,11 +88,11 @@ class KidController extends Controller
 
         $listOfGifts = [];
 
-        if ($badKids)
-            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal');
-
         if ($goodAdults)
             $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip');
+
+        if ($badKids)
+            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal');
 
         /* $toy = Toy::with('toyType')->inRandomOrder()->first();
 
