@@ -94,4 +94,43 @@ class KidTest extends TestCase
                 'name' => 'Juan',
             ]);
     }
+
+    public function test_UpdateKidReturns404WhenKidNotFound()
+    {
+        $response = $this->putJson(route('apiUpdateKids', 999), [
+            'name' => 'Juan',
+            'surname' => 'Pérez',
+            'image' => 'https://randomuser.me/api/portraits/men/10.jpg',
+            'age' => 10,
+            'attitude' => 0,
+            'gender_id' => 1,
+            'country_id' => 1
+        ]);
+
+        $response->assertStatus(404)
+            ->assertJson([
+                'message' => 'Kid not found']);
+    }
+
+    public function test_DeleteKidRemovesKidSuccessfully()
+    {
+        $this->seed(GenderSeeder::class);
+        $this->seed(CountrySeeder::class);
+        $this->seed(KidSeeder::class);
+
+        $response = $this->deleteJson(route('apiDestroyKids', 1));
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'message' => 'Kid deleted succesfully']);
+    }
+
+    public function test_DeleteKidReturns404WhenKidNotFound()
+    {
+        $response = $this->deleteJson(route('apiDestroyKids', 999));
+
+        $response->assertStatus(404)
+            ->assertJson([
+                'message' => 'Kid not found']);
+    }
 }
