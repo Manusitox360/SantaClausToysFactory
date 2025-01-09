@@ -91,8 +91,8 @@ class KidController extends Controller
 
         return response()->json([
             'goodKids' => $goodKids,
+            'goodAdults' => $goodAdults,
             'badKids' => $badKids,
-            'adultKids' => $goodAdults,
             'toys' => $toys
         ]);
     }
