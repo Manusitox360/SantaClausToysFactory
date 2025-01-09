@@ -89,10 +89,10 @@ class KidController extends Controller
         $listOfGifts = [];
 
         if ($badKids)
-            $listOfGifts = $this->generateSpecialGifts($listOfGifts, $badKids, 'Charcoal');
+            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal');
 
         if ($goodAdults)
-            $listOfGifts = $this->generateSpecialGifts($listOfGifts, $goodAdults, 'Trip');
+            $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip');
 
         /* $toy = Toy::with('toyType')->inRandomOrder()->first();
 
@@ -109,18 +109,17 @@ class KidController extends Controller
         ]);
     }
 
-    private function generateSpecialGifts($listOfGifts, $kids, $toyType)
+    private function generateGifts($listOfGifts, $kids, $toyType)
     {
-        $modelNameSpace = 'App\\Models\\' . $toyType;
+        $MODELBASENAMESPACE = 'App\\Models\\';
+
+        $playthingModelNameSpace = $MODELBASENAMESPACE . 'Plaything';
+        $modelNameSpace = $MODELBASENAMESPACE . $toyType;
 
         foreach ($kids as $kid) {
-            do {
-                $toy = Toy::with('toyType')
-                    ->inRandomOrder()
-                    ->first();
-
-                $type = $toy->toyType->associated_type;
-            } while ($modelNameSpace != $type);
+            $toy = $modelNameSpace == $playthingModelNameSpace
+                ? $this->generateNormalGifts($modelNameSpace)
+                : $this->generateSpecialGifts($modelNameSpace);
 
             $listOfGifts[] = [
                 $kid,
@@ -129,5 +128,31 @@ class KidController extends Controller
         }
 
         return $listOfGifts;
+    }
+
+    private function generateSpecialGifts($modelNameSpace)
+    {
+        do {
+            $toy = Toy::with('toyType')
+                ->inRandomOrder()
+                ->first();
+
+            $type = $toy->toyType->associated_type;
+        } while ($modelNameSpace != $type);
+
+        return $toy;
+    }
+
+    private function generateNormalGifts($modelNameSpace)
+    {
+        do {
+            $toy = Toy::with('toyType')
+                ->inRandomOrder()
+                ->first();
+
+            $type = $toy->toyType->associated_type;
+        } while ($modelNameSpace != $type);
+
+        return $toy;
     }
 }
