@@ -73,24 +73,26 @@ class KidController extends Controller
 
     public function listOfGifts()
     {
-        /*  $goodKids = Kid::with(['gender', 'country'])->where('attitude', true)->get();
-        $badKids = Kid::where('attitude', false)->get();
-*/
         $toys = Toy::with('toyType.associated')->get();
 
-        /* $this->knowIfIsGood($kids); */
+        $goodKids = Kid::where('attitude', true)
+            ->where('age', '<', 18)
+            ->get();
 
-        $goodKids = Kid::where('attitude', true)->get();
-        $badKids = Kid::where('attitude', false)->get();
-        $adultKids = Kid::where('age', '>=', 18)->get();
+        $goodAdults = Kid::where('attitude', true)
+            ->where('age', '>=', 18)
+            ->get();
 
-        $this->generateSpecialGifts($badKids, 'Charcoal');
-        $this->generateSpecialGifts($adultKids, 'Trip');
+        $badKids = Kid::where('attitude', false)
+            ->get();
+
+        /* $this->generateSpecialGifts($badKids, 'Charcoal');
+        $this->generateSpecialGifts($adultKids, 'Trip'); */
 
         return response()->json([
             'goodKids' => $goodKids,
             'badKids' => $badKids,
-            'adultKids' => $adultKids,
+            'adultKids' => $goodAdults,
             'toys' => $toys
         ]);
     }
