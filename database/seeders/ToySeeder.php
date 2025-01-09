@@ -173,21 +173,21 @@ class ToySeeder extends Seeder
                     'description' => "Natural wood charcoal, commonly used for grilling and heating. Known for its eco-friendly properties and clean burn.",
                     'image' => "https://res.cloudinary.com/dierpqujk/image/upload/v1736409946/2148746835_1_gcyddu.jpg",
                     'minimum_age_id' => 7,
-                    'toy_type_id' => 18
+                    'toy_type_id' => 20
                 ],
                 [
                     'name' => "Charcoal",
                     'description' => "Mineral coal, extracted from the earth, widely used for energy production and industrial processes.",
                     'image' => "https://res.cloudinary.com/dierpqujk/image/upload/v1736410222/carbon-2-1541496626_ksw4l3.jpg",
                     'minimum_age_id' => 7,
-                    'toy_type_id' => 19
+                    'toy_type_id' => 21
                 ],
                 [
                     'name' => "Charcoal",
                     'description' => "Sweet candy charcoal, a fun and sugary treat often given as a playful gift during the holidays.",
                     'image' => "https://res.cloudinary.com/dierpqujk/image/upload/v1736410423/vegetal_kojyju.webp",
                     'minimum_age_id' => 7,
-                    'toy_type_id' => 20
+                    'toy_type_id' => 22
                 ]
             ];
 
