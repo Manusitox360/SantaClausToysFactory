@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use KidSeeder;
+use Database\Seeders\KidSeeder;
 use App\Models\Kid;
 use Database\Seeders\ToySeeder;
 use Illuminate\Database\Seeder;
