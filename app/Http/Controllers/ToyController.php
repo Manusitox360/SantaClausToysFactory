@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MinimumAge;
 use App\Models\Toy;
+use App\Models\ToyType;
 use Illuminate\Http\Request;
 
 class ToyController extends Controller
@@ -13,8 +15,9 @@ class ToyController extends Controller
     public function index()
     {
         $toys = Toy::get();
-
-        return view('elf', compact('toys'));
+        $toyTypes = ToyType::get();
+        $minimumAges = MinimumAge::get();
+        return view('elf', compact('toys', 'toyTypes', 'minimumAges'));
     }
 
     /**

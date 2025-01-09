@@ -3,12 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\Kid;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class KidsTest extends TestCase
+class KidTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */

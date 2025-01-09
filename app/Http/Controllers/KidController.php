@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kid;
+use App\Models\Gender;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class KidController extends Controller
@@ -13,8 +15,9 @@ class KidController extends Controller
     public function index()
     {
         $kids = Kid::get();
-
-        return view('santa', compact('kids'));
+        $genders = Gender::get();
+        $countries = Country::get();
+        return view('santa', compact('kids', 'gender', 'countries'));
     }
 
     /**
