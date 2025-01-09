@@ -72,4 +72,26 @@ class KidTest extends TestCase
                 'name' => 'Juan',
             ]);
     }
+
+    public function test_UpdateKidModifiesKidSuccessfully()
+    {
+        $this->seed(GenderSeeder::class);
+        $this->seed(CountrySeeder::class);
+        $this->seed(KidSeeder::class);
+
+        $response = $this->putJson(route('apiUpdateKids', 1), [
+            'name' => 'Juan',
+            'surname' => 'Pérez',
+            'image' => 'https://randomuser.me/api/portraits/men/10.jpg',
+            'age' => 10,
+            'attitude' => 0,
+            'gender_id' => 1,
+            'country_id' => 1
+        ]);
+
+        $response->assertStatus(200)
+            ->assertJsonFragment([
+                'name' => 'Juan',
+            ]);
+    }
 }

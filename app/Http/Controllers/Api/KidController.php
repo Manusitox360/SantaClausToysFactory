@@ -85,7 +85,7 @@ class KidController extends Controller
         ]);
 
         $kid->save();
-        return response()->json($kid, 201);
+        return response()->json($kid, 200);
     }
 
     /**
