@@ -21,8 +21,10 @@ class KidTest extends TestCase
         $this->seed(GenderSeeder::class);
         $this->seed(CountrySeeder::class);
         $this->seed(KidSeeder::class);
-
-        $response = $this->get(route('apiIndexKids'));
+        
+        $kids = Kid::all();
+    
+        $response = $this->get(route('santa'));
 
         $response->assertStatus(200)
             ->assertViewIs('santa')
