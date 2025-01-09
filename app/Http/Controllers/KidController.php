@@ -115,7 +115,9 @@ class KidController extends Controller
 
         foreach ($kids as $kid) {
             do {
-                $toy = Toy::with('toyType')->inRandomOrder()->first();
+                $toy = Toy::with('toyType')
+                    ->inRandomOrder()
+                    ->first();
 
                 $type = $toy->toyType->associated_type;
             } while ($modelNameSpace != $type);
