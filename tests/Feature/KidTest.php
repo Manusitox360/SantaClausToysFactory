@@ -1,14 +1,13 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature;
 
-use App\Models\Kid;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Database\Seeders\KidSeeder;
+use App\Models\Kid;
 use Database\Seeders\GenderSeeder;
 use Database\Seeders\CountrySeeder;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Database\Seeders\KidSeeder;
 
 class KidTest extends TestCase
 {
@@ -16,15 +15,17 @@ class KidTest extends TestCase
      * A basic feature test example.
      */
     use RefreshDatabase;
-
-    public function testCheckIfReceiveAllEntryOfKidInJsonFile(){
+    
+    public function test_indexReturnsViewWithKids()
+    {
         $this->seed(GenderSeeder::class);
         $this->seed(CountrySeeder::class);
         $this->seed(KidSeeder::class);
 
-        $response = $this->getJson(route('apiIndexKids'));
+        $response = $this->get(route('apiIndexKids'));
 
         $response->assertStatus(200)
-            ->assertJsonCount(28);
+            ->assertViewIs('santa')
+            ->assertViewHas('kids', $kids);
     }
 }
