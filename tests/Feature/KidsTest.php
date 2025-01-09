@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Models\Kid;
 use Tests\TestCase;
+use Database\Seeders\GenderSeeder;
+use Database\Seeders\CountrySeeder;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;

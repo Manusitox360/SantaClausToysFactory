@@ -14,5 +14,12 @@ class KidsTest extends TestCase
      */
     use RefreshDatabase;
 
-    
+    public function test_CheckIfReceiveAllEntryOfkidInJsonFile(){
+        $kid = kid::factory(2)->create();
+
+        $response = $this->get(route('apiIndexKids'));
+
+        $response->assertStatus(200)
+                ->assertJsonCount(2);
+    }
 }
