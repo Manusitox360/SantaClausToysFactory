@@ -86,18 +86,30 @@ class KidController extends Controller
         $badKids = Kid::where('attitude', false)
             ->get();
 
-        /* $this->generateSpecialGifts($badKids, 'Charcoal');
-        $this->generateSpecialGifts($adultKids, 'Trip'); */
+        $listOfGifts = [];
+
+        if ($badKids)
+            $listOfGifts = $this->generateSpecialGifts($listOfGifts, $badKids, 'Charcoal');
+
+        if ($goodAdults)
+            $listOfGifts = $this->generateSpecialGifts($listOfGifts, $goodAdults, 'Trip');
+
+        /* $toy = Toy::with('toyType')->inRandomOrder()->first();
+
+        $type = $toy->toyType->associated_type; */
 
         return response()->json([
+            /* 'toy' => $toy,
+            'type' => $type, */
+            'listOfGifts' => $listOfGifts,
             'goodKids' => $goodKids,
             'goodAdults' => $goodAdults,
             'badKids' => $badKids,
-            'toys' => $toys
+            'toys' => $toys,
         ]);
     }
 
-    private function generateSpecialGifts($kids, $toyType)
+    private function generateSpecialGifts($listOfGifts, $kids, $toyType)
     {
         $modelNameSpace = 'App\\Models\\' . $toyType;
 
@@ -107,6 +119,13 @@ class KidController extends Controller
 
                 $type = $toy->toyType->associated_type;
             } while ($modelNameSpace != $type);
+
+            $listOfGifts[] = [
+                $kid,
+                $toy
+            ];
         }
+
+        return $listOfGifts;
     }
 }
