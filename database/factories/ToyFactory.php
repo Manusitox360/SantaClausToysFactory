@@ -18,8 +18,9 @@ class ToyFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'image' => $this->faker->imageUrl(640, 480, 'toys', true),
+            'image' => $this->faker->imageUrl(),
             'description' => $this->faker->sentence(),
+            'toy_type_id' => $this->faker->numberBetween(1, 22),
             'minimum_age_id' => $this->faker->integer()
         ];
     }

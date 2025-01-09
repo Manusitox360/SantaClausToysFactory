@@ -19,10 +19,11 @@ class KidFactory extends Factory
         return [
             'name' => $this->faker->firstName(),
             'surname' => $this->faker->lastName(),
-            'foto' => $this->faker->imageUrl(640, 480, 'kids', true),
-            'age' => $this->faker->numberBetween(1, 15),
-            'gender' => $this->faker->randomElement(['boy', 'girl']),
-            'attitude' => $this->faker->randomElement(['good', 'bad']),
+            'image' => $this->faker->imageUrl(),
+            'age' => $this->faker->numberBetween(1, 25),
+            'attitude' => $this->faker->numberBetween(0, 1),
+            'gender_id' => $this->faker->numberBetween(1, 2),
+            'country_id' => $this->faker->numberBetween(1, 25)
         ];
     }
 }
