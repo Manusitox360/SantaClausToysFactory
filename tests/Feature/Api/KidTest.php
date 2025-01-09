@@ -17,7 +17,7 @@ class KidTest extends TestCase
      */
     use RefreshDatabase;
 
-    public function testCheckIfReceiveAllEntryOfKidInJsonFile(){
+    public function test_CheckIfReceiveAllEntryOfKidInJsonFile(){
         $this->seed(GenderSeeder::class);
         $this->seed(CountrySeeder::class);
         $this->seed(KidSeeder::class);
@@ -26,5 +26,29 @@ class KidTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonCount(28);
+    }
+
+    public function test_CheckIfReceiveOneEntryOfKidInJsonFile(){
+        $this->seed(GenderSeeder::class);
+        $this->seed(CountrySeeder::class);
+        $this->seed(KidSeeder::class);
+
+        $kid = Kid::find(1);
+
+        $response = $this->get(route('apiShowKids', 1));
+        
+        $data = ['id' => 1];
+
+        $response->assertStatus(200)
+            ->assertJsonFragment($data);
+    }
+
+    public function test_CheckIfSwowReturns404WhenKidNotFound()
+    {
+        $response = $this->get(route('apiShowKids', 999));
+
+        $response->assertStatus(404)
+                 ->assertJson([
+                     'message' => 'Kid not found']);
     }
 }
