@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use KidSeeder;
+use App\Models\Kid;
 use Database\Seeders\ToySeeder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\TripSeeder;
@@ -24,7 +27,8 @@ class DatabaseSeeder extends Seeder {
             ToyTypeSeeder::class,
             ToySeeder::class,
             CountrySeeder::class,
-            GenderSeeder::class
+            GenderSeeder::class,
+            KidSeeder::class
         ]);
     }
 }
