@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Toy;
 use App\Models\ToyType;
 use App\Models\MinimumAge;
+use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\ToySeeder;
 use Database\Seeders\ToyTypeSeeder;
 use Database\Seeders\MinimumAgeSeeder;
@@ -29,9 +30,8 @@ class ToyTest extends TestCase
     }
     public function test_ElfPageCanBeRead(){
         $this->withoutExceptionHandling();
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        $this->seed(ToySeeder::class);
+        $this->seed(DatabaseSeeder::class);
+        
 
         $toys = Toy::all();
         
@@ -42,9 +42,7 @@ class ToyTest extends TestCase
     }
     public function test_ElfPageHasCorrectMinimumAge(){
     $this->withoutExceptionHandling();
-    $this->seed(MinimumAgeSeeder::class);
-    $this->seed(ToyTypeSeeder::class);
-    $this->seed(ToySeeder::class);
+    $this->seed(DatabaseSeeder::class);
 
     $minimumAges = MinimumAge::all();
 
@@ -56,10 +54,10 @@ class ToyTest extends TestCase
     }
     public function test_ElfPageHasCorrectToyType(){
         $this->withoutExceptionHandling();
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        $this->seed(ToySeeder::class);
+        $this->seed(DatabaseSeeder::class);
+
         $toyTypes = ToyType::all();
+
         $response = $this->get('/elf');
         $response->assertStatus(200)
                 ->assertViewIs('elf')
@@ -68,9 +66,7 @@ class ToyTest extends TestCase
 
     public function test_ElfShowViewCanBeRead(){
         $this->withoutExceptionHandling();
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        $this->seed(ToySeeder::class);
+        $this->seed(DatabaseSeeder::class);
 
         $toy = Toy::first();
 
