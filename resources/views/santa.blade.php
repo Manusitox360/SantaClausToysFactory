@@ -1,6 +1,8 @@
 @extends('layouts.index')
 @section('content')
-
+<button>
+    <a href="{{route('gift')}}">Carajo</a>
+</button>
 <div class="flex justify-center px-[6rem] py-12">
     <table class="text-white w-full ">
         <thead class="text-xs bg-candy-cane uppercase text-black sticky top-[4.7rem]">
