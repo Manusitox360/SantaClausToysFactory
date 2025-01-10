@@ -27,4 +27,18 @@ class KidTest extends TestCase
         $response->assertStatus(200)
                 ->assertViewIs('santa');
     }
+
+    public function test_KidCanBeRead(){
+        $this->withoutExceptionHandling();
+
+        $this->seed(GenderSeeder::class);
+        $this->seed(CountrySeeder::class);
+        $this->seed(KidSeeder::class);
+
+        $kid = Kid::first();
+        
+        $response = $this->get(route('santaShow', $kid->id));
+        $response->assertStatus(200)
+                ->assertViewIs('santaShow');
+    }
 }
