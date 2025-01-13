@@ -16,7 +16,7 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Pablo',
                 'surname' => 'Alvarez',
-                'image' => 'https://randomuser.me/api/portraits/men/1.jpg',
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736768622/2_itbzec.png',
                 'age' => 10,
                 'attitude' => 1,
                 'gender_id' => 1,
@@ -34,7 +34,7 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Carlos',
                 'surname' => 'Martínez',
-                'image' => 'https://randomuser.me/api/portraits/men/3.jpg',
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736768644/images_bsok5b.png',
                 'age' => 15,
                 'attitude' => 1,
                 'gender_id' => 1,
