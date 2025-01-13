@@ -1,4 +1,4 @@
-<header class="sticky top-0 bg-candy-cane p-4">
+<header class="sticky top-0 bg-candy-cane p-4 z-20">
     <nav class="bg-no-repeat bg-cover bg-inherit">
         <div class="flex flex-wrap space-x-96 mx-auto max-w-screen-xl">
             <a href="{{ route('home') }}" class="flex bg-[#530402] rounded py-1 px-2 transform hover:scale-110 transition-transform">
