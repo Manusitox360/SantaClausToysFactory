@@ -93,11 +93,13 @@ class KidController extends Controller
             $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything');
         }
 
-        /* if ($goodAdults)
+        if ($goodAdults)
             $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip');
 
         if ($badKids)
-            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal'); */
+            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal');
+
+        $this->createKidToys($listOfGifts);
 
         return response()->json([
             /* 'toy' => $toy,
@@ -195,5 +197,17 @@ class KidController extends Controller
         }
 
         return $exists;
+    }
+
+    private function createKidToys($listOfGifts)
+    {
+        foreach ($listOfGifts as $gift) {
+            $kidID = $gift[0]['id'];
+            $toyID = $gift[1]['id'];
+
+            $kid = Kid::find($kidID);
+
+            $kid->toys()->attach($toyID);
+        }
     }
 }
