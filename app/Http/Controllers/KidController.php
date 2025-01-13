@@ -82,9 +82,7 @@ class KidController extends Controller
 
         $this->createKidToysToDB($listOfGifts);
 
-        return response()->json([
-            'listOfGifts' => $listOfGifts
-        ]);
+        return view('gift', compact('listOfGifts'));
     }
 
     private function getKidsFromDB()
