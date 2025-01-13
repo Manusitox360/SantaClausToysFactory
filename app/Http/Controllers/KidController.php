@@ -145,14 +145,14 @@ class KidController extends Controller
             $minToyMinimumAge = $toy->minimumAge->min;
             $maxToyMinimumAge = $toy->minimumAge->max ?? $DEFAULTMAXAGE;
 
+            $type = $toy->toyType->associated_type;
+
             $gift = [
                 $kid,
                 $toy
             ];
 
             $exists = $this->checkIfListOfGiftIncludesGift($listOfGifts, $gift);
-
-            $type = $toy->toyType->associated_type;
         } while (
             $exists
             || $modelNameSpace != $type
