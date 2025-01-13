@@ -37,7 +37,6 @@ class Kid extends Model
     {
         return $this->belongsToMany(Toy::class)
             ->as('gift')
-            ->withTimestamps()
-            ->using(KidToy::class);
+            ->withTimestamps();
     }
 }
