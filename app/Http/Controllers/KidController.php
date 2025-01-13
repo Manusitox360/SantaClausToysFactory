@@ -99,10 +99,6 @@ class KidController extends Controller
         if ($badKids)
             $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal'); */
 
-        /* $toy = Toy::with('toyType')->inRandomOrder()->first();
-
-        $type = $toy->toyType->associated_type; */
-
         return response()->json([
             /* 'toy' => $toy,
             'type' => $type, */
@@ -137,8 +133,6 @@ class KidController extends Controller
 
     private function generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
     {
-        /* $exists = 3; */
-
         do {
             $toy = Toy::with('toyType')
                 ->inRandomOrder()
@@ -151,17 +145,8 @@ class KidController extends Controller
 
             $exists = $this->checkIfListOfGiftIncludesGift($listOfGifts, $gift);
 
-            /* if($exists){
-
-            } */
-
             $type = $toy->toyType->associated_type;
         } while ($exists || $modelNameSpace != $type);
-
-        /* if ($exists === true) {
-
-            dd($listOfGifts, $toy);
-        } */
 
         return $toy;
     }
