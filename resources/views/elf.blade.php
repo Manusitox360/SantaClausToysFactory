@@ -1,42 +1,23 @@
 @extends('layouts.index')
 @section('content')
-
 <div class="flex justify-center px-[6rem] py-12">
     <table class="text-white w-full">
-        <thead class="text-xs bg-candy-cane uppercase text-black sticky top-[4.7rem]">
+        <thead class="text-xs bg-candy-cane uppercase text-black sticky top-[4.7rem] z-10">
             <tr>
-                <th scope="col" class="px-6 py-3 rounded-tl-lg">Id</th>
-                <th scope="col" class="px-6 py-3">Name</th>
-                <th scope="col" class="px-6 py-3">Picture</th>
-                <th scope="col" class="px-6 py-3">Description</th>
-                <th scope="col" class="px-5 py-3 rounded-tr-lg">Age</th>
+                <th scope="col" class="py-[0.4rem] text-xl rounded-t-lg">Toys</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="flex flex-wrap rounded-b-lg items-center justify-center bg-[#ffffff80]">
             @foreach ($toys as $toy)
-              <tr class="border-b text-white hover:bg-[#ffffff80]">
-                    <td class="text-center p-4">
-                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->id}}</a>
-                    </td>
-                    <td class="text-center">
-                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->name}}</a>
-                    </td>
-                    <td class="flex flex-wrap items-center justify-center">
-                        <a href="{{route('elfShow', $toy->id)}}">
-                            <img class="py-2 w-[10rem]" src="{{$toy->image}}" alt="image">
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->description}}</a>
-                    </td>
-                    <td class="text-center">
-                        <a href="{{route('elfShow', $toy->id)}}">{{$toy->minimumAge->min}}-{{$toy->minimumAge->max}}
-                            <br>
-                            Years
+                <tr>
+                    <td class="">
+                        <a class="flex justify-center items-center flex-col" href="{{route('elfShow', $toy->id)}}">
+                            <div class="flex min-h-[4rem] max-w-[10rem] items-center justify-center uppercase text-xs pt-2">{{$toy->id}}. {{$toy->name}}</div>
+                            <img class="z-0 transition hover:scale-110 duration-500 rounded-full p-4 w-[12rem] min-h-[12rem] max-h-[12rem]" src="{{$toy->image}}" alt="image">
                         </a>
                     </td>
                 </tr>  
-            @endforeach  
+            @endforeach
         </tbody>
     </table>
 </div>

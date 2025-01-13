@@ -30,4 +30,8 @@ class Kid extends Model
             ->withTimestamps()
             ->using(KidToy::class);
     }
+    public function getAttitudeAttribute($value)
+    {
+        return $value ? 'Good' : 'Bad';
+    }
 }

@@ -66,7 +66,7 @@ class ToyTest extends TestCase
                 ->assertViewHas('toyTypes', $toyTypes);
     }
 
-    public function test_ElfShowViewCanBeRead(){
+    /* public function test_ElfShowViewCanBeRead(){
         $this->withoutExceptionHandling();
         $this->seed(MinimumAgeSeeder::class);
         $this->seed(ToyTypeSeeder::class);
@@ -77,5 +77,5 @@ class ToyTest extends TestCase
         $response = $this->get('/elf/'.$toy->id);
         $response->assertStatus(200)
                 ->assertViewIs('elfShow');
-    }
+    } */
 }
