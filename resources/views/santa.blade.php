@@ -12,7 +12,7 @@
                 <tr>
                     <td class="">
                         <a class="flex justify-center items-center flex-col" href="{{route('santaShow', $kid->id)}}">
-                            <div class="flex min-h-[4rem] max-w-[10rem] items-center justify-center uppercase text-xs pt-2">{{$kid->id}}. {{$kid->name}}</div>
+                            <div class="flex min-h-[4rem] max-w-[10rem] items-center justify-center uppercase text-xs pt-2">{{$kid->id}}. {{$kid->name}} {{$kid->surname}}</div>
                             <img class="z-0 transition hover:scale-110 duration-500 rounded-full p-4 w-[12rem] min-h-[12rem] max-h-[12rem]" src="{{$kid->image}}" alt="image">
                         </a>
                     </td>
