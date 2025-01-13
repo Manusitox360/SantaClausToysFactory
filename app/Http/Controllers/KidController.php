@@ -74,63 +74,92 @@ class KidController extends Controller
 
     public function listOfGifts()
     {
-        $this->removeKidToys();
+        $this->removeKidToysFromDB();
 
-        $toys = Toy::with('toyType.associated')->get();
+        $allKids = $this->getKidsFromDB();
 
-        $goodKids = Kid::where('attitude', true)
-            ->where('age', '<', 18)
-            ->get();
+        $listOfGifts = $this->generateListOfGifts($allKids);
 
-        $goodAdults = Kid::where('attitude', true)
-            ->where('age', '>=', 18)
-            ->get();
-
-        $badKids = Kid::where('attitude', false)
-            ->get();
-
-        $listOfGifts = [];
-
-        if ($goodKids) {
-            $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything');
-            $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything');
-        }
-
-        if ($goodAdults)
-            $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip');
-
-        if ($badKids)
-            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal');
-
-        $this->createKidToys($listOfGifts);
+        $this->createKidToysToDB($listOfGifts);
 
         return response()->json([
-            /* 'toy' => $toy,
-            'type' => $type, */
-            'listOfGifts' => $listOfGifts,
-            'goodKids' => $goodKids,
-            'goodAdults' => $goodAdults,
-            'badKids' => $badKids,
-            'toys' => $toys,
+            'listOfGifts' => $listOfGifts
         ]);
     }
 
-    private function generateGifts($listOfGifts, $kids, $toyType)
+    private function getKidsFromDB()
+    {
+        $goodKids = $this->getGoodKids();
+
+        $goodAdults = $this->getAdultsKids();
+
+        $badKids = $this->getBadKids();
+
+        return [
+            'goodKids' => $goodKids,
+            'goodAdults' => $goodAdults,
+            'badKids' => $badKids
+        ];
+    }
+
+    private function getGoodKids()
+    {
+        return Kid::where('attitude', true)
+            ->where('age', '<', 18)
+            ->get();
+    }
+
+    private function getAdultsKids()
+    {
+        return Kid::where('attitude', true)
+            ->where('age', '>=', 18)
+            ->get();
+    }
+
+    private function getBadKids()
+    {
+        return Kid::where('attitude', false)
+            ->get();
+    }
+
+    private function generateListOfGifts($allKids)
+    {
+        $listOfGifts = [];
+
+        $goodKids = $allKids['goodKids'];
+        $goodAdults = $allKids['goodAdults'];
+        $badKids = $allKids['badKids'];
+
+        if ($goodKids)
+            $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything', 2);
+
+        if ($goodAdults)
+            $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip', 1);
+
+        if ($badKids)
+            $listOfGifts = $this->generateGifts($listOfGifts, $badKids, 'Charcoal', 1);
+
+        return $listOfGifts;
+    }
+
+    private function generateGifts($listOfGifts, $kids, $toyType, $numbersOfGifts)
     {
         $MODELBASENAMESPACE = 'App\\Models\\';
 
         $playthingModelNameSpace = $MODELBASENAMESPACE . 'Plaything';
         $modelNameSpace = $MODELBASENAMESPACE . $toyType;
 
-        foreach ($kids as $key => $kid) {
-            $toy = $modelNameSpace == $playthingModelNameSpace
-                ? $this->generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
-                : $this->generateSpecialGifts($modelNameSpace);
+        foreach ($kids as $kid) {
+            for ($i = 0; $i < $numbersOfGifts; $i++) {
+                $toy = $modelNameSpace == $playthingModelNameSpace
+                    ? $this->generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
+                    : $this->generateSpecialGifts($modelNameSpace);
 
-            $listOfGifts[] = [
-                $kid,
-                $toy
-            ];
+                $listOfGifts[] = [
+                    $kid,
+                    $toy
+                ];
+            }
         }
 
         return $listOfGifts;
@@ -202,7 +231,7 @@ class KidController extends Controller
         return $exists;
     }
 
-    private function createKidToys($listOfGifts)
+    private function createKidToysToDB($listOfGifts)
     {
         foreach ($listOfGifts as $gift) {
             $kidID = $gift[0]['id'];
@@ -214,7 +243,7 @@ class KidController extends Controller
         }
     }
 
-    private function removeKidToys()
+    private function removeKidToysFromDB()
     {
         DB::table('kid_toy')->truncate();
     }
