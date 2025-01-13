@@ -17,7 +17,7 @@ class KidSeeder extends Seeder
                 'name' => 'Pablo',
                 'surname' => 'Alvarez',
                 'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736768622/2_itbzec.png',
-                'age' => 10,
+                'age' => 12,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 1
@@ -25,9 +25,9 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Ana',
                 'surname' => 'García',
-                'image' => 'https://randomuser.me/api/portraits/women/2.jpg',
-                'age' => 8,
-                'attitude' => 0,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772252/640px-Camila_Cabello_Vogue_4_mbj32o.jpg',
+                'age' => 18,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 2
             ],
@@ -43,17 +43,17 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Lucía',
                 'surname' => 'López',
-                'image' => 'https://randomuser.me/api/portraits/women/4.jpg',
-                'age' => 9,
-                'attitude' => 0,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772139/depositphotos_207538918-stock-photo-beauty-model-portrait-charming-brunette_urhx1l.webp',
+                'age' => 12,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 4
             ],
             [
                 'name' => 'Miguel',
                 'surname' => 'Sánchez',
-                'image' => 'https://randomuser.me/api/portraits/men/5.jpg',
-                'age' => 18,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736769028/depositphotos_24445241-stock-photo-head-and-shoulders-portrait-of_nufnap.webp',
+                'age' => 8,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 5
@@ -61,17 +61,17 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Sofía',
                 'surname' => 'Pérez',
-                'image' => 'https://randomuser.me/api/portraits/women/6.jpg',
-                'age' => 7,
-                'attitude' => 0,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772296/ana-de-armas-1656579722.jpg_urxnba.jpg',
+                'age' => 19,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 6
             ],
             [
                 'name' => 'Diego',
                 'surname' => 'Gómez',
-                'image' => 'https://randomuser.me/api/portraits/men/7.jpg',
-                'age' => 10,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736769095/2025566-retrato-de-ni_C3_B1o-con-ojos-azules-sonriendo-aislados-en-blanco_thxqxt.jpg',
+                'age' => 3,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 7
@@ -86,28 +86,28 @@ class KidSeeder extends Seeder
                 'country_id' => 8
             ],
             [
-                'name' => 'Javier',
-                'surname' => 'Fernández',
-                'image' => 'https://randomuser.me/api/portraits/men/9.jpg',
-                'age' => 12,
-                'attitude' => 1,
+                'name' => 'Juan',
+                'surname' => 'Alberto',
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736771135/imagen_2025-01-13_132534117_rjnayh.png',
+                'age' => 18,
+                'attitude' => 0,
                 'gender_id' => 1,
                 'country_id' => 9
             ],
             [
                 'name' => 'Elena',
                 'surname' => 'Ruiz',
-                'image' => 'https://randomuser.me/api/portraits/women/10.jpg',
-                'age' => 9,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772333/12d6d346e99489f506a33f553b75022b_mvgwdw.jpg',
+                'age' => 18,
                 'attitude' => 0,
                 'gender_id' => 2,
                 'country_id' => 10
             ],
             [
-                'name' => 'Luis',
-                'surname' => 'Hernández',
-                'image' => 'https://randomuser.me/api/portraits/men/11.jpg',
-                'age' => 11,
+                'name' => 'Andrés',
+                'surname' => 'Alguacil',
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736770926/Et4x2iFXAA0WkZq_qkomvr.jpg',
+                'age' => 18,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 11
@@ -115,17 +115,17 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Isabel',
                 'surname' => 'Díaz',
-                'image' => 'https://randomuser.me/api/portraits/women/12.jpg',
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772452/images_fcgyp4.jpg',
                 'age' => 7,
-                'attitude' => 0,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 12
             ],
             [
                 'name' => 'Fernando',
                 'surname' => 'Moreno',
-                'image' => 'https://randomuser.me/api/portraits/men/13.jpg',
-                'age' => 10,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736770734/08cdb8bf4315aa4410085e87872ff3ba_sevz8e.jpg',
+                'age' => 15,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 13
@@ -133,17 +133,17 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Laura',
                 'surname' => 'Muñoz',
-                'image' => 'https://randomuser.me/api/portraits/women/14.jpg',
-                'age' => 8,
-                'attitude' => 0,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772548/horoscopo-chino-2019-como-son-los-ninos-nacidos-en-el-ano-del-cerdo-lg_z8sysq.jpg',
+                'age' => 2,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 14
             ],
             [
                 'name' => 'Raúl',
                 'surname' => 'Romero',
-                'image' => 'https://randomuser.me/api/portraits/men/15.jpg',
-                'age' => 17,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736770544/nino-chino-sobre-fondo-blanco_894067-26394_fx0h1k.jpg',
+                'age' => 3,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 15
@@ -151,25 +151,25 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Carmen',
                 'surname' => 'Alonso',
-                'image' => 'https://randomuser.me/api/portraits/women/16.jpg',
-                'age' => 9,
-                'attitude' => 0,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772543/depositphotos_2161621-stock-photo-innocent-asian-baby-face_sfzwoc.webp',
+                'age' => 3,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 16
             ],
             [
                 'name' => 'Antonio',
                 'surname' => 'Gutiérrez',
-                'image' => 'https://randomuser.me/api/portraits/men/17.jpg',
-                'age' => 11,
-                'attitude' => 1,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736770489/Shutterstock_376886917_zrfgss.jpg',
+                'age' => 8,
+                'attitude' => 0,
                 'gender_id' => 1,
                 'country_id' => 17
             ],
             [
                 'name' => 'Marta',
                 'surname' => 'Jiménez',
-                'image' => 'https://randomuser.me/api/portraits/women/18.jpg',
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772611/girl-in-peru-1429002_zkmxq5.jpg',
                 'age' => 7,
                 'attitude' => 0,
                 'gender_id' => 2,
@@ -178,8 +178,8 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Juan',
                 'surname' => 'Ruiz',
-                'image' => 'https://randomuser.me/api/portraits/men/19.jpg',
-                'age' => 10,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736770839/roberto-carlos_w416_ccitjw.webp',
+                'age' => 19,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 19
@@ -187,8 +187,8 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Clara',
                 'surname' => 'Torres',
-                'image' => 'https://randomuser.me/api/portraits/women/20.jpg',
-                'age' => 8,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772818/ai-generated-8593109_640_z4jsnp.jpg',
+                'age' =>13,
                 'attitude' => 0,
                 'gender_id' => 2,
                 'country_id' => 20
@@ -196,8 +196,8 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Pedro',
                 'surname' => 'Navarro',
-                'image' => 'https://randomuser.me/api/portraits/men/21.jpg',
-                'age' => 12,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736770778/imagen_2025-01-13_131936826_g8ndut.png',
+                'age' => 16,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 21
@@ -205,26 +205,26 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Rosa',
                 'surname' => 'Ramos',
-                'image' => 'https://randomuser.me/api/portraits/women/22.jpg',
-                'age' => 9,
-                'attitude' => 0,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772848/premium_photo-1675200124904-dfadce24119f_z8xauq.jpg',
+                'age' => 17,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 22
             ],
             [
                 'name' => 'Hugo',
                 'surname' => 'Gil',
-                'image' => 'https://randomuser.me/api/portraits/men/23.jpg',
-                'age' => 23,
-                'attitude' => 1,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736770566/ni_C3_B1o-sonriente-sobre-fondo-blanco_erm9vx.jpg',
+                'age' => 5,
+                'attitude' => 0,
                 'gender_id' => 1,
                 'country_id' => 23
             ],
             [
                 'name' => 'Alicia',
                 'surname' => 'Castro',
-                'image' => 'https://randomuser.me/api/portraits/women/24.jpg',
-                'age' => 7,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772855/primer-plano-nina-morena-sonriendo_1149-174_ftumca.jpg',
+                'age' => 15,
                 'attitude' => 0,
                 'gender_id' => 2,
                 'country_id' => 24
@@ -232,8 +232,8 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Manuel',
                 'surname' => 'Vargas',
-                'image' => 'https://randomuser.me/api/portraits/men/25.jpg',
-                'age' => 10,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736771221/e8d8726b39181b1f3bdeb1ed192b7df9_fkuux2.jpg',
+                'age' => 18,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 25
@@ -241,17 +241,17 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Patricia',
                 'surname' => 'Cabrera',
-                'image' => 'https://randomuser.me/api/portraits/women/26.jpg',
-                'age' => 8,
-                'attitude' => 0,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772940/depositphotos_583006416-stock-photo-close-beautiful-woman-african-braids_m0cmid.webp',
+                'age' => 16,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 26
             ],
             [
                 'name' => 'José',
                 'surname' => 'Flores',
-                'image' => 'https://randomuser.me/api/portraits/men/27.jpg',
-                'age' => 19,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736771459/depositphotos_236583542-stock-photo-young-boy-virtual-reality-glasses_xrez2j.webp',
+                'age' => 6,
                 'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 27
@@ -259,8 +259,8 @@ class KidSeeder extends Seeder
             [
                 'name' => 'Teresa',
                 'surname' => 'Soto',
-                'image' => 'https://randomuser.me/api/portraits/women/28.jpg',
-                'age' => 9,
+                'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772944/depositphotos_5195632-stock-photo-young-cute-black-woman-thinking_od76bs.webp',
+                'age' => 14,
                 'attitude' => 0,
                 'gender_id' => 2,
                 'country_id' => 1
