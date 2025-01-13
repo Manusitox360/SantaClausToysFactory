@@ -88,8 +88,10 @@ class KidController extends Controller
 
         $listOfGifts = [];
 
-        if ($goodKids)
+        if ($goodKids) {
             $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything');
+            $listOfGifts = $this->generateGifts($listOfGifts, $goodKids, 'Plaything');
+        }
 
         /* if ($goodAdults)
             $listOfGifts = $this->generateGifts($listOfGifts, $goodAdults, 'Trip');
@@ -135,6 +137,8 @@ class KidController extends Controller
 
     private function generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
     {
+        /* $exists = 3; */
+
         do {
             $toy = Toy::with('toyType')
                 ->inRandomOrder()
@@ -145,10 +149,19 @@ class KidController extends Controller
                 $toy
             ];
 
-            $exists = in_array($gift, $listOfGifts);
+            $exists = $this->checkIfListOfGiftIncludesGift($listOfGifts, $gift);
+
+            /* if($exists){
+
+            } */
 
             $type = $toy->toyType->associated_type;
-        } while ($modelNameSpace != $type && !$exists);
+        } while ($exists || $modelNameSpace != $type);
+
+        /* if ($exists === true) {
+
+            dd($listOfGifts, $toy);
+        } */
 
         return $toy;
     }
@@ -164,5 +177,27 @@ class KidController extends Controller
         } while ($modelNameSpace != $type);
 
         return $toy;
+    }
+
+    private function checkIfListOfGiftIncludesGift($listOfGifts, $gift)
+    {
+        $exists = false;
+        $length = count($listOfGifts);
+
+        $giftKid = $gift[0]['name'];
+        $giftToy = $gift[1]['name'];
+
+        for ($i = 0; !$exists && $i < $length; $i++) {
+            $listOfGiftsKid = $listOfGifts[$i][0]['name'];
+            $listOfGiftsToy = $listOfGifts[$i][1]['name'];
+
+            if (
+                $listOfGiftsKid === $giftKid
+                && $listOfGiftsToy === $giftToy
+            )
+                $exists = true;
+        }
+
+        return $exists;
     }
 }
