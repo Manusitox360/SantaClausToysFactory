@@ -43,8 +43,9 @@ class KidController extends Controller
         $kid = Kid::find($id);
 
         if (!$kid) {
-            return $this->index();
+            return redirect()->route('santa');
         }
+        
         return view('santaShow', compact('kid'));
     }
 
