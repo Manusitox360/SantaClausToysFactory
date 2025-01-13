@@ -37,6 +37,10 @@ class MinimumAgeSeeder extends Seeder
                     [
                         'min' => 18,
                         'max' => null
+                    ],
+                    [
+                        'min' => 0,
+                        'max' => null
                     ]
                 ];
 
