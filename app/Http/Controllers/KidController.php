@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kid;
 use App\Models\Toy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KidController extends Controller
 {
@@ -73,6 +74,8 @@ class KidController extends Controller
 
     public function listOfGifts()
     {
+        $this->removeKidToys();
+
         $toys = Toy::with('toyType.associated')->get();
 
         $goodKids = Kid::where('attitude', true)
@@ -209,5 +212,10 @@ class KidController extends Controller
 
             $kid->toys()->attach($toyID);
         }
+    }
+
+    private function removeKidToys()
+    {
+        DB::table('kid_toy')->truncate();
     }
 }
