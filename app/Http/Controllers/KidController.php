@@ -133,10 +133,17 @@ class KidController extends Controller
 
     private function generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
     {
+        $DEFAULTMAXAGE = 99;
+
+        $kidAge = $kid->age;
+
         do {
-            $toy = Toy::with('toyType')
+            $toy = Toy::with(['toyType', 'minimumAge'])
                 ->inRandomOrder()
                 ->first();
+
+            $minToyMinimumAge = $toy->minimumAge->min;
+            $maxToyMinimumAge = $toy->minimumAge->max ?? $DEFAULTMAXAGE;
 
             $gift = [
                 $kid,
@@ -146,7 +153,11 @@ class KidController extends Controller
             $exists = $this->checkIfListOfGiftIncludesGift($listOfGifts, $gift);
 
             $type = $toy->toyType->associated_type;
-        } while ($exists || $modelNameSpace != $type);
+        } while (
+            $exists
+            || $modelNameSpace != $type
+            || !($minToyMinimumAge <= $kidAge && $maxToyMinimumAge >= $kidAge)
+        );
 
         return $toy;
     }
