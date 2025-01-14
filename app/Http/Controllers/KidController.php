@@ -115,14 +115,14 @@ class KidController extends Controller
 
     private function getAdultsKids()
     {
-        return Kid::where('attitude', true)
-            ->where('age', '>=', 18)
+        return Kid::where('age', '>=', 18)
             ->get();
     }
 
     private function getBadKids()
     {
         return Kid::where('attitude', false)
+            ->where('age', '<', 18)
             ->get();
     }
 
