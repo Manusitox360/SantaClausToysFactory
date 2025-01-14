@@ -1,6 +1,6 @@
 <header class="sticky top-0 bg-candy-cane p-4 z-20">
     <nav class="bg-no-repeat bg-cover bg-inherit">
-        <div class="flex flex-wrap space-x-96 mx-auto max-w-screen-xl">
+        <div class="flex flex-wrap space-x-[23rem] mx-auto max-w-screen-xl">
             <a href="{{ route('home') }}" class="flex bg-[#530402] rounded py-1 px-2 transform hover:scale-110 transition-transform">
                 <img src="{{asset('img/logoHeader.png')}}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                 <span class="text-xl font-semibold whitespace-nowrap text-white pt-1">Santa Claus</span>
@@ -19,7 +19,9 @@
                 </svg>
                 </a> 
             </nav>
+            <button class="transition hover:scale-110 duration-500 font-bold bg-[#530402] rounded">
+                <a class="text-xl font-semibold whitespace-nowrap text-white p-4" href="{{route('gift')}}">🎁Give Gifts🎁</a>
+            </button>
         </div>
     </nav>
-    
 </header>

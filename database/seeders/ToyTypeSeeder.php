@@ -101,7 +101,11 @@ class ToyTypeSeeder extends Seeder
             [
                 'associated_type' => 'App\Models\Charcoal',
                 'associated_id' => 3
-            ]
+            ],
+            [
+                'associated_type' => 'App\Models\Trip',
+                'associated_id' => 3
+            ],
         ];
 
         foreach ($toyTypes as $toyType) {
