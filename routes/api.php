@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\GenderController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\KidController;
+use App\Http\Controllers\Api\GenderController;
+use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\ToyController;
 
 Route::get('/santa', [KidController::class, 'index'])->name('apiIndexKids');
@@ -17,6 +19,12 @@ Route::post('/genders', [GenderController::class, 'store'])->name('apiStoreGende
 Route::get('/genders/{id}', [GenderController::class, 'show'])->name('apiShowGenders');
 Route::put('/genders/{id}', [GenderController::class, 'update'])->name('apiUpdateGenders');
 Route::delete('/genders/{id}', [GenderController::class, 'destroy'])->name('apiDestroyGenders');
+
+Route::get('/countries', [CountryController::class, 'index'])->name('apiIndexCountries');
+Route::post('/countries', [CountryController::class, 'store'])->name('apiStoreCountries');
+Route::get('/countries/{id}', [CountryController::class, 'show'])->name('apiShowCountries');
+Route::put('/countries/{id}', [CountryController::class, 'update'])->name('apiUpdateCountries');
+Route::delete('/countries/{id}', [CountryController::class, 'destroy'])->name('apiDestroyCountries');
 
 Route::get('/elf', [ToyController::class, 'index'])->name('apiIndexToys');
 Route::post('/elf', [ToyController::class, 'store'])->name('apiStoreToys');
