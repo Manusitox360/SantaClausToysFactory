@@ -156,7 +156,7 @@ class KidController extends Controller
 
             for ($i = 0; $i < $numbersOfGifts; $i++) {
                 $toy = $modelNameSpace == $playthingModelNameSpace
-                    ? $this->generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
+                    ? $this->generateNormalGifts($listOfToys, $kid, $modelNameSpace)
                     : $this->generateSpecialGifts($modelNameSpace);
 
                 $listOfToys[] = $toy;
@@ -171,7 +171,7 @@ class KidController extends Controller
         return $listOfGifts;
     }
 
-    private function generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
+    private function generateNormalGifts($listOfToys, $kid, $modelNameSpace)
     {
         $DEFAULTMAXAGE = 99;
 
@@ -187,12 +187,7 @@ class KidController extends Controller
 
             $type = $toy->toyType->associated_type;
 
-            $gift = [
-                $kid,
-                $toy
-            ];
-
-            $exists = $this->checkIfListOfGiftIncludesGift($listOfGifts, $gift);
+            $exists = $this->checkIfListOfGiftIncludesGift($listOfToys, $toy);
         } while (
             $exists
             || $modelNameSpace != $type
@@ -215,22 +210,17 @@ class KidController extends Controller
         return $toy;
     }
 
-    private function checkIfListOfGiftIncludesGift($listOfGifts, $gift)
+    private function checkIfListOfGiftIncludesGift($listOfToys, $toy)
     {
         $exists = false;
-        $length = count($listOfGifts);
+        $lengthOfToys = count($listOfToys);
 
-        $giftKid = $gift[0]['name'];
-        $giftToy = $gift[1]['name'];
+        $toyName = $toy['name'];
 
-        for ($i = 0; !$exists && $i < $length; $i++) {
-            $listOfGiftsKid = $listOfGifts[$i][0]['name'];
-            $listOfGiftsToy = $listOfGifts[$i][1]['name'];
+        for ($i = 0; !$exists && $i < $lengthOfToys; $i++) {
+            $listOfToyName = $listOfToys[$i]['name'];
 
-            if (
-                $listOfGiftsKid === $giftKid
-                && $listOfGiftsToy === $giftToy
-            )
+            if ($listOfToyName === $toyName)
                 $exists = true;
         }
 
