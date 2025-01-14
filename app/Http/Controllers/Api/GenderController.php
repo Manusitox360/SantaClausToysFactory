@@ -64,7 +64,7 @@ class GenderController extends Controller
             'name' => $validated['name']
         ]);
         $gender->save();
-        return response()->json($gender, 201);
+        return response()->json($gender, 200);
     }
 
     /**
