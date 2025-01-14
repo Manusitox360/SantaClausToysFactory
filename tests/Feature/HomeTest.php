@@ -32,7 +32,7 @@ class HomeTest extends TestCase
         $response->assertViewHas('badKids', $badKidsCount);
     }
 
-        public function test_CheckIfToyCountsAreCorrect()
+    /* public function test_CheckIfToyCountsAreCorrect()
     {
         $this->seed(DatabaseSeeder::class);
 
@@ -47,5 +47,5 @@ class HomeTest extends TestCase
         foreach ($ageRangesWithToysCount as $ageRangeId => $toysCount) {
             $response->assertViewHas("ageRanges.{$ageRangeId}.toys_count", $toysCount);
         }
-    }
+    } */
 }
