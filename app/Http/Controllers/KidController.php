@@ -86,7 +86,9 @@ class KidController extends Controller
 
         $this->createKidToysToDB($listOfGifts);
 
-        return view('gift', compact('listOfGifts'));
+        return response()->json(['list' => $listOfGifts, 'total' => count($listOfGifts)]);
+
+        // return view('gift', compact('listOfGifts'));
     }
 
     private function getKidsFromDB()
@@ -231,11 +233,15 @@ class KidController extends Controller
     {
         foreach ($listOfGifts as $gift) {
             $kidID = $gift[0]['id'];
-            $toyID = $gift[1]['id'];
+            $listOfToys = $gift[1];
 
             $kid = Kid::find($kidID);
 
-            $kid->toys()->attach($toyID);
+            foreach ($listOfToys as $toy) {
+                $toyID = $toy['id'];
+
+                $kid->toys()->attach($toyID);
+            }
         }
     }
 
