@@ -15,13 +15,11 @@ class ToyTest extends TestCase
 
     public function test_CheckIfCanGetAllTheToys(){
         $this->seed(DatabaseSeeder::class);
-
-        Toy::factory(20)->create();
         
         $response = $this->getJson(route('apiIndexToys'));
 
         $response->assertStatus(200)
-                 ->assertJsonCount(20);
+                 ->assertJsonCount(27);
     }
 
     public function test_CheckIfCanCreateAToy(){

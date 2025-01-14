@@ -48,7 +48,7 @@ class KidController extends Controller
         if (!$kid) {
             return redirect()->route('santa');
         }
-        
+
         return view('santaShow', compact('kid'));
     }
 
@@ -113,14 +113,14 @@ class KidController extends Controller
 
     private function getAdultsKids()
     {
-        return Kid::where('attitude', true)
-            ->where('age', '>=', 18)
+        return Kid::where('age', '>=', 18)
             ->get();
     }
 
     private function getBadKids()
     {
         return Kid::where('attitude', false)
+            ->where('age', '<', 18)
             ->get();
     }
 
@@ -152,22 +152,26 @@ class KidController extends Controller
         $modelNameSpace = $MODELBASENAMESPACE . $toyType;
 
         foreach ($kids as $kid) {
+            $listOfToys = [];
+
             for ($i = 0; $i < $numbersOfGifts; $i++) {
                 $toy = $modelNameSpace == $playthingModelNameSpace
-                    ? $this->generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
+                    ? $this->generateNormalGifts($listOfToys, $kid, $modelNameSpace)
                     : $this->generateSpecialGifts($modelNameSpace);
 
-                $listOfGifts[] = [
-                    $kid,
-                    $toy
-                ];
+                $listOfToys[] = $toy;
             }
+
+            $listOfGifts[] = [
+                $kid,
+                $listOfToys
+            ];
         }
 
         return $listOfGifts;
     }
 
-    private function generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
+    private function generateNormalGifts($listOfToys, $kid, $modelNameSpace)
     {
         $DEFAULTMAXAGE = 99;
 
@@ -183,12 +187,7 @@ class KidController extends Controller
 
             $type = $toy->toyType->associated_type;
 
-            $gift = [
-                $kid,
-                $toy
-            ];
-
-            $exists = $this->checkIfListOfGiftIncludesGift($listOfGifts, $gift);
+            $exists = $this->checkIfListOfGiftIncludesGift($listOfToys, $toy);
         } while (
             $exists
             || $modelNameSpace != $type
@@ -211,22 +210,17 @@ class KidController extends Controller
         return $toy;
     }
 
-    private function checkIfListOfGiftIncludesGift($listOfGifts, $gift)
+    private function checkIfListOfGiftIncludesGift($listOfToys, $toy)
     {
         $exists = false;
-        $length = count($listOfGifts);
+        $lengthOfToys = count($listOfToys);
 
-        $giftKid = $gift[0]['name'];
-        $giftToy = $gift[1]['name'];
+        $toyName = $toy['name'];
 
-        for ($i = 0; !$exists && $i < $length; $i++) {
-            $listOfGiftsKid = $listOfGifts[$i][0]['name'];
-            $listOfGiftsToy = $listOfGifts[$i][1]['name'];
+        for ($i = 0; !$exists && $i < $lengthOfToys; $i++) {
+            $listOfToyName = $listOfToys[$i]['name'];
 
-            if (
-                $listOfGiftsKid === $giftKid
-                && $listOfGiftsToy === $giftToy
-            )
+            if ($listOfToyName === $toyName)
                 $exists = true;
         }
 
@@ -237,11 +231,15 @@ class KidController extends Controller
     {
         foreach ($listOfGifts as $gift) {
             $kidID = $gift[0]['id'];
-            $toyID = $gift[1]['id'];
+            $listOfToys = $gift[1];
 
             $kid = Kid::find($kidID);
 
-            $kid->toys()->attach($toyID);
+            foreach ($listOfToys as $toy) {
+                $toyID = $toy['id'];
+
+                $kid->toys()->attach($toyID);
+            }
         }
     }
 

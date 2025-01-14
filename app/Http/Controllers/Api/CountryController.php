@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gender;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
-class GenderController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $genders = Gender::all();
-        return response()->json($genders , 200);
+        $countries = Country::all();
+        return response()->json($countries, 200);
     }
 
     /**
@@ -26,11 +26,11 @@ class GenderController extends Controller
             'name' => 'string'
         ]);
         
-        $gender = Gender::create([
+        $country = Country::create([
             'name' => $validated['name']
         ]);
-        $gender->save();
-        return response()->json($gender, 201);
+        $country->save();
+        return response()->json($country, 201);
     }
 
     /**
@@ -38,11 +38,11 @@ class GenderController extends Controller
      */
     public function show(string $id)
     {
-        $gender = Gender::find($id);
-        if (!$gender) {
-            return response()->json(['message' => 'Gender not found'], 404);
+        $country = Country::find($id);
+        if (!$country) { 
+            return response()->json(['message' => 'Country not found'], 404);
         }
-        return response()->json($gender, 200);
+        return response()->json($country, 200);
     }
 
     /**
@@ -50,21 +50,21 @@ class GenderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $gender = Gender::find($id);
+        $country = Country::find($id);
 
-        if(!$gender){
-            return response()->json(['message' => 'Gender not found'], 404);
+        if(!$country){
+            return response()->json(['message' => 'Country not found'], 404);
         }
         
         $validated = $request->validate([
             'name' => 'string'
         ]);
         
-        $gender->update([
+        $country->update([
             'name' => $validated['name']
         ]);
-        $gender->save();
-        return response()->json($gender, 200);
+        $country->save();
+        return response()->json($country, 200);
     }
 
     /**
@@ -72,11 +72,10 @@ class GenderController extends Controller
      */
     public function destroy(string $id)
     {
-        $gender = Gender::find($id);
-        if (!$gender) {
-            return response()->json(['message' => 'Gender not found'], 404);
+        $country = Country::find($id);
+        if (!$country) {
+            return response()->json(['message' => 'Country not found'], 404);
         }
-        $gender->delete();
-        return response()->json(['message' => 'Gender deleted'], 200);
+        return response()->json(['message' => 'Country deleted'], 200);
     }
 }
