@@ -3,12 +3,9 @@
 namespace Tests\Feature\Api;
 
 use App\Models\Toy;
-use App\Models\ToyType;
 use Tests\TestCase;
-use Database\Seeders\ToySeeder;
-use Illuminate\Database\Seeder;
-use Database\Seeders\MinimumAgeSeeder;
-use Database\Seeders\ToyTypeSeeder;
+use App\Models\ToyType;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -16,22 +13,17 @@ class ToyTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_IfCanGetAllTheToys()
-    {
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        Toy::factory(20)->create();
+    public function test_CheckIfCanGetAllTheToys(){
+        $this->seed(DatabaseSeeder::class);
         
         $response = $this->getJson(route('apiIndexToys'));
 
         $response->assertStatus(200)
-                 ->assertJsonCount(20);
+                 ->assertJsonCount(27);
     }
 
-    public function test_IfCanCreateAToy()
-    {
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
+    public function test_CheckIfCanCreateAToy(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->postJson(route('apiStoreToys'), [
             'name' => 'Test Toy',
@@ -47,10 +39,9 @@ class ToyTest extends TestCase
                  ]);
     }
 
-    public function test_IfCanShowJustOneToy()
-    {
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
+    public function test_CheckIfCanShowJustOneToy(){
+        $this->seed(DatabaseSeeder::class);
+
         Toy::factory(20)->create();
 
         $response = $this->getJson(route('apiShowToys', 1));
@@ -60,11 +51,8 @@ class ToyTest extends TestCase
                  ->assertJsonFragment($data);
     }
 
-    public function test_IfCanUpdateAToy()
-    {
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        $this->seed(ToySeeder::class);
+    public function test_CheckIfCanUpdateAToy(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->putJson(route('apiUpdateToys', 1), [
             'name' => 'Test Toy Updated',
@@ -80,33 +68,24 @@ class ToyTest extends TestCase
                     ]);
     }
 
-    public function test_IfCanDeleteAToy()
-    {
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        $this->seed(ToySeeder::class);
+    public function test_CheckIfCanDeleteAToy(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->deleteJson(route('apiDestroyToys', 1));
 
         $response->assertStatus(200);
     }
 
-    public function test_IfTryToDeleteAToyThatDoesntExist()
-    {
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        $this->seed(ToySeeder::class);
+    public function test_CheckIfTryToDeleteAToyThatDoesNotExist(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->deleteJson(route('apiDestroyToys', 100));
 
         $response->assertStatus(404);
     }   
 
-    public function test_IfTryToShowAToyThatDoesntExist()
-    {
-        $this->seed(MinimumAgeSeeder::class);
-        $this->seed(ToyTypeSeeder::class);
-        $this->seed(ToySeeder::class);
+    public function test_CheckIfTryToShowAToyThatDoesNotExist(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->getJson(route('apiShowToys', 100));
 

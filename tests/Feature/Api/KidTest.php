@@ -4,9 +4,7 @@ namespace Tests\Feature\Api;
 
 use App\Models\Kid;
 use Tests\TestCase;
-use Database\Seeders\KidSeeder;
-use Database\Seeders\GenderSeeder;
-use Database\Seeders\CountrySeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,9 +16,7 @@ class KidTest extends TestCase
     use RefreshDatabase;
 
     public function test_CheckIfReceiveAllEntryOfKidInJsonFile(){
-        $this->seed(GenderSeeder::class);
-        $this->seed(CountrySeeder::class);
-        $this->seed(KidSeeder::class);
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->getJson(route('apiIndexKids'));
 
@@ -29,9 +25,7 @@ class KidTest extends TestCase
     }
 
     public function test_CheckIfReceiveOneEntryOfKidInJsonFile(){
-        $this->seed(GenderSeeder::class);
-        $this->seed(CountrySeeder::class);
-        $this->seed(KidSeeder::class);
+        $this->seed(DatabaseSeeder::class);
 
         $kid = Kid::find(1);
 
@@ -43,8 +37,7 @@ class KidTest extends TestCase
             ->assertJsonFragment($data);
     }
 
-    public function test_CheckIfShowReturns404WhenKidNotFound()
-    {
+    public function test_CheckIfShowReturns404WhenKidNotFound(){
         $response = $this->getJson(route('apiShowKids', 999));
 
         $response->assertStatus(404)
@@ -52,10 +45,8 @@ class KidTest extends TestCase
                      'message' => 'Kid not found']);
     }
 
-    public function test_StoreKidCreatesNewKidSuccessfully()
-    {
-        $this->seed(GenderSeeder::class);
-        $this->seed(CountrySeeder::class);
+    public function test_StoreKidCreatesNewKidSuccessfully(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->postJson(route('apiStoreKids'), [
             'name' => 'Juan',
@@ -73,11 +64,8 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_UpdateKidModifiesKidSuccessfully()
-    {
-        $this->seed(GenderSeeder::class);
-        $this->seed(CountrySeeder::class);
-        $this->seed(KidSeeder::class);
+    public function test_UpdateKidModifiesKidSuccessfully(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->putJson(route('apiUpdateKids', 1), [
             'name' => 'Juan',
@@ -95,8 +83,7 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_UpdateKidReturns404WhenKidNotFound()
-    {
+    public function test_UpdateKidReturns404WhenKidNotFound(){
         $response = $this->putJson(route('apiUpdateKids', 999), [
             'name' => 'Juan',
             'surname' => 'Pérez',
@@ -112,11 +99,8 @@ class KidTest extends TestCase
                 'message' => 'Kid not found']);
     }
 
-    public function test_DeleteKidRemovesKidSuccessfully()
-    {
-        $this->seed(GenderSeeder::class);
-        $this->seed(CountrySeeder::class);
-        $this->seed(KidSeeder::class);
+    public function test_DeleteKidRemovesKidSuccessfully(){
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->deleteJson(route('apiDestroyKids', 1));
 
@@ -125,8 +109,7 @@ class KidTest extends TestCase
                 'message' => 'Kid deleted succesfully']);
     }
 
-    public function test_DeleteKidReturns404WhenKidNotFound()
-    {
+    public function test_DeleteKidReturns404WhenKidNotFound(){
         $response = $this->deleteJson(route('apiDestroyKids', 999));
 
         $response->assertStatus(404)
