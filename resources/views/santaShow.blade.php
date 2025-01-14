@@ -24,7 +24,7 @@
                         Attitude: {{$kid->attitude}}
                     </span>
                     <button class="transition hover:scale-110 duration-500 uppercase font-bold bg-candy-cane rounded-lg px-4 py-2">
-                        <a href="{{route('santa')}}">Go Back</a>
+                        <a href="{{route('santa')}}">Back To Kid List</a>
                     </button>
                 </div>
             </div>

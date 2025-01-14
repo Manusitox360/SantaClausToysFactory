@@ -20,7 +20,7 @@
                         Age: <br>{{$toy->minimumAge->min}}-{{$toy->minimumAge->max}}
                     </span>
                     <button class="transition hover:scale-110 duration-500 uppercase font-bold bg-candy-cane rounded-lg px-4 py-2">
-                        <a href="{{route('elf')}}">Go Back</a>
+                        <a href="{{route('elf')}}">Back To Toy List</a>
                     </button>
                 </div>
             </div>

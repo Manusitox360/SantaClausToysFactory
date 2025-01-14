@@ -2,7 +2,7 @@
     <nav class="bg-no-repeat bg-cover bg-inherit">
         <div class="flex flex-wrap space-x-96 mx-auto max-w-screen-xl">
             <a href="{{ route('home') }}" class="flex bg-[#530402] rounded py-1 px-2 transform hover:scale-110 transition-transform">
-                <img src="{{asset('img/logoHeader.png')}}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                <img src="{{asset('img/logoHeader.png')}}" class="mr-3 h-9" alt="Flowbite Logo" />
                 <span class="text-xl font-semibold whitespace-nowrap text-white pt-1">Santa Claus</span>
             </a>
             <nav class="flex justify-start space-x-8 items-center self-center">
@@ -19,7 +19,11 @@
                 </svg>
                 </a> 
             </nav>
+            @if (request()->routeIs('santa'))
+                <button class="transition hover:scale-110 duration-500 font-bold bg-[#530402] rounded">
+                    <a class="text-xl font-semibold whitespace-nowrap text-white p-4" href="{{route('santaGifts')}}">🎁Give Gifts🎁</a>
+                </button>
+            @endif
         </div>
     </nav>
-    
 </header>
