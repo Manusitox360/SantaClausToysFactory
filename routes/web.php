@@ -7,11 +7,14 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/santa/createListOfGifts', [KidController::class, 'listOfGifts'])->name('santaGifts');
+
+
 Route::get('/santa', [KidController::class, 'index'])->name('santa');
 Route::get('/santa/{id}', [KidController::class, 'show'])->name('santaShow');
 Route::get('/elf', [ToyController::class, 'index'])->name('elf');
 Route::get('/elf/{id}', [ToyController::class, 'show'])->name('elfShow');
 
-Route::get('/gift', function () {
+Route::get('/gift', function () { // TODO ÁLVARO CAMBIAR RUTA A LA DE ARRIBA DE santaGifts
     return view('gift');
 })->name('gift');

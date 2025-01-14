@@ -20,4 +20,20 @@ class MinimumAge extends Model
     {
         return $this->hasMany(Toy::class);
     }
+
+    public function __toString()
+    {
+        $minAge = $this->min;
+        $maxAge = $this->max;
+
+        $result = $minAge . '-' . $maxAge;
+
+        if ($minAge === 18)
+            $result = '+18';
+
+        if ($minAge === 0 && !$maxAge)
+            $result = 'All ages';
+
+        return $result;
+    }
 }

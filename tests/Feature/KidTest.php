@@ -2,12 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use App\Models\Kid;
-use Database\Seeders\GenderSeeder;
-use Database\Seeders\CountrySeeder;
-use Database\Seeders\KidSeeder;
+use Tests\TestCase;
+use Database\Seeders\DatabaseSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class KidTest extends TestCase
 {
@@ -16,24 +14,18 @@ class KidTest extends TestCase
      */
     use RefreshDatabase;
 
-    public function test_ListOfKidsCanBeRead(){
-        $this->withoutExceptionHandling();
+    public function test_CheckIfListOfKidsCanBeRead(){
 
-        $this->seed(GenderSeeder::class);
-        $this->seed(CountrySeeder::class);
-        $this->seed(KidSeeder::class);
+        $this->seed(DatabaseSeeder::class);
 
         $response = $this->get(route('santa'));
         $response->assertStatus(200)
                 ->assertViewIs('santa');
     }
 
-    /* public function test_KidCanBeRead(){
-        $this->withoutExceptionHandling();
+    /* public function test_CheckIfSingleKidCanBeRead(){
 
-        $this->seed(GenderSeeder::class);
-        $this->seed(CountrySeeder::class);
-        $this->seed(KidSeeder::class);
+        $this->seed(DatabaseSeeder::class);
 
         $kid = Kid::first();
         
