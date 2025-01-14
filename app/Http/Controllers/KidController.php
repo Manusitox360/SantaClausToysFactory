@@ -48,7 +48,7 @@ class KidController extends Controller
         if (!$kid) {
             return redirect()->route('santa');
         }
-        
+
         return view('santaShow', compact('kid'));
     }
 
@@ -152,16 +152,20 @@ class KidController extends Controller
         $modelNameSpace = $MODELBASENAMESPACE . $toyType;
 
         foreach ($kids as $kid) {
+            $listOfToys = [];
+
             for ($i = 0; $i < $numbersOfGifts; $i++) {
                 $toy = $modelNameSpace == $playthingModelNameSpace
                     ? $this->generateNormalGifts($listOfGifts, $kid, $modelNameSpace)
                     : $this->generateSpecialGifts($modelNameSpace);
 
-                $listOfGifts[] = [
-                    $kid,
-                    $toy
-                ];
+                $listOfToys[] = $toy;
             }
+
+            $listOfGifts[] = [
+                $kid,
+                $listOfToys
+            ];
         }
 
         return $listOfGifts;
