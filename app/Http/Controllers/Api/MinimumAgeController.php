@@ -12,6 +12,7 @@ class MinimumAgeController extends Controller
     public function index()
     {
         $minimumAges = MinimumAge::all();
+
         return response()->json($minimumAges, 200);
     }
 
@@ -27,8 +28,10 @@ class MinimumAgeController extends Controller
             'min' => $validated['min'],
             'max' => $validated['max']
         ]);
+
         $minimumAges->save();
-        return response()->json(['Message' => 'Minimum Age Created Succesfully', 'Data' => $minimumAges], 201);
+
+        return response()->json(['message' => 'Minimum Age Created Succesfully', 'data' => $minimumAges], 201);
     }
 
 
@@ -39,6 +42,7 @@ class MinimumAgeController extends Controller
         if (!$minimumAge) {
             return response()->json(['message' => 'Minimmum Age not found'], 404);
         }
+
         return response()->json($minimumAge, 200);
     }
 
@@ -51,7 +55,7 @@ class MinimumAgeController extends Controller
             return response()->json(['message' => 'Minimum Age Not Found'], 404);
         }
 
-        $validated = request()->validate([
+        $validated = $request->validate([
             'min' => 'required|integer|min:0',
             'max' => 'nullable|integer|gte:min'
         ]);
@@ -60,18 +64,23 @@ class MinimumAgeController extends Controller
             'min' =>  $validated['min'],
             'max' => $validated['max']
         ]);
+
         $minimumAge->save();
-        return response()->json(['message' => 'Minimum Age Updated Succesfully', 'Data' => $minimumAge],  200);
+
+        return response()->json(['message' => 'Minimum Age Updated Succesfully', 'data' => $minimumAge],  200);
     }
 
 
     public function destroy(string $id)
     {
         $minimumAge = MinimumAge::find($id);
+
         if (!$minimumAge) {
             return response()->json(['message' => 'Minimum Age not found'], 404);
         }
+
         $minimumAge->delete();
-        return response()->json(['message' => 'Deleted', 'Data' => $minimumAge],  200);
+
+        return response()->json([], 204);
     }
 }
