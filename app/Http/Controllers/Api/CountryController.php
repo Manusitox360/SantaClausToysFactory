@@ -53,7 +53,7 @@ class CountryController extends Controller
         $country = Country::find($id);
 
         if(!$country){
-            return response()->json(['message' => 'Gender not found'], 404);
+            return response()->json(['message' => 'Country not found'], 404);
         }
         
         $validated = $request->validate([
