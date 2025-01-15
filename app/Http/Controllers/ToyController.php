@@ -43,7 +43,7 @@ class ToyController extends Controller
         $toy = Toy::find($id);
 
         if (!$toy) {
-            return $this->index();
+            return redirect()->route('elf');
         }
 
         return view('elfShow', compact('toy'));
