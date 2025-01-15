@@ -109,7 +109,7 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 #### 1 Get all toy entries
 
 ```http
-  GET /api/elve
+GET /api/elf
 ```
 
 #### Response:
@@ -119,7 +119,7 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 #### 2 Get a toy by ID
 
 ```http
-  GET /api/elve/id
+  GET /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -133,7 +133,7 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 #### 3 Create a new toy
 
 ```http
-  POST /api/elve
+  POST /api/elf
 ```
 
 #### Response:
@@ -147,12 +147,13 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 | `name`    | `string` | **Required**. Name of toy    |
 | `image` | `string` | **Required**. Company of toy |
 | `description` | `string` | **Required**. Status of toy  |
-| `minimum_age_id` | `string` | **Required**. Id of the minimum age of the toy  |
+| `toy_type_id` | `integer` | **Required**. Id of the type of the toy  |
+| `minimum_age_id` | `integer` | **Required**. Id of the minimum age of the toy  |
 
 #### 4 Update an existing toy by ID
 
 ```http
-  PUT /api/elve/id
+  PUT /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -170,12 +171,13 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 | `name`    | `string` | Name of toy    |
 | `image` | `string` | Company of toy |
 | `description` | `string` | Status of toy  |
-| `minimum_age_id` | `string` | Id of the minimum age of the toy  |
+| `toy_type_id` | `integer` | **Required**. Id of the type of the toy  |
+| `minimum_age_id` | `integer` | **Required**. Id of the minimum age of the toy  |
 
 #### 5 Delete a toy by ID
 
 ```http
-  DELETE /api/elve/id
+  DELETE /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
