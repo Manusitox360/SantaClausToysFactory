@@ -14,10 +14,9 @@ class ToyController extends Controller
      */
     public function index()
     {
-        $toys = Toy::get();
-        $toyTypes = ToyType::get();
-        $minimumAges = MinimumAge::get();
-        return view('elf', compact('toys', 'toyTypes', 'minimumAges'));
+        $toys = Toy::all();
+
+        return view('elf', compact('toys'));
     }
 
     /**
@@ -41,12 +40,12 @@ class ToyController extends Controller
      */
     public function show(string $id)
     {
-        $toy=Toy::find($id);
+        $toy = Toy::find($id);
 
-        if(!$toy){
-            return $this->index();
+        if (!$toy) {
+            return redirect()->route('elf');
         }
-        
+
         return view('elfShow', compact('toy'));
     }
 

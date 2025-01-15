@@ -16,10 +16,9 @@ class KidController extends Controller
      */
     public function index()
     {
-        $kids = Kid::get();
-        $genders = Gender::get();
-        $countries = Country::get();
-        return view('santa', compact('kids', 'genders', 'countries'));
+        $kids = Kid::all();
+
+        return view('santa', compact('kids'));
     }
 
     /**
