@@ -25,8 +25,8 @@ Route::get('/elf/{id}', [ToyController::class, 'show'])->name('apiShowToys');
 Route::put('/elf/{id}', [ToyController::class, 'update'])->name('apiUpdateToys');
 Route::delete('/elf/{id}', [ToyController::class, 'destroy'])->name('apiDestroyToys');
 
-Route::get('/minimumAges', [MinimumAgeController::class, 'index'])->name('apiIndexMinimumAges');
-Route::post('/minimumAges', [MinimumAgeController::class, 'store'])->name('apiStoreMinimumAges');
-Route::get('/minimumAges/{id}', [MinimumAgeController::class, 'show'])->name('apiShowMinimumAges');
-Route::put('/minimumAges/{id}', [MinimumAgeController::class, 'update'])->name('apiUpdateMinimumAges');
-Route::delete('/minimumAges/{id}', [MinimumAgeController::class, 'destroy'])->name('apiDestroyMinimumAges');
+Route::get('/minimumAge', [MinimumAgeController::class, 'index'])->name('apiIndexMinimumAge');
+Route::post('/minimumAge', [MinimumAgeController::class, 'store'])->name('apiStoreMinimumAge');
+Route::get('/minimumAge/{id}', [MinimumAgeController::class, 'show'])->name('apiShowMinimumAge');
+Route::put('/minimumAge/{id}', [MinimumAgeController::class, 'update'])->name('apiUpdateMinimumAge');
+Route::delete('/minimumAge/{id}', [MinimumAgeController::class, 'destroy'])->name('apiDestroyMinimumAge');
