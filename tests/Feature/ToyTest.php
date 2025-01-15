@@ -39,4 +39,14 @@ class ToyTest extends TestCase
             ->assertViewIs('elfShow')
             ->assertViewHas('toy', $toy);
     }
+
+    public function test_CheckIfFailSingleKToyCanBeRead()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->get(route('elfShow', 9999));
+
+        $response->assertStatus(302)
+            ->assertRedirect('elf');
+    }
 }
