@@ -81,7 +81,7 @@ class KidSeeder extends Seeder
                 'surname' => 'Rodríguez',
                 'image' => 'https://randomuser.me/api/portraits/women/8.jpg',
                 'age' => 20,
-                'attitude' => 0,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 8
             ],
@@ -90,7 +90,7 @@ class KidSeeder extends Seeder
                 'surname' => 'Alberto',
                 'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736771135/imagen_2025-01-13_132534117_rjnayh.png',
                 'age' => 18,
-                'attitude' => 0,
+                'attitude' => 1,
                 'gender_id' => 1,
                 'country_id' => 9
             ],
@@ -99,7 +99,7 @@ class KidSeeder extends Seeder
                 'surname' => 'Ruiz',
                 'image' => 'https://res.cloudinary.com/dzfqdntdw/image/upload/v1736772333/12d6d346e99489f506a33f553b75022b_mvgwdw.jpg',
                 'age' => 18,
-                'attitude' => 0,
+                'attitude' => 1,
                 'gender_id' => 2,
                 'country_id' => 10
             ],
