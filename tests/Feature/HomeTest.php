@@ -32,20 +32,17 @@ class HomeTest extends TestCase
         $response->assertViewHas('badKids', $badKidsCount);
     }
 
-        public function test_CheckIfToyCountsAreCorrect()
+    public function test_CheckIfToyCountsAreCorrect()
     {
         $this->seed(DatabaseSeeder::class);
 
         $totalToysCount = Toy::count();
 
-        $ageRangesWithToysCount = MinimumAge::withCount('toys')->get()->pluck('toys_count', 'id')->toArray();
-
-        $response = $this->get(route('home'));
-
-        $response->assertViewHas('totalToys', $totalToysCount);
-
-        foreach ($ageRangesWithToysCount as $ageRangeId => $toysCount) {
-            $response->assertViewHas("ageRanges.{$ageRangeId}.toys_count", $toysCount);
-        }
+        $ageRangesWithToysCount = MinimumAge::withCount('toys')->get();
+        $ageRanges = MinimumAge::withCount('toys')->whereNot('min', 0)->whereNot('max', null)->get();
+        
+        $response = $this->get(route('home'))
+        ->assertViewHas('totalToys', $totalToysCount)
+        ->assertViewHas('ageRanges', $ageRanges);
     }
 }

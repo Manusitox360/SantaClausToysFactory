@@ -19,17 +19,10 @@ class HomeController extends Controller
         $badKids = Kid::where('attitude', false)->count();
         $kids = Kid::all();
 
-        $ageRanges = MinimumAge::withCount('toys')->get();
+        $ageRanges = MinimumAge::withCount('toys')->whereNot('min', 0)->whereNot('max', null)->get();
         $totalToys = Toy::count();
 
-        return view('home', [
-            'totalKids' => $totalKids,
-            'goodKids' => $goodKids,
-            'badKids' => $badKids,
-            'kids' => $kids,
-            'ageRanges' => $ageRanges,
-            'totalToys' => $totalToys
-        ]);
+        return view('home', compact('totalKids','goodKids', 'badKids', 'kids', 'ageRanges', 'totalToys'));
     }
 
     /* /**
