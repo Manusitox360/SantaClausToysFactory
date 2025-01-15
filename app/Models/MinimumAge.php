@@ -28,10 +28,10 @@ class MinimumAge extends Model
 
         $result = $minAge . '-' . $maxAge;
 
-        if ($minAge === 18)
+        if ($minAge == 18)
             $result = '+18';
 
-        if ($minAge === 0 && !$maxAge)
+        if ($minAge == 0 && !$maxAge)
             $result = 'All ages';
 
         return $result;

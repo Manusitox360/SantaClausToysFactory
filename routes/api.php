@@ -1,12 +1,12 @@
 <?php
 
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\KidController;
-use App\Http\Controllers\Api\GenderController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\ToyController;
+use App\Http\Controllers\Api\GenderController;
+use App\Http\Controllers\Api\MinimumAgeController;
 
 Route::get('/santa', [KidController::class, 'index'])->name('apiIndexKids');
 Route::post('/santa', [KidController::class, 'store'])->name('apiStoreKids');
@@ -31,3 +31,9 @@ Route::post('/elf', [ToyController::class, 'store'])->name('apiStoreToys');
 Route::get('/elf/{id}', [ToyController::class, 'show'])->name('apiShowToys');
 Route::put('/elf/{id}', [ToyController::class, 'update'])->name('apiUpdateToys');
 Route::delete('/elf/{id}', [ToyController::class, 'destroy'])->name('apiDestroyToys');
+
+Route::get('/minimumAge', [MinimumAgeController::class, 'index'])->name('apiIndexMinimumAge');
+Route::post('/minimumAge', [MinimumAgeController::class, 'store'])->name('apiStoreMinimumAge');
+Route::get('/minimumAge/{id}', [MinimumAgeController::class, 'show'])->name('apiShowMinimumAge');
+Route::put('/minimumAge/{id}', [MinimumAgeController::class, 'update'])->name('apiUpdateMinimumAge');
+Route::delete('/minimumAge/{id}', [MinimumAgeController::class, 'destroy'])->name('apiDestroyMinimumAge');
