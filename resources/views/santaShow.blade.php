@@ -8,7 +8,7 @@
         </h5>
         <div class="flex flex-row justify-between items-center p-4">
             <img 
-                class="w-[18rem] h-[16.9rem] m-4 rounded-lg shadow-lg" 
+                class="w-[18rem] h-[16.9rem] m-4 rounded-lg shadow-lg object-cover" 
                 src="{{$kid->image}}" 
                 alt="Kid Image"
             />
@@ -18,7 +18,10 @@
                         Age: {{$kid->age}} years
                     </span>
                     <span class="text-center text-xl font-medium text-black">
-                        Gender: {{-- {{$kid->gender->name}} --}}
+                        Gender: {{$kid->gender->name}}
+                    </span>
+                    <span class=" text-center text-xl font-medium text-black">
+                        Country: {{$kid->country->name}}
                     </span>
                     <span class="text-center text-xl font-medium text-black">
                         Attitude: {{$kid->attitude}}
