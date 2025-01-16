@@ -83,7 +83,7 @@ class ToyController extends Controller
         }
 
         $toy->delete();
-        
-        return response()->json(['message' => 'Toy deleted succesfully'], 200);
+
+        return response()->json([], 204);
     }
 }
