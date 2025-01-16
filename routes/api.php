@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\ToyController;
 use App\Http\Controllers\Api\GenderController;
 use App\Http\Controllers\Api\MinimumAgeController;
 
+Route::get('/santa/createListOfGifts', [KidController::class, 'listOfGifts'])->name('apiSantaGifts');
+
 Route::get('/santa', [KidController::class, 'index'])->name('apiIndexKids');
 Route::post('/santa', [KidController::class, 'store'])->name('apiStoreKids');
 Route::get('/santa/{id}', [KidController::class, 'show'])->name('apiShowKids');
