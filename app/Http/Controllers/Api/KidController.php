@@ -14,6 +14,7 @@ class KidController extends Controller
     public function index()
     {
         $kids = Kid::all();
+        
         return response()->json($kids, 200);
     }
 
@@ -39,7 +40,9 @@ class KidController extends Controller
             'country_id' => $validated['country_id']
 
         ]);
+
         $kid->save();
+
         return response()->json($kid, 201);
     }
 
@@ -87,6 +90,7 @@ class KidController extends Controller
         ]);
 
         $kid->save();
+        
         return response()->json($kid, 200);
     }
 
@@ -102,6 +106,7 @@ class KidController extends Controller
         }
 
         $kid->delete();
+
         return response()->json(['message' => 'Kid deleted succesfully'], 200);
     }
 
