@@ -14,7 +14,7 @@ class PlaythingModelTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_CheckIfPlaythingHasKidsRelationship()
+    public function test_CheckIfPlaythingHasToyTypeRelationship()
     {
         $this->seed(DatabaseSeeder::class);
         
