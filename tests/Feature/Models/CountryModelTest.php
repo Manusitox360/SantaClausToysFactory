@@ -11,6 +11,7 @@ use Tests\TestCase;
 
 class CountryModelTest extends TestCase
 {
+    use RefreshDatabase;
     public function test_CheckIfCountryHasKidsRelationship()
     {
         $this->seed(DatabaseSeeder::class);
