@@ -79,12 +79,28 @@ class ToyController extends Controller
             'minimum_age_id' => 'integer|min:0'
         ]);
 
+        $toyTypeID = $validated['toy_type_id'];
+
+        $toyType = ToyType::find($toyTypeID);
+
+        if (!$toyType) {
+            return response()->json(['message' => 'The toy type id does not exists'], 404);
+        }
+
+        $minimumAgeID = $validated['minimum_age_id'];
+
+        $minimumAge = MinimumAge::find($minimumAgeID);
+
+        if (!$minimumAge) {
+            return response()->json(['message' => 'The minimum age id does not exists'], 404);
+        }
+
         $toy->update([
             'name' => $validated['name'],
-            'image' => $validated['image'],
+            'image' => $validated['image'] ?? 'default',
             'description' => $validated['description'],
-            'toy_type_id' => $validated['toy_type_id'],
-            'minimum_age_id' => $validated['minimum_age_id']
+            'toy_type_id' => $toyTypeID,
+            'minimum_age_id' => $minimumAgeID
         ]);
 
         $toy->save();
