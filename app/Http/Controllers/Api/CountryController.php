@@ -24,7 +24,7 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'string'
+            'name' => 'required|string'
         ]);
         
         $country = Country::create([
@@ -62,7 +62,7 @@ class CountryController extends Controller
         }
         
         $validated = $request->validate([
-            'name' => 'string'
+            'name' => 'required|string'
         ]);
         
         $country->update([
