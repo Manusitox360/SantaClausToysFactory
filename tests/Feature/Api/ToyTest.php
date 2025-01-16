@@ -108,6 +108,24 @@ class ToyTest extends TestCase
             ]);
     }
 
+    public function test_CheckIfDontFindToyWhenUpdateAToy()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->putJson(route('apiUpdateToys', 9999), [
+            'name' => 'Test Toy Updated',
+            'image' => 'https://via.placeholder.com/150',
+            'description' => 'Test Description Updated',
+            'toy_type_id' => 1,
+            'minimum_age_id' => 1
+        ]);
+
+        $response->assertStatus(404)
+            ->assertJsonFragment([
+                'message' => 'Toy not found'
+            ]);
+    }
+
     public function test_CheckIfDontFindToyTypeWhenUpdateAToy()
     {
         $this->seed(DatabaseSeeder::class);
