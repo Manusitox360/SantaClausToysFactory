@@ -5,7 +5,9 @@ namespace Tests\Feature;
 use App\Models\Kid;
 use Tests\TestCase;
 use Database\Seeders\DatabaseSeeder;
+use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 
 class KidTest extends TestCase
 {
@@ -54,5 +56,18 @@ class KidTest extends TestCase
 
         $response->assertStatus(200)
             ->assertViewIs('gift');
+    }
+
+    public function test_CheckIfWrongGenerateListOfGifts()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        DB::shouldReceive('table') // Le dice al framework que intercepte cualquier llamada al método table
+            ->with('kid_toy') // Con el argumento de la tabla kid_toy
+            ->andThrow(new Exception('Test Exception')); // Que lance un error
+
+        $response = $this->get(route('santaGifts'));
+
+        $response->assertRedirect('santa');
     }
 }
