@@ -76,8 +76,7 @@ class CountryTest extends TestCase
 
         $response = $this->deleteJson(route('apiDestroyCountries', 1));
 
-        $response->assertStatus(200)
-                 ->assertJsonFragment(['message' => 'Country deleted']);
+        $response->assertStatus(204);
     }
 
     public function test_CheckIfTryToDeleteACountryThatDoesntExist() {
