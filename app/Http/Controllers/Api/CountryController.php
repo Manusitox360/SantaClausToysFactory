@@ -84,7 +84,7 @@ class CountryController extends Controller
         if (!$country) {
             return response()->json(['message' => 'Country not found'], 404);
         }
-        
-        return response()->json(['message' => 'Country deleted'], 200);
+
+        return response()->json([], 204);
     }
 }
