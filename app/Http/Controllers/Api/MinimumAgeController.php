@@ -40,7 +40,7 @@ class MinimumAgeController extends Controller
         $minimumAge = MinimumAge::find($id);
 
         if (!$minimumAge) {
-            return response()->json(['message' => 'Minimmum Age not found'], 404);
+            return response()->json(['message' => 'Minimum Age Not Found'], 404);
         }
 
         return response()->json($minimumAge, 200);
@@ -76,7 +76,7 @@ class MinimumAgeController extends Controller
         $minimumAge = MinimumAge::find($id);
 
         if (!$minimumAge) {
-            return response()->json(['message' => 'Minimum Age not found'], 404);
+            return response()->json(['message' => 'Minimum Age Not Found'], 404);
         }
 
         $minimumAge->delete();
