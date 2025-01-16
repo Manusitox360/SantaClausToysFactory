@@ -2,12 +2,13 @@
 
 namespace Tests\Feature\Api;
 
+use Exception;
 use App\Models\Kid;
 use Tests\TestCase;
-use Database\Seeders\DatabaseSeeder;
-use Exception;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Country;
 use Illuminate\Support\Facades\DB;
+use Database\Seeders\DatabaseSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class KidTest extends TestCase
 {
@@ -68,6 +69,74 @@ class KidTest extends TestCase
             ->assertJsonFragment([
                 'name' => 'Juan',
             ]);
+    }
+
+    public function test_CheckIfTryingToCreateAKidWithAnInexistentCountry() {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->postJson(route('apiStoreKids'), [
+            'name' => 'Juan',
+            'surname' => 'Pérez',
+            'image' => 'https://randomuser.me/api/portraits',
+            'age' => 10,
+            'attitude' => 0,
+            'country_id' => 999,
+            'gender_id' => 1
+        ]);
+
+        $response->assertStatus(404)
+                 ->assertJson(['message' => 'Using An Inexisting country']);
+    }
+
+    public function test_CheckIfTryingToUpdateAKidWithAnInexistentCountry() {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->putJson(route('apiUpdateKids', 1), [
+            'name' => 'Juan',
+            'surname' => 'Pérez',
+            'image' => 'https://randomuser.me/api/portraits',
+            'age' => 10,
+            'attitude' => 0,
+            'country_id' => 999,
+            'gender_id' => 1
+        ]);
+
+        $response->assertStatus(404)
+                 ->assertJson(['message' => 'Using An Inexisting country']);
+    }
+
+    public function test_CheckIfTryingToCreateAKidWithAnInexistentGender() {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->postJson(route('apiStoreKids'), [
+            'name' => 'Juan',
+            'surname' => 'Pérez',
+            'image' => 'https://randomuser.me/api/portraits',
+            'age' => 10,
+            'attitude' => 0,
+            'country_id' => 1,
+            'gender_id' => 999
+        ]);
+
+        $response->assertStatus(404)
+                 ->assertJson(['message' => 'Using An Inexisting gender']);
+    }
+
+    public function test_CheckIfTryingToUpdateAKidWithAnInexistentGender() {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->putJson(route('apiUpdateKids', 1), [
+            'name' => 'Juan',
+            'surname' => 'Pérez',
+            'image' => 'https://randomuser.me/api/portraits',
+            'age' => 10,
+            'attitude' => 0,
+            'country_id' => 1,
+            'gender_id' => 999
+        ]);
+
+        $response->assertStatus(404)
+                 ->assertJson(['message' => 'Using An Inexisting gender']);
     }
 
     public function test_CheckIfUpdateKidModifiesKidSuccessfully()
