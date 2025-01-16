@@ -71,6 +71,10 @@ class ToyController extends Controller
     {
         $toy = Toy::find($id);
 
+        if (!$toy) {
+            return response()->json(['message' => 'Toy not found'], 404);
+        }
+
         $validated = $request->validate([
             'name' => 'string',
             'image' => 'url',
