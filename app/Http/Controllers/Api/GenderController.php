@@ -86,7 +86,7 @@ class GenderController extends Controller
         }
 
         $gender->delete();
-        
-        return response()->json(['message' => 'Gender deleted'], 200);
+
+        return response()->json([], 204);
     }
 }
