@@ -7,6 +7,7 @@ use Tests\TestCase;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 
 class KidTest extends TestCase
 {
@@ -113,5 +114,14 @@ class KidTest extends TestCase
         $response->assertStatus(404)
             ->assertJson([
                 'message' => 'Kid not found']);
+    }
+
+    public function test_CheckIfCorrectGenerateListOfGiftsWithApi()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->get(route('apiSantaGifts'));
+
+        $response->assertStatus(200);
     }
 }
