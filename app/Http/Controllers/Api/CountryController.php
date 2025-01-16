@@ -14,6 +14,7 @@ class CountryController extends Controller
     public function index()
     {
         $countries = Country::all();
+
         return response()->json($countries, 200);
     }
 
@@ -29,7 +30,9 @@ class CountryController extends Controller
         $country = Country::create([
             'name' => $validated['name']
         ]);
+
         $country->save();
+
         return response()->json($country, 201);
     }
 
@@ -39,9 +42,11 @@ class CountryController extends Controller
     public function show(string $id)
     {
         $country = Country::find($id);
+
         if (!$country) { 
             return response()->json(['message' => 'Country not found'], 404);
         }
+
         return response()->json($country, 200);
     }
 
@@ -63,7 +68,9 @@ class CountryController extends Controller
         $country->update([
             'name' => $validated['name']
         ]);
+
         $country->save();
+
         return response()->json($country, 200);
     }
 
@@ -73,9 +80,11 @@ class CountryController extends Controller
     public function destroy(string $id)
     {
         $country = Country::find($id);
+
         if (!$country) {
             return response()->json(['message' => 'Country not found'], 404);
         }
+        
         return response()->json(['message' => 'Country deleted'], 200);
     }
 }
