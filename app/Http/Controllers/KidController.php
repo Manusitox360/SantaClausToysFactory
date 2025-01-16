@@ -6,6 +6,7 @@ use App\Models\Kid;
 use App\Models\Toy;
 use App\Models\Gender;
 use App\Models\Country;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -77,13 +78,17 @@ class KidController extends Controller
 
     public function listOfGifts()
     {
-        $this->removeKidToysFromDB();
+        try {
+            $this->removeKidToysFromDB();
 
-        $allKids = $this->getKidsFromDB();
+            $allKids = $this->getKidsFromDB();
 
-        $listOfGifts = $this->generateListOfGifts($allKids);
+            $listOfGifts = $this->generateListOfGifts($allKids);
 
-        $this->createKidToysToDB($listOfGifts);
+            $this->createKidToysToDB($listOfGifts);
+        } catch (Exception $e) {
+            return redirect()->route('santa');
+        }
 
         return view('gift', compact('listOfGifts'));
     }

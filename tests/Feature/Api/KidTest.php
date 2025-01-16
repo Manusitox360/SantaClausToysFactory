@@ -5,8 +5,9 @@ namespace Tests\Feature\Api;
 use App\Models\Kid;
 use Tests\TestCase;
 use Database\Seeders\DatabaseSeeder;
-use Illuminate\Foundation\Testing\WithFaker;
+use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 
 class KidTest extends TestCase
 {
@@ -15,7 +16,8 @@ class KidTest extends TestCase
      */
     use RefreshDatabase;
 
-    public function test_CheckIfReceiveAllEntryOfKidInJsonFile(){
+    public function test_CheckIfReceiveAllEntryOfKidInJsonFile()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->getJson(route('apiIndexKids'));
@@ -24,28 +26,32 @@ class KidTest extends TestCase
             ->assertJsonCount(28);
     }
 
-    public function test_CheckIfReceiveOneEntryOfKidInJsonFile(){
+    public function test_CheckIfReceiveOneEntryOfKidInJsonFile()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $kid = Kid::find(1);
 
         $response = $this->getJson(route('apiShowKids', 1));
-        
+
         $data = ['id' => 1];
 
         $response->assertStatus(200)
             ->assertJsonFragment($data);
     }
 
-    public function test_CheckIfShowReturns404WhenKidNotFound(){
+    public function test_CheckIfShowReturns404WhenKidNotFound()
+    {
         $response = $this->getJson(route('apiShowKids', 999));
 
         $response->assertStatus(404)
-                 ->assertJson([
-                     'message' => 'Kid not found']);
+            ->assertJson([
+                'message' => 'Kid not found'
+            ]);
     }
 
-    public function test_StoreKidCreatesNewKidSuccessfully(){
+    public function test_StoreKidCreatesNewKidSuccessfully()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->postJson(route('apiStoreKids'), [
@@ -64,7 +70,8 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_UpdateKidModifiesKidSuccessfully(){
+    public function test_UpdateKidModifiesKidSuccessfully()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->putJson(route('apiUpdateKids', 1), [
@@ -83,7 +90,8 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_UpdateKidReturns404WhenKidNotFound(){
+    public function test_UpdateKidReturns404WhenKidNotFound()
+    {
         $response = $this->putJson(route('apiUpdateKids', 999), [
             'name' => 'Juan',
             'surname' => 'Pérez',
@@ -96,10 +104,12 @@ class KidTest extends TestCase
 
         $response->assertStatus(404)
             ->assertJson([
-                'message' => 'Kid not found']);
+                'message' => 'Kid not found'
+            ]);
     }
 
-    public function test_DeleteKidRemovesKidSuccessfully(){
+    public function test_DeleteKidRemovesKidSuccessfully()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->deleteJson(route('apiDestroyKids', 1));
@@ -107,11 +117,40 @@ class KidTest extends TestCase
         $response->assertStatus(204);
     }
 
-    public function test_DeleteKidReturns404WhenKidNotFound(){
+    public function test_DeleteKidReturns404WhenKidNotFound()
+    {
         $response = $this->deleteJson(route('apiDestroyKids', 999));
 
         $response->assertStatus(404)
             ->assertJson([
-                'message' => 'Kid not found']);
+                'message' => 'Kid not found'
+            ]);
+    }
+
+    public function test_CheckIfCorrectGenerateListOfGiftsWithApi()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->get(route('apiSantaGifts'));
+
+        $response->assertStatus(200);
+    }
+
+    public function test_CheckIfWrongGenerateListOfGiftsWithApi()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        DB::shouldReceive('table') // Le dice al framework que intercepte cualquier llamada al método table
+            ->with('kid_toy') // Con el argumento de la tabla kid_toy
+            ->andThrow(new Exception('Test Exception')); // Que lance un error
+
+        $errorData = [
+            'message' => 'Internal Server Error :('
+        ];
+
+        $response = $this->get(route('apiSantaGifts'));
+
+        $response->assertStatus(500)
+            ->assertJsonFragment($errorData);
     }
 }
