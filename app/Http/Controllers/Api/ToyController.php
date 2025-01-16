@@ -11,6 +11,7 @@ class ToyController extends Controller
     public function index()
     {
         $toys = Toy::all();
+
         return response()->json($toys, 200);
     }
 
@@ -31,7 +32,9 @@ class ToyController extends Controller
             'toy_type_id' => $validated['toy_type_id'],
             'minimum_age_id' => $validated['minimum_age_id']
         ]);
+
         $toy->save();
+
         return response()->json($toy, 201);
     }
 
@@ -65,7 +68,9 @@ class ToyController extends Controller
             'toy_type_id' => $validated['toy_type_id'],
             'minimum_age_id' => $validated['minimum_age_id']
         ]);
+
         $toy->save();
+
         return response()->json($toy, 200);
     }
 
@@ -78,6 +83,7 @@ class ToyController extends Controller
         }
 
         $toy->delete();
-        return response()->json(['message' => 'Toy deleted succesfully'], 200);
+
+        return response()->json([], 204);
     }
 }

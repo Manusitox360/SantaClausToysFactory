@@ -77,8 +77,7 @@ class GenderTest extends TestCase
 
         $response = $this->deleteJson(route('apiDestroyGenders', 1));
 
-        $response->assertStatus(200)
-                 ->assertJsonFragment(['message' => 'Gender deleted']);
+        $response->assertStatus(204);
     }
 
     public function test_CheckIfTryToDeleteAGenderThatDoesntExist() {
