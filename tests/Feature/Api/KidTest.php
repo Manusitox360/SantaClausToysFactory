@@ -70,7 +70,7 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_UpdateKidModifiesKidSuccessfully()
+    public function test_CheckIfUpdateKidModifiesKidSuccessfully()
     {
         $this->seed(DatabaseSeeder::class);
 
@@ -90,7 +90,7 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_UpdateKidReturns404WhenKidNotFound()
+    public function test_CheckIfUpdateKidReturns404WhenKidNotFound()
     {
         $response = $this->putJson(route('apiUpdateKids', 999), [
             'name' => 'Juan',
@@ -108,7 +108,7 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_DeleteKidRemovesKidSuccessfully()
+    public function test_CheckIfDeleteKidRemovesKidSuccessfully()
     {
         $this->seed(DatabaseSeeder::class);
 
@@ -117,7 +117,7 @@ class KidTest extends TestCase
         $response->assertStatus(204);
     }
 
-    public function test_DeleteKidReturns404WhenKidNotFound()
+    public function test_CheckIfDeleteKidReturns404WhenKidNotFound()
     {
         $response = $this->deleteJson(route('apiDestroyKids', 999));
 
@@ -127,7 +127,7 @@ class KidTest extends TestCase
             ]);
     }
 
-    public function test_CheckIfCorrectGenerateListOfGiftsWithApi()
+    public function test_CheckIfCheckIfCorrectGenerateListOfGiftsWithApi()
     {
         $this->seed(DatabaseSeeder::class);
 
@@ -136,7 +136,7 @@ class KidTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_CheckIfWrongGenerateListOfGiftsWithApi()
+    public function test_CheckIfCheckIfWrongGenerateListOfGiftsWithApi()
     {
         $this->seed(DatabaseSeeder::class);
 
