@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\Toy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\MinimumAge;
+use App\Models\ToyType;
 
 class ToyController extends Controller
 {
@@ -24,13 +26,29 @@ class ToyController extends Controller
             'toy_type_id' => 'required|integer|min:0',
             'minimum_age_id' => 'required|integer|min:0'
         ]);
-        
+
+        $toyTypeID = $validated['toy_type_id'];
+
+        $toyType = ToyType::find($toyTypeID);
+
+        if (!$toyType) {
+            return response()->json(['message' => 'The toy type id does not exists'], 404);
+        }
+
+        $minimumAgeID = $validated['minimum_age_id'];
+
+        $minimumAge = MinimumAge::find($minimumAgeID);
+
+        if (!$minimumAge) {
+            return response()->json(['message' => 'The minimum age id does not exists'], 404);
+        }
+
         $toy = Toy::create([
             'name' => $validated['name'],
-            'image' => $validated['image'],
+            'image' => $validated['image'] ?? 'default',
             'description' => $validated['description'],
-            'toy_type_id' => $validated['toy_type_id'],
-            'minimum_age_id' => $validated['minimum_age_id']
+            'toy_type_id' => $toyTypeID,
+            'minimum_age_id' => $minimumAgeID
         ]);
 
         $toy->save();
@@ -42,13 +60,13 @@ class ToyController extends Controller
     {
         $toy = Toy::find($id);
 
-        if (!$toy){
+        if (!$toy) {
             return response()->json(['message' => 'Toy not found'], 404);
         }
 
         return response()->json($toy, 200);
     }
- 
+
     public function update(Request $request, string $id)
     {
         $toy = Toy::find($id);
@@ -78,7 +96,7 @@ class ToyController extends Controller
     {
         $toy = Toy::find($id);
 
-        if (!$toy){
+        if (!$toy) {
             return response()->json(['message' => 'Toy not found'], 404);
         }
 
