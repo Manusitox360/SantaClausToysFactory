@@ -109,7 +109,7 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 #### 1 Get all toy entries
 
 ```http
-  GET /api/elve
+GET /api/elf
 ```
 
 #### Response:
@@ -119,7 +119,7 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 #### 2 Get a toy by ID
 
 ```http
-  GET /api/elve/id
+  GET /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -133,7 +133,7 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 #### 3 Create a new toy
 
 ```http
-  POST /api/elve
+  POST /api/elf
 ```
 
 #### Response:
@@ -147,12 +147,13 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 | `name`    | `string` | **Required**. Name of toy    |
 | `image` | `string` | **Required**. Company of toy |
 | `description` | `string` | **Required**. Status of toy  |
-| `minimum_age_id` | `string` | **Required**. Id of the minimum age of the toy  |
+| `toy_type_id` | `integer` | **Required**. Id of the type of the toy  |
+| `minimum_age_id` | `integer` | **Required**. Id of the minimum age of the toy  |
 
 #### 4 Update an existing toy by ID
 
 ```http
-  PUT /api/elve/id
+  PUT /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -170,12 +171,13 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 | `name`    | `string` | Name of toy    |
 | `image` | `string` | Company of toy |
 | `description` | `string` | Status of toy  |
-| `minimum_age_id` | `string` | Id of the minimum age of the toy  |
+| `toy_type_id` | `integer` | **Required**. Id of the type of the toy  |
+| `minimum_age_id` | `integer` | **Required**. Id of the minimum age of the toy  |
 
 #### 5 Delete a toy by ID
 
 ```http
-  DELETE /api/elve/id
+  DELETE /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -185,6 +187,325 @@ This API allows you to manage toy entries and provides CRUD (Create, Read, Updat
 #### Response:
 - **Status Code:** 204, 404
 - **Content Type:** No-Content, application/json
+
+### Kid
+
+#### 1 Get all kid entries
+
+```http
+GET /api/santa
+```
+
+#### Response:
+- **Status Code:** 200
+- **Content Type:** application/json
+
+#### 2 Get a kid by ID
+
+```http
+  GET /api/santa/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Toy ID     |
+
+#### Response:
+- **Status Code:** 200, 404
+- **Content Type:** application/json
+
+#### 3 Create a new kid
+
+```http
+  POST /api/santa
+```
+
+#### Response:
+- **Status Code:** 201
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `name`    | `string` | **Required**. Name of kid    |
+| `surname`    | `string` | **Required**. Surname of kid    |
+| `image` | `string` | **Required**. Company of kid |
+| `age` | `integer` | **Required**. Age of kid  |
+| `attitude` | `boolean` | **Required**. Attitude of kid  |
+| `gender_id` | `integer` | **Required**. Id of the gender of the kid  |
+| `country_id` | `integer` | **Required**. Id of the country of the kid  |
+
+#### 4 Update an existing kid by ID
+
+```http
+  PUT /api/santa/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. kid ID     |
+
+#### Response:
+- **Status Code:** 201, 404
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `name`    | `string` | **Required**. Name of Kid    |
+| `surname`    | `string` | **Required**. Surname of Kid    |
+| `image` | `string` | **Required**. Company of Kid |
+| `age` | `integer` | **Required**. Age of Kid  |
+| `attitude` | `boolean` | **Required**. Attitude of Kid  |
+| `gender_id` | `integer` | **Required**. Id of the gender of the Kid  |
+| `country_id` | `integer` | **Required**. Id of the country of the Kid  |
+
+#### 5 Delete a kid by ID
+
+```http
+  DELETE /api/santa/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Kid ID     |
+
+#### Response:
+- **Status Code:** 204, 404
+- **Content Type:** No-Content, application/json
+
+### Gender
+
+#### 1 Get all gender entries
+
+```http
+GET /api/genders
+```
+
+#### Response:
+- **Status Code:** 200
+- **Content Type:** application/json
+
+#### 2 Get a gender by ID
+
+```http
+  GET /api/genders/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Genders ID     |
+
+#### Response:
+- **Status Code:** 200, 404
+- **Content Type:** application/json
+
+#### 3 Create a new gender
+
+```http
+  POST /api/genders
+```
+
+#### Response:
+- **Status Code:** 201
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `name`    | `string` | **Required**. Name of gender    |
+
+#### 4 Update an existing gender by ID
+
+```http
+  PUT /api/genders/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Genders ID     |
+
+#### Response:
+- **Status Code:** 201, 404
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `name`    | `string` | **Required**. Name of gender    |
+
+#### 5 Delete a gender by ID
+
+```http
+  DELETE /api/genders/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Gender ID     |
+
+#### Response:
+- **Status Code:** 204, 404
+- **Content Type:** No-Content, application/json
+
+### Country
+
+#### 1 Get all country entries
+
+```http
+GET /api/countries
+```
+
+#### Response:
+- **Status Code:** 200
+- **Content Type:** application/json
+
+#### 2 Get a country by ID
+
+```http
+  GET /api/countries/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Countries ID     |
+
+#### Response:
+- **Status Code:** 200, 404
+- **Content Type:** application/json
+
+#### 3 Create a new country
+
+```http
+  POST /api/countries
+```
+
+#### Response:
+- **Status Code:** 201
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `name`    | `string` | **Required**. Name of country    |
+
+#### 4 Update an existing Country by ID
+
+```http
+  PUT /api/countries/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Countries ID     |
+
+#### Response:
+- **Status Code:** 201, 404
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `name`    | `string` | **Required**. Name of country    |
+
+#### 5 Delete a country by ID
+
+```http
+  DELETE /api/countries/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Country ID     |
+
+#### Response:
+- **Status Code:** 204, 404
+- **Content Type:** No-Content, application/json
+
+### Age Range (Toys)
+
+#### 1 Get all age range entries
+
+```http
+GET /api/minimumAge
+```
+
+#### Response:
+- **Status Code:** 200
+- **Content Type:** application/json
+
+#### 2 Get a age range by ID
+
+```http
+  GET /api/minimumAge/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Age range ID     |
+
+#### Response:
+- **Status Code:** 200, 404
+- **Content Type:** application/json
+
+#### 3 Create a new age range
+
+```http
+  POST /api/minimumAge
+```
+
+#### Response:
+- **Status Code:** 201
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `min`    | `required|integer|min:0` | **Required**. Start of the age range     |
+| `max`    | `nullable|integer|gte:min` | **Required**. End of the age range    |
+
+#### 4 Update an existing age range by ID
+
+```http
+  PUT /api/minimumAge/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Age range ID     |
+
+#### Response:
+- **Status Code:** 201, 404
+- **Content Type:** application/json
+
+#### Body: 
+
+| Parameter | Type     | Description                    |
+| :-------- | :------- | :-------------------------     |
+| `min`    | `required|integer|min:0` | **Required**. Start of the age range     |
+| `max`    | `nullable|integer|gte:min` | **Required**. End of the age range    |
+
+#### 5 Delete a age range by ID
+
+```http
+  DELETE /api/minimumAge/id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. Age range ID     |
+
+#### Response:
+- **Status Code:** 204, 404
+- **Content Type:** No-Content, application/json
+
 
 
 ## ✍️🙍 Authors
