@@ -13,16 +13,18 @@ class ToyTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_CheckIfCanGetAllTheToys(){
+    public function test_CheckIfCanGetAllTheToys()
+    {
         $this->seed(DatabaseSeeder::class);
-        
+
         $response = $this->getJson(route('apiIndexToys'));
 
         $response->assertStatus(200)
-                 ->assertJsonCount(27);
+            ->assertJsonCount(27);
     }
 
-    public function test_CheckIfCanCreateAToy(){
+    public function test_CheckIfCanCreateAToy()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->postJson(route('apiStoreToys'), [
@@ -34,12 +36,49 @@ class ToyTest extends TestCase
         ]);
 
         $response->assertStatus(201)
-                 ->assertJsonFragment([
-                     'name' => 'Test Toy'
-                 ]);
+            ->assertJsonFragment([
+                'name' => 'Test Toy'
+            ]);
     }
 
-    public function test_CheckIfCanShowJustOneToy(){
+    public function test_CheckIfDontFindToyTypeWhenCreateAToy()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->postJson(route('apiStoreToys'), [
+            'name' => 'Test Toy',
+            'image' => 'https://via.placeholder.com/150',
+            'description' => 'Test Description',
+            'toy_type_id' => 9999,
+            'minimum_age_id' => 1
+        ]);
+
+        $response->assertStatus(404)
+            ->assertJsonFragment([
+                'message' => 'The toy type id does not exists'
+            ]);
+    }
+
+    public function test_CheckIfDontFindMinimumAgeWhenCreateAToy()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->postJson(route('apiStoreToys'), [
+            'name' => 'Test Toy',
+            'image' => 'https://via.placeholder.com/150',
+            'description' => 'Test Description',
+            'toy_type_id' => 1,
+            'minimum_age_id' => 9999
+        ]);
+
+        $response->assertStatus(404)
+            ->assertJsonFragment([
+                'message' => 'The minimum age id does not exists'
+            ]);
+    }
+
+    public function test_CheckIfCanShowJustOneToy()
+    {
         $this->seed(DatabaseSeeder::class);
 
         Toy::factory(20)->create();
@@ -48,10 +87,11 @@ class ToyTest extends TestCase
 
         $data = ['id' => 1];
         $response->assertStatus(200)
-                 ->assertJsonFragment($data);
+            ->assertJsonFragment($data);
     }
 
-    public function test_CheckIfCanUpdateAToy(){
+    public function test_CheckIfCanUpdateAToy()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->putJson(route('apiUpdateToys', 1), [
@@ -63,12 +103,68 @@ class ToyTest extends TestCase
         ]);
 
         $response->assertStatus(200)
-                    ->assertJsonFragment([
-                        'name' => 'Test Toy Updated'
-                    ]);
+            ->assertJsonFragment([
+                'name' => 'Test Toy Updated'
+            ]);
     }
 
-    public function test_CheckIfCanDeleteAToy(){
+    public function test_CheckIfDontFindToyWhenUpdateAToy()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->putJson(route('apiUpdateToys', 9999), [
+            'name' => 'Test Toy Updated',
+            'image' => 'https://via.placeholder.com/150',
+            'description' => 'Test Description Updated',
+            'toy_type_id' => 1,
+            'minimum_age_id' => 1
+        ]);
+
+        $response->assertStatus(404)
+            ->assertJsonFragment([
+                'message' => 'Toy not found'
+            ]);
+    }
+
+    public function test_CheckIfDontFindToyTypeWhenUpdateAToy()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->putJson(route('apiUpdateToys', 1), [
+            'name' => 'Test Toy Updated',
+            'image' => 'https://via.placeholder.com/150',
+            'description' => 'Test Description Updated',
+            'toy_type_id' => 9999,
+            'minimum_age_id' => 1
+        ]);
+
+        $response->assertStatus(404)
+            ->assertJsonFragment([
+                'message' => 'The toy type id does not exists'
+            ]);
+    }
+
+
+    public function test_CheckIfDontFindMinimumAgeWhenUpdateAToy()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->putJson(route('apiUpdateToys', 1), [
+            'name' => 'Test Toy Updated',
+            'image' => 'https://via.placeholder.com/150',
+            'description' => 'Test Description Updated',
+            'toy_type_id' => 1,
+            'minimum_age_id' => 9999
+        ]);
+
+        $response->assertStatus(404)
+            ->assertJsonFragment([
+                'message' => 'The minimum age id does not exists'
+            ]);
+    }
+
+    public function test_CheckIfCanDeleteAToy()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->deleteJson(route('apiDestroyToys', 1));
@@ -76,15 +172,17 @@ class ToyTest extends TestCase
         $response->assertStatus(204);
     }
 
-    public function test_CheckIfTryToDeleteAToyThatDoesNotExist(){
+    public function test_CheckIfTryToDeleteAToyThatDoesNotExist()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->deleteJson(route('apiDestroyToys', 100));
 
         $response->assertStatus(404);
-    }   
+    }
 
-    public function test_CheckIfTryToShowAToyThatDoesNotExist(){
+    public function test_CheckIfTryToShowAToyThatDoesNotExist()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->getJson(route('apiShowToys', 100));
