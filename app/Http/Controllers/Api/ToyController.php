@@ -18,11 +18,11 @@ class ToyController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'string',
-            'image' => 'string',
-            'description' => 'string',
-            'toy_type_id' => 'integer',
-            'minimum_age_id' => 'integer'
+            'name' => 'required|string',
+            'image' => 'url',
+            'description' => 'required|string',
+            'toy_type_id' => 'required|integer|min:0',
+            'minimum_age_id' => 'required|integer|min:0'
         ]);
         
         $toy = Toy::create([
@@ -55,10 +55,10 @@ class ToyController extends Controller
 
         $validated = $request->validate([
             'name' => 'string',
-            'image' => 'string',
+            'image' => 'url',
             'description' => 'string',
-            'toy_type_id' => 'integer',
-            'minimum_age_id' => 'integer'
+            'toy_type_id' => 'integer|min:0',
+            'minimum_age_id' => 'integer|min:0'
         ]);
 
         $toy->update([
