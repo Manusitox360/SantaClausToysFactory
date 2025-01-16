@@ -21,7 +21,10 @@ Below is a diagram of the database, showing different relationships between tabl
 
 - **toy - minimum_age:** One to many relationship. A minimum age can have many toys, but each toy belongs to only one minimum age.
 
-![image](https://res.cloudinary.com/dierpqujk/image/upload/v1734101541/imagen_2024-12-13_155219091_p0kr3s.png)
+- **kid - gender:** One to many relationship. A gender can have many kids, but each kid belongs to only one gender.
+- **kid - country:** One to many relationship. A country can have many kids, but each kid belongs to only one country.
+
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737027164/ub1yq5swilimsynvxem5.png)
 
 
 ## 🔧⚙️ Installation
@@ -94,11 +97,11 @@ With the following command we run the tests and we will also generate a coverage
 
 If everything is correct, everything should be OK.
 
-![image](https://github.com/user-attachments/assets/11cf1200-71ff-4dab-a449-fbdc15188eb2)
+![image]()
 
 
-A folder called coverage-report will also have been generated with **86.05%** coverage.
-![image](https://github.com/user-attachments/assets/7d066461-0c33-4e5d-bbc1-1c26a120de2e)
+A folder called coverage-report will also have been generated with **100%** coverage.
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737025453/zdgkqvvq2v4wecofe9ft.png)
 
 ## 📡🌐 Christmas Toy Factory API
 
@@ -119,7 +122,7 @@ GET /api/elf
 #### 2 Get a toy by ID
 
 ```http
-  GET /api/elf/id
+GET /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -133,7 +136,7 @@ GET /api/elf
 #### 3 Create a new toy
 
 ```http
-  POST /api/elf
+POST /api/elf
 ```
 
 #### Response:
@@ -153,7 +156,7 @@ GET /api/elf
 #### 4 Update an existing toy by ID
 
 ```http
-  PUT /api/elf/id
+PUT /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -177,7 +180,7 @@ GET /api/elf
 #### 5 Delete a toy by ID
 
 ```http
-  DELETE /api/elf/id
+DELETE /api/elf/id
 ```
 
 | Parameter | Type     | Description                |
@@ -203,7 +206,7 @@ GET /api/santa
 #### 2 Get a kid by ID
 
 ```http
-  GET /api/santa/id
+GET /api/santa/id
 ```
 
 | Parameter | Type     | Description                |
@@ -217,7 +220,7 @@ GET /api/santa
 #### 3 Create a new kid
 
 ```http
-  POST /api/santa
+POST /api/santa
 ```
 
 #### Response:
@@ -239,7 +242,7 @@ GET /api/santa
 #### 4 Update an existing kid by ID
 
 ```http
-  PUT /api/santa/id
+PUT /api/santa/id
 ```
 
 | Parameter | Type     | Description                |
@@ -265,7 +268,7 @@ GET /api/santa
 #### 5 Delete a kid by ID
 
 ```http
-  DELETE /api/santa/id
+DELETE /api/santa/id
 ```
 
 | Parameter | Type     | Description                |
@@ -291,7 +294,7 @@ GET /api/genders
 #### 2 Get a gender by ID
 
 ```http
-  GET /api/genders/id
+GET /api/genders/id
 ```
 
 | Parameter | Type     | Description                |
@@ -305,7 +308,7 @@ GET /api/genders
 #### 3 Create a new gender
 
 ```http
-  POST /api/genders
+POST /api/genders
 ```
 
 #### Response:
@@ -321,7 +324,7 @@ GET /api/genders
 #### 4 Update an existing gender by ID
 
 ```http
-  PUT /api/genders/id
+PUT /api/genders/id
 ```
 
 | Parameter | Type     | Description                |
@@ -341,7 +344,7 @@ GET /api/genders
 #### 5 Delete a gender by ID
 
 ```http
-  DELETE /api/genders/id
+DELETE /api/genders/id
 ```
 
 | Parameter | Type     | Description                |
@@ -367,7 +370,7 @@ GET /api/countries
 #### 2 Get a country by ID
 
 ```http
-  GET /api/countries/id
+GET /api/countries/id
 ```
 
 | Parameter | Type     | Description                |
@@ -381,7 +384,7 @@ GET /api/countries
 #### 3 Create a new country
 
 ```http
-  POST /api/countries
+POST /api/countries
 ```
 
 #### Response:
@@ -397,7 +400,7 @@ GET /api/countries
 #### 4 Update an existing Country by ID
 
 ```http
-  PUT /api/countries/id
+PUT /api/countries/id
 ```
 
 | Parameter | Type     | Description                |
@@ -417,7 +420,7 @@ GET /api/countries
 #### 5 Delete a country by ID
 
 ```http
-  DELETE /api/countries/id
+DELETE /api/countries/id
 ```
 
 | Parameter | Type     | Description                |
@@ -443,7 +446,7 @@ GET /api/minimumAge
 #### 2 Get a age range by ID
 
 ```http
-  GET /api/minimumAge/id
+GET /api/minimumAge/id
 ```
 
 | Parameter | Type     | Description                |
@@ -457,7 +460,7 @@ GET /api/minimumAge
 #### 3 Create a new age range
 
 ```http
-  POST /api/minimumAge
+POST /api/minimumAge
 ```
 
 #### Response:
@@ -474,7 +477,7 @@ GET /api/minimumAge
 #### 4 Update an existing age range by ID
 
 ```http
-  PUT /api/minimumAge/id
+PUT /api/minimumAge/id
 ```
 
 | Parameter | Type     | Description                |
@@ -495,7 +498,7 @@ GET /api/minimumAge
 #### 5 Delete a age range by ID
 
 ```http
-  DELETE /api/minimumAge/id
+DELETE /api/minimumAge/id
 ```
 
 | Parameter | Type     | Description                |
@@ -509,6 +512,7 @@ GET /api/minimumAge
 
 
 ## ✍️🙍 Authors
+# Sprint 2
 - **Antonio Guillén:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/AntonioGuillen123)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/antonio-guill%C3%A9n-905b941ab)
 [![Correo](https://img.shields.io/badge/Email-Contacto-red?style=flat-square&logo=gmail)](mailto:antonioguillengarcia123@gmail.com)
@@ -527,3 +531,18 @@ GET /api/minimumAge
 
 - **Santino Vigna:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/SantiVigna)
 [![Correo](https://img.shields.io/badge/Email-Contacto-red?style=flat-square&logo=gmail)](mailto:ynotvigna@gmail.com)
+
+# Sprint 1
+
+- **Issam Chellaf:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/issamchlf)
+
+- **Jonathan Torreblanca:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/Leonkeneddy86)
+
+- **Matias Stadler:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/Matias-Stadler)
+
+- **Jenifer Moyano:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/soyJenifer)
+
+- **Fran Muñoz:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/Crudo7)
+
+- **René Barco:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/mrene42)
+
