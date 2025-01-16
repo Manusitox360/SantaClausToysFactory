@@ -73,7 +73,7 @@ class ToyTest extends TestCase
 
         $response = $this->deleteJson(route('apiDestroyToys', 1));
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
     }
 
     public function test_CheckIfTryToDeleteAToyThatDoesNotExist(){
