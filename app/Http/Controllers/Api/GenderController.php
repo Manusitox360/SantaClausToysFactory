@@ -15,7 +15,7 @@ class GenderController extends Controller
     {
         $genders = Gender::all();
 
-        return response()->json($genders , 200);
+        return response()->json($genders, 200);
     }
 
     /**
@@ -24,9 +24,9 @@ class GenderController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'string'
+            'name' => 'required|string'
         ]);
-        
+
         $gender = Gender::create([
             'name' => $validated['name']
         ]);
@@ -57,14 +57,14 @@ class GenderController extends Controller
     {
         $gender = Gender::find($id);
 
-        if(!$gender){
+        if (!$gender) {
             return response()->json(['message' => 'Gender not found'], 404);
         }
-        
+
         $validated = $request->validate([
             'name' => 'string'
         ]);
-        
+
         $gender->update([
             'name' => $validated['name']
         ]);
@@ -80,7 +80,7 @@ class GenderController extends Controller
     public function destroy(string $id)
     {
         $gender = Gender::find($id);
-        
+
         if (!$gender) {
             return response()->json(['message' => 'Gender not found'], 404);
         }
