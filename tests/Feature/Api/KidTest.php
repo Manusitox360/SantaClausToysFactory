@@ -104,9 +104,7 @@ class KidTest extends TestCase
 
         $response = $this->deleteJson(route('apiDestroyKids', 1));
 
-        $response->assertStatus(200)
-            ->assertJson([
-                'message' => 'Kid deleted succesfully']);
+        $response->assertStatus(204);
     }
 
     public function test_DeleteKidReturns404WhenKidNotFound(){
