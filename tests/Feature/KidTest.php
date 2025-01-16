@@ -19,6 +19,7 @@ class KidTest extends TestCase
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->get(route('santa'));
+
         $response->assertStatus(200)
             ->assertViewIs('santa');
     }
@@ -40,17 +41,17 @@ class KidTest extends TestCase
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->get(route('santaShow', 9999));
-        
+
         $response->assertStatus(302)
             ->assertRedirect('santa');
     }
-    
+
     public function test_CheckIfCorrectGenerateListOfGifts()
     {
         $this->seed(DatabaseSeeder::class);
 
         $response = $this->get(route('santaGifts'));
-        
+
         $response->assertStatus(200)
             ->assertViewIs('gift');
     }

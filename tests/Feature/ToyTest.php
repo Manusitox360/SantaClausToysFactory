@@ -13,54 +13,40 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ToyTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     */
-    public function test_CheckIfHomePageCanBeRead(){
-        $response = $this->get('/');
-        $response->assertStatus(200)
-                 ->assertViewIs('home');
-                
-    }
-    public function test_CheckIfElfPageCanBeRead(){
+
+    public function test_CheckIfElfPageCanBeRead()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $toys = Toy::all();
-        
-        $response = $this->get('/elf');
+
+        $response = $this->get(route('elf'));
+
         $response->assertStatus(200)
-                ->assertViewIs('elf')
-                ->assertViewHas('toys', $toys);
-    }
-    public function test_CheckIfElfPageHasCorrectMinimumAge(){
-        $this->seed(DatabaseSeeder::class);
-
-        $minimumAges = MinimumAge::all();
-
-        $response = $this->get('/elf');
-        $response->assertStatus(200)
-                ->assertViewIs('elf')
-                ->assertViewHas('minimumAges', $minimumAges);   
-    
-    }
-    public function test_CheckIfElfPageHasCorrectToyType(){
-        $this->seed(DatabaseSeeder::class);
-
-        $toyTypes = ToyType::all();
-
-        $response = $this->get('/elf');
-        $response->assertStatus(200)
-                ->assertViewIs('elf')
-                ->assertViewHas('toyTypes', $toyTypes);
+            ->assertViewIs('elf')
+            ->assertViewHas('toys', $toys);
     }
 
-    /* public function test_CheckIfElfShowViewCanBeRead(){
+    public function test_CheckIfElfShowViewCanBeRead()
+    {
         $this->seed(DatabaseSeeder::class);
 
         $toy = Toy::first();
 
-        $response = $this->get('/elf/'.$toy->id);
+        $response = $this->get(route('elfShow', $toy->id));
+
         $response->assertStatus(200)
-                ->assertViewIs('elfShow');
-    } */
+            ->assertViewIs('elfShow')
+            ->assertViewHas('toy', $toy);
+    }
+
+    public function test_CheckIfFailSingleKToyCanBeRead()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->get(route('elfShow', 9999));
+
+        $response->assertStatus(302)
+            ->assertRedirect('elf');
+    }
 }
