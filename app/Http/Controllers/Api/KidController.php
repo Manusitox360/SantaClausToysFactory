@@ -14,7 +14,7 @@ class KidController extends Controller
     public function index()
     {
         $kids = Kid::all();
-        
+
         return response()->json($kids, 200);
     }
 
@@ -107,7 +107,7 @@ class KidController extends Controller
 
         $kid->delete();
 
-        return response()->json(['message' => 'Kid deleted succesfully'], 200);
+        return response()->json([], 204);
     }
 
     public function listOfGifts()
