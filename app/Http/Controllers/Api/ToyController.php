@@ -45,9 +45,11 @@ class ToyController extends Controller
             return response()->json(['message' => 'The minimum age id does not exists'], 404);
         }
 
+        $toyImage = $validated['image'] ?? $this::DEFAULTURLIMAGE;
+
         $toy = Toy::create([
             'name' => $validated['name'],
-            'image' => $validated['image'] ?? $this::DEFAULTURLIMAGE,
+            'image' => $toyImage,
             'description' => $validated['description'],
             'toy_type_id' => $toyTypeID,
             'minimum_age_id' => $minimumAgeID
@@ -85,7 +87,7 @@ class ToyController extends Controller
             'minimum_age_id' => 'integer|min:0'
         ]);
 
-        $toyTypeID = $validated['toy_type_id'];
+        $toyTypeID = $validated['toy_type_id'] ?? $toy->toy_type_id;
 
         $toyType = ToyType::find($toyTypeID);
 
@@ -93,7 +95,7 @@ class ToyController extends Controller
             return response()->json(['message' => 'The toy type id does not exists'], 404);
         }
 
-        $minimumAgeID = $validated['minimum_age_id'];
+        $minimumAgeID = $validated['minimum_age_id'] ?? $toy->minimum_age_id;
 
         $minimumAge = MinimumAge::find($minimumAgeID);
 
@@ -101,10 +103,14 @@ class ToyController extends Controller
             return response()->json(['message' => 'The minimum age id does not exists'], 404);
         }
 
+        $toyName = $validated['name'] ?? $toy->name;
+        $toyImage = $validated['image'] ?? $toy->image;
+        $description = $validated['description'] ?? $toy->description;
+
         $toy->update([
-            'name' => $validated['name'],
-            'image' => $validated['image'] ?? 'default',
-            'description' => $validated['description'],
+            'name' => $toyName,
+            'image' => $toyImage,
+            'description' => $description,
             'toy_type_id' => $toyTypeID,
             'minimum_age_id' => $minimumAgeID
         ]);
