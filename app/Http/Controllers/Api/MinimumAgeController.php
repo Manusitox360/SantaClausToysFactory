@@ -24,9 +24,11 @@ class MinimumAgeController extends Controller
             'max' => 'nullable|integer|gte:min',
         ]);
 
+        $minimumAgeMax = $validated['max'] ?? null;
+
         $minimumAges = MinimumAge::create([
             'min' => $validated['min'],
-            'max' => $validated['max']
+            'max' => $minimumAgeMax
         ]);
 
         $minimumAges->save();
@@ -56,13 +58,16 @@ class MinimumAgeController extends Controller
         }
 
         $validated = $request->validate([
-            'min' => 'required|integer|min:0',
+            'min' => 'integer|min:0',
             'max' => 'nullable|integer|gte:min'
         ]);
 
+        $minimumAgeMin = $validated['min'] ?? $minimumAge->min;
+        $minimumAgeMax = $validated['min'] ?? $minimumAge->max;
+
         $minimumAge->update([
-            'min' =>  $validated['min'],
-            'max' => $validated['max']
+            'min' => $minimumAgeMin,
+            'max' => $minimumAgeMax
         ]);
 
         $minimumAge->save();
