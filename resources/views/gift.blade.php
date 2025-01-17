@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('content')
 <div class="flex justify-center items-center pt-6">
-    <a href="{{route('santaGifts')}}"><button class="bg-candy-cane px-4 py-2 rounded-lg uppercase transform hover:scale-110 duration-500 font-bold">Give Gifts</button></a>
+    <a href="{{route('santaGifts')}}"><button class="bg-candy-cane px-4 py-2 rounded-lg uppercase transform hover:scale-110 duration-500 font-bold">🎁Give Gifts🎁</button></a>
 </div>
 <div class="flex flex-wrap py-8 gap-[6rem] items-center justify-center">
     @foreach ($listOfGifts as $gifts)

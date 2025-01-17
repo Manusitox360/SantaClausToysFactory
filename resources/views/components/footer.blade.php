@@ -1,6 +1,6 @@
 <footer class="bg-candy-cane">
-  <div class="mx-auto w-full max-w-screen-xl p-4 ">
-    <div class="flex justify-between">
+  <div class="mx-auto w-full max-w-screen p-4 ">
+    <div class="flex justify-between items-center">
         <span class="text-white bg-[#530402] rounded py-1 px-2">© 2024 <a href="https://github.com/Leonkeneddy86/Santa-Claus-Toys-Factory" class="hover:underline hover:text-blue-500">SantaClausToysFactory™</a>. All Rights Reserved.
         </span>
         <div class="flex items-center bg-[#530402] rounded">
