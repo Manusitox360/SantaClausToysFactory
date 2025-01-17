@@ -10,6 +10,8 @@ use App\Models\ToyType;
 
 class ToyController extends Controller
 {
+    const DEFAULTURLIMAGE = '/img/defaultToyImage.png';
+
     public function index()
     {
         $toys = Toy::all();
@@ -45,7 +47,7 @@ class ToyController extends Controller
 
         $toy = Toy::create([
             'name' => $validated['name'],
-            'image' => $validated['image'] ?? 'default',
+            'image' => $validated['image'] ?? $this::DEFAULTURLIMAGE,
             'description' => $validated['description'],
             'toy_type_id' => $toyTypeID,
             'minimum_age_id' => $minimumAgeID
