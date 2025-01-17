@@ -62,7 +62,7 @@ class GenderController extends Controller
         }
 
         $validated = $request->validate([
-            'name' => 'string'
+            'name' => 'required|string'
         ]);
 
         $gender->update([
