@@ -28,8 +28,8 @@ class KidController extends Controller
             'image' => 'url',
             'age' => 'required|integer',
             'attitude' => 'required|boolean',
-            'gender_id' => 'required|integer',
-            'country_id' => 'required|integer'
+            'gender_id' => 'required|integer|min:0',
+            'country_id' => 'required|integer|min:0'
         ]);
 
         $genderId = $validated['gender_id'];
