@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('content')
-<div class="p-4 gap-[6rem] flex flex-wrap items-center justify-center h-[829px]">
+<div class="px-[8rem] gap-[6rem] flex flex-wrap items-center justify-center lg:h-[461px] xl:h-[829px]">
     <div class="m-4 w-full bg-[#ffffff80] border border-gray-200 rounded-lg shadow">
         <h5 class="text-xl uppercase font-bold text-black border-b border-black p-4 flex justify-between items-center">
             <button class="ml-14 transition hover:scale-110 duration-500 uppercase font-bold bg-candy-cane rounded-lg px-4 py-2">
