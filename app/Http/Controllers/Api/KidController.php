@@ -96,11 +96,11 @@ class KidController extends Controller
             'image' => 'string',
             'age' => 'integer',
             'attitude' => 'boolean',
-            'gender_id' => 'integer',
-            'country_id' => 'integer'
+            'gender_id' => 'integer|min:0',
+            'country_id' => 'integer|min:0'
         ]);
 
-        $genderId = $validated['gender_id'];
+        $genderId = $validated['gender_id'] ?? $kid->gender_id;
 
         $gender = Gender::find($genderId);
 
@@ -108,19 +108,26 @@ class KidController extends Controller
             return response()->json(['message' => 'Using An Inexisting gender'], 404);
         }
 
-        $countryId = $validated['country_id'];
+        $countryId = $validated['country_id'] ?? $kid->country_id;
+
         $country = Country::find($countryId);
 
         if (!$country) {
             return response()->json(['message' => 'Using An Inexisting country'], 404);
         }
 
+        $kidName = $validated['name'] ?? $kid->name;
+        $kidSurname = $validated['surname'] ?? $kid->surname;
+        $kidImage = $validated['image'] ?? $kid->image;
+        $kidAge = $validated['age'] ?? $kid->age;
+        $kidAttitude = $validated['attitude'] ?? $kid->attitude;
+
         $kid->update([
-            'name' => $validated['name'],
-            'surname' => $validated['surname'],
-            'image' => $validated['image'],
-            'age' => $validated['age'],
-            'attitude' => $validated['attitude'],
+            'name' => $kidName,
+            'surname' => $kidSurname,
+            'image' => $kidImage,
+            'age' => $kidAge,
+            'attitude' => $kidAttitude,
             'gender_id' => $genderId,
             'country_id' => $countryId
         ]);
