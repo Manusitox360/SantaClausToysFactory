@@ -13,6 +13,8 @@ use App\Http\Controllers\Controller;
 
 class KidController extends Controller
 {
+    const DEFAULTURLIMAGE = '/img/defaultKidImage.png';
+
     public function index()
     {
         $kids = Kid::all();
@@ -48,10 +50,12 @@ class KidController extends Controller
             return response()->json(['message' => 'Using An Inexisting country'], 404);
         }
 
+        $kidImage = $validated['image'] ?? $this::DEFAULTURLIMAGE;
+
         $kid = Kid::create([
             'name' => $validated['name'],
             'surname' => $validated['surname'],
-            'image' => $validated['image'] ?? 'urlDefault',
+            'image' => $kidImage,
             'age' => $validated['age'],
             'attitude' => $validated['attitude'],
             'gender_id' => $genderId,
