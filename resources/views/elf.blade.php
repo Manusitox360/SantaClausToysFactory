@@ -1,8 +1,8 @@
 @extends('layouts.index')
 @section('content')
-<div class="flex justify-center px-[6rem] py-12">
+<div class="flex justify-center px-[2.4rem] sm:px-[6rem] py-12">
     <table class="text-white w-full">
-        <thead class="text-xs bg-candy-cane uppercase text-black sticky top-[4.7rem] z-10">
+        <thead class="text-xs bg-candy-cane uppercase text-black sticky top-[7.2rem] sm:top-[4.7rem] z-10">
             <tr>
                 <th scope="col" class="py-[0.4rem] text-xl rounded-t-lg">Toys</th>
             </tr>

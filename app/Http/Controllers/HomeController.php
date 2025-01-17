@@ -6,6 +6,7 @@ use App\Models\Kid;
 use App\Models\Toy;
 use App\Models\MinimumAge;
 use Illuminate\Http\Request;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,28 @@ class HomeController extends Controller
         $ageRanges = MinimumAge::withCount('toys')->whereNot('min', 0)->whereNot('max', null)->get();
         $totalToys = Toy::count();
 
-        return view('home', compact('totalKids','goodKids', 'badKids', 'kids', 'ageRanges', 'totalToys'));
+        $chart_options = [
+            'chart_title' => 'Kids',
+            'report_type' => 'group_by_string',
+            'model' => 'App\Models\Kid',
+            'group_by_field' => 'attitude',
+            'group_by_period' => 'month',
+            'chart_type' => 'pie',
+        ];
+        $chart = new LaravelChart($chart_options);
+
+        $chart_options = [
+            'chart_title' => 'Toys',
+            'report_type' => 'group_by_relationship',
+            'model' => 'App\Models\Toy',
+            'group_by_field' => 'min',
+            'relationship_name' => 'minimumAge',
+            'group_by_period' => 'month',
+            'chart_type' => 'pie',
+        ];
+        $chart2 = new LaravelChart($chart_options);
+        
+        return view('home', compact('totalKids','goodKids', 'badKids', 'kids', 'ageRanges', 'totalToys','chart', 'chart2'));
     }
 
     /* /**
@@ -72,4 +94,7 @@ class HomeController extends Controller
     {
         //
     } */
+   private function getGrapihcs(){
+
+   }
 }
