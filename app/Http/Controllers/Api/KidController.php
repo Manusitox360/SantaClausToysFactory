@@ -33,6 +33,7 @@ class KidController extends Controller
         ]);
 
         $genderId = $validated['gender_id'];
+
         $gender = Gender::find($genderId);
 
         if (!$gender) {
@@ -40,6 +41,7 @@ class KidController extends Controller
         }
 
         $countryId = $validated['country_id'];
+
         $country = Country::find($countryId);
 
         if (!$country) {
@@ -47,19 +49,18 @@ class KidController extends Controller
         }
 
         $kid = Kid::create([
-        'name' => $validated['name'],
-        'surname' => $validated['surname'],
-        'image' => $validated['image'] ?? 'urlDefault', 
-        'age' => $validated['age'],
-        'attitude' => $validated['attitude'],
-        'gender_id' => $genderId,
-        'country_id' => $countryId
+            'name' => $validated['name'],
+            'surname' => $validated['surname'],
+            'image' => $validated['image'] ?? 'urlDefault',
+            'age' => $validated['age'],
+            'attitude' => $validated['attitude'],
+            'gender_id' => $genderId,
+            'country_id' => $countryId
         ]);
-        
+
         $kid->save();
+
         return response()->json($kid, 201);
-        
-        
     }
 
     /**
@@ -96,7 +97,8 @@ class KidController extends Controller
         ]);
 
         $genderId = $validated['gender_id'];
-        $gender = Gender::find($genderId); 
+
+        $gender = Gender::find($genderId);
 
         if (!$gender) {
             return response()->json(['message' => 'Using An Inexisting gender'], 404);
@@ -120,7 +122,7 @@ class KidController extends Controller
         ]);
 
         $kid->save();
-        
+
         return response()->json($kid, 200);
     }
 
