@@ -25,11 +25,11 @@ class MinimumAgeController extends Controller
         ]);
 
         $minimumAgeMax = array_key_exists('max', $validated)
-            ? (int)($validated['max'])
+            ? $validated['max']
             : null;
 
         $minimumAges = MinimumAge::create([
-            'min' => (int)($validated['min']),
+            'min' => $validated['min'],
             'max' => $minimumAgeMax
         ]);
 
@@ -64,10 +64,10 @@ class MinimumAgeController extends Controller
             'max' => 'nullable|integer|gte:min'
         ]);
 
-        $minimumAgeMin = (int)($validated['min'] ?? $minimumAge->min);
-        $minimumAgeMax = (int)(array_key_exists('max', $validated)
+        $minimumAgeMin = $validated['min'] ?? $minimumAge->min;
+        $minimumAgeMax = array_key_exists('max', $validated)
             ? $validated['max']
-            : $minimumAge->max);
+            : $minimumAge->max;
 
         $minimumAge->update([
             'min' => $minimumAgeMin,
