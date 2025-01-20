@@ -1,8 +1,8 @@
-<h2>Juguetes por Franja de Edad</h2>
-<table border="1">
+<h2 class="text-center text-l font-semibold text-white">Juguetes por Franja de Edad</h2>
+<table border="1" class="text-white">
     <thead>
         <tr>
-            <th>Franja de Edad</th>
+            <th class="text-xl">Franja de Edad</th>
             <th>Cantidad de Juguetes</th>
         </tr>
     </thead>
