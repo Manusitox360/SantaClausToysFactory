@@ -34,7 +34,7 @@ class KidController extends Controller
             'country_id' => 'required|integer|min:0'
         ]);
 
-        $genderId = $validated['gender_id'];
+        $genderId = (int)$validated['gender_id'];
 
         $gender = Gender::find($genderId);
 
@@ -42,7 +42,7 @@ class KidController extends Controller
             return response()->json(['message' => 'Using An Inexisting gender'], 404);
         }
 
-        $countryId = $validated['country_id'];
+        $countryId = (int)$validated['country_id'];
 
         $country = Country::find($countryId);
 
@@ -56,7 +56,7 @@ class KidController extends Controller
             'name' => $validated['name'],
             'surname' => $validated['surname'],
             'image' => $kidImage,
-            'age' => $validated['age'],
+            'age' => (int)$validated['age'],
             'attitude' => $validated['attitude'],
             'gender_id' => $genderId,
             'country_id' => $countryId
@@ -100,7 +100,7 @@ class KidController extends Controller
             'country_id' => 'integer|min:0'
         ]);
 
-        $genderId = $validated['gender_id'] ?? $kid->gender_id;
+        $genderId = (int)($validated['gender_id'] ?? $kid->gender_id);
 
         $gender = Gender::find($genderId);
 
@@ -108,7 +108,7 @@ class KidController extends Controller
             return response()->json(['message' => 'Using An Inexisting gender'], 404);
         }
 
-        $countryId = $validated['country_id'] ?? $kid->country_id;
+        $countryId = (int)($validated['country_id'] ?? $kid->country_id);
 
         $country = Country::find($countryId);
 
@@ -119,7 +119,7 @@ class KidController extends Controller
         $kidName = $validated['name'] ?? $kid->name;
         $kidSurname = $validated['surname'] ?? $kid->surname;
         $kidImage = $validated['image'] ?? $kid->image;
-        $kidAge = $validated['age'] ?? $kid->age;
+        $kidAge = (int)($validated['age'] ?? $kid->age);
         $kidAttitude = $validated['attitude'] ?? $kid->attitude;
 
         $kid->update([
