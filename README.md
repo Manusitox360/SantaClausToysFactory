@@ -164,7 +164,7 @@ PUT /api/elf/id
 | `id`      | `string` | **Required**. Toy ID     |
 
 #### Response:
-- **Status Code:** 201, 404
+- **Status Code:** 200, 404
 - **Content Type:** application/json
 
 #### Body: 
@@ -250,7 +250,7 @@ PUT /api/santa/id
 | `id`      | `string` | **Required**. kid ID     |
 
 #### Response:
-- **Status Code:** 201, 404
+- **Status Code:** 200, 404
 - **Content Type:** application/json
 
 #### Body: 
@@ -332,7 +332,7 @@ PUT /api/gender/id
 | `id`      | `string` | **Required**. Genders ID     |
 
 #### Response:
-- **Status Code:** 201, 404
+- **Status Code:** 200, 404
 - **Content Type:** application/json
 
 #### Body: 
@@ -408,7 +408,7 @@ PUT /api/country/id
 | `id`      | `string` | **Required**. Countries ID     |
 
 #### Response:
-- **Status Code:** 201, 404
+- **Status Code:** 200, 404
 - **Content Type:** application/json
 
 #### Body: 
@@ -485,7 +485,7 @@ PUT /api/minimumAge/id
 | `id`      | `string` | **Required**. mínimum Age ID     |
 
 #### Response:
-- **Status Code:** 201, 404
+- **Status Code:** 200, 404
 - **Content Type:** application/json
 
 #### Body: 
