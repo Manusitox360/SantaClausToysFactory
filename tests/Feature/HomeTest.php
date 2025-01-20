@@ -39,7 +39,7 @@ class HomeTest extends TestCase
         $totalToysCount = Toy::count();
 
         $ageRangesWithToysCount = MinimumAge::withCount('toys')->get();
-        $ageRanges = MinimumAge::withCount('toys')->whereNot('min', 0)->whereNot('max', null)->get();
+        $ageRanges = MinimumAge::withCount('toys')->get();
         
         $response = $this->get(route('home'))
         ->assertViewHas('totalToys', $totalToysCount)

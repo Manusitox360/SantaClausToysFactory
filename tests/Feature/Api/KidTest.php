@@ -200,7 +200,7 @@ class KidTest extends TestCase
     {
         $this->seed(DatabaseSeeder::class);
 
-        $response = $this->getJson(route('apiSantaGifts'));
+        $response = $this->postJson(route('apiSantaGifts'));
 
         $response->assertStatus(200);
     }
@@ -217,7 +217,7 @@ class KidTest extends TestCase
             'message' => 'Internal Server Error :('
         ];
 
-        $response = $this->getJson(route('apiSantaGifts'));
+        $response = $this->postJson(route('apiSantaGifts'));
 
         $response->assertStatus(500)
             ->assertJsonFragment($errorData);

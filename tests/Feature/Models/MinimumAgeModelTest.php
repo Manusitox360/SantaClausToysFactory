@@ -29,7 +29,7 @@ class MinimumAgeModelTest extends TestCase
         $minimumAge->min = 0;
         $minimumAge->max = 0;
 
-        $this->assertEquals('All ages', $minimumAge->__toString());
+        $this->assertEquals('-18', $minimumAge->__toString());
 
         $minimumAge->min = 18;
         $minimumAge->max = 0;
