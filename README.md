@@ -284,7 +284,7 @@ DELETE /api/santa/id
 #### 1 Get all gender entries
 
 ```http
-GET /api/genders
+GET /api/gender
 ```
 
 #### Response:
@@ -294,7 +294,7 @@ GET /api/genders
 #### 2 Get a gender by ID
 
 ```http
-GET /api/genders/id
+GET /api/gender/id
 ```
 
 | Parameter | Type     | Description                |
@@ -308,7 +308,7 @@ GET /api/genders/id
 #### 3 Create a new gender
 
 ```http
-POST /api/genders
+POST /api/gender
 ```
 
 #### Response:
@@ -324,7 +324,7 @@ POST /api/genders
 #### 4 Update an existing gender by ID
 
 ```http
-PUT /api/genders/id
+PUT /api/gender/id
 ```
 
 | Parameter | Type     | Description                |
@@ -344,7 +344,7 @@ PUT /api/genders/id
 #### 5 Delete a gender by ID
 
 ```http
-DELETE /api/genders/id
+DELETE /api/gender/id
 ```
 
 | Parameter | Type     | Description                |
@@ -360,7 +360,7 @@ DELETE /api/genders/id
 #### 1 Get all country entries
 
 ```http
-GET /api/countries
+GET /api/country
 ```
 
 #### Response:
@@ -370,7 +370,7 @@ GET /api/countries
 #### 2 Get a country by ID
 
 ```http
-GET /api/countries/id
+GET /api/country/id
 ```
 
 | Parameter | Type     | Description                |
@@ -384,7 +384,7 @@ GET /api/countries/id
 #### 3 Create a new country
 
 ```http
-POST /api/countries
+POST /api/country
 ```
 
 #### Response:
@@ -400,7 +400,7 @@ POST /api/countries
 #### 4 Update an existing Country by ID
 
 ```http
-PUT /api/countries/id
+PUT /api/country/id
 ```
 
 | Parameter | Type     | Description                |
@@ -420,7 +420,7 @@ PUT /api/countries/id
 #### 5 Delete a country by ID
 
 ```http
-DELETE /api/countries/id
+DELETE /api/country/id
 ```
 
 | Parameter | Type     | Description                |

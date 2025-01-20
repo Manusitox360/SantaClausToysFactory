@@ -16,17 +16,17 @@ Route::get('/santa/{id}', [KidController::class, 'show'])->name('apiShowKids');
 Route::put('/santa/{id}', [KidController::class, 'update'])->name('apiUpdateKids');
 Route::delete('/santa/{id}', [KidController::class, 'destroy'])->name('apiDestroyKids');
 
-Route::get('/genders', [GenderController::class, 'index'])->name('apiIndexGenders');
-Route::post('/genders', [GenderController::class, 'store'])->name('apiStoreGenders');
-Route::get('/genders/{id}', [GenderController::class, 'show'])->name('apiShowGenders');
-Route::put('/genders/{id}', [GenderController::class, 'update'])->name('apiUpdateGenders');
-Route::delete('/genders/{id}', [GenderController::class, 'destroy'])->name('apiDestroyGenders');
+Route::get('/gender', [GenderController::class, 'index'])->name('apiIndexGenders');
+Route::post('/gender', [GenderController::class, 'store'])->name('apiStoreGenders');
+Route::get('/gender/{id}', [GenderController::class, 'show'])->name('apiShowGenders');
+Route::put('/gender/{id}', [GenderController::class, 'update'])->name('apiUpdateGenders');
+Route::delete('/gender/{id}', [GenderController::class, 'destroy'])->name('apiDestroyGenders');
 
-Route::get('/countries', [CountryController::class, 'index'])->name('apiIndexCountries');
-Route::post('/countries', [CountryController::class, 'store'])->name('apiStoreCountries');
-Route::get('/countries/{id}', [CountryController::class, 'show'])->name('apiShowCountries');
-Route::put('/countries/{id}', [CountryController::class, 'update'])->name('apiUpdateCountries');
-Route::delete('/countries/{id}', [CountryController::class, 'destroy'])->name('apiDestroyCountries');
+Route::get('/country', [CountryController::class, 'index'])->name('apiIndexCountries');
+Route::post('/country', [CountryController::class, 'store'])->name('apiStoreCountries');
+Route::get('/country/{id}', [CountryController::class, 'show'])->name('apiShowCountries');
+Route::put('/country/{id}', [CountryController::class, 'update'])->name('apiUpdateCountries');
+Route::delete('/country/{id}', [CountryController::class, 'destroy'])->name('apiDestroyCountries');
 
 Route::get('/elf', [ToyController::class, 'index'])->name('apiIndexToys');
 Route::post('/elf', [ToyController::class, 'store'])->name('apiStoreToys');
