@@ -92,12 +92,12 @@ To run test you should uncomment the following lines on the phpunit.xml file.
 With the following command we run the tests and we will also generate a coverage report
 
 ```bash
-  php artisan test --coverage-html=coverage-report
+  php artisan test --coverage
 ```
 
 If everything is correct, everything should be OK.
 
-![image]()
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737383833/Test_Coverage_tsoawe.png)
 
 
 A folder called coverage-report will also have been generated with **100%** coverage.
@@ -431,9 +431,9 @@ DELETE /api/country/id
 - **Status Code:** 204, 404
 - **Content Type:** No-Content, application/json
 
-### Age Range (Toys)
+### Minimum age (Toys)
 
-#### 1 Get all age range entries
+#### 1 Get all Minimum age entries
 
 ```http
 GET /api/minimumAge
@@ -443,7 +443,7 @@ GET /api/minimumAge
 - **Status Code:** 200
 - **Content Type:** application/json
 
-#### 2 Get a mínimum Age by ID
+#### 2 Get a Minimum age by ID
 
 ```http
 GET /api/minimumAge/id
@@ -451,13 +451,13 @@ GET /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Mínimum Age ID     |
+| `id`      | `string` | **Required**. Minimum age ID     |
 
 #### Response:
 - **Status Code:** 200, 404
 - **Content Type:** application/json
 
-#### 3 Create a new mínimum Age
+#### 3 Create a new Minimum age
 
 ```http
 POST /api/minimumAge
@@ -471,10 +471,10 @@ POST /api/minimumAge
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `min`    | `required|integer|min:0` | **Required**. Start of the mínimum Age     |
-| `max`    | `nullable|integer|gte:min` | **Required**. End of the mínimum Age    |
+| `min`    | `required|integer|min:0` | **Required**. Start of the minimum age     |
+| `max`    | `nullable|integer|gte:min` | **Required**. End of the minimum age    |
 
-#### 4 Update an existing mínimum Age by ID
+#### 4 Update an existing Minimum age by ID
 
 ```http
 PUT /api/minimumAge/id
@@ -482,7 +482,7 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. mínimum Age ID     |
+| `id`      | `string` | **Required**. Minimum age ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -492,10 +492,10 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `min`    | `required|integer|min:0` | **Required**. Start of the mínimum Age     |
-| `max`    | `nullable|integer|gte:min` | **Required**. End of the mínimum Age    |
+| `min`    | `required|integer|min:0` | **Required**. Start of the minimum age     |
+| `max`    | `nullable|integer|gte:min` | **Required**. End of the minimum age    |
 
-#### 5 Delete a mínimum Age by ID
+#### 5 Delete a Minimum age by ID
 
 ```http
 DELETE /api/minimumAge/id
@@ -503,7 +503,7 @@ DELETE /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. mínimum Age ID     |
+| `id`      | `string` | **Required**. Minimum age ID     |
 
 #### Response:
 - **Status Code:** 204, 404
