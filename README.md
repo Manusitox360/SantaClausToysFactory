@@ -148,7 +148,7 @@ POST /api/elf
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
 | `name`    | `string` | **Required**. Name of toy    |
-| `image` | `string` | **Required**. Company of toy |
+| `image` | `string` |  Company of toy |
 | `description` | `string` | **Required**. Status of toy  |
 | `toy_type_id` | `integer` | **Required**. Id of the type of the toy  |
 | `minimum_age_id` | `integer` | **Required**. Id of the minimum age of the toy  |
@@ -174,8 +174,8 @@ PUT /api/elf/id
 | `name`    | `string` | Name of toy    |
 | `image` | `string` | Company of toy |
 | `description` | `string` | Status of toy  |
-| `toy_type_id` | `integer` | **Required**. Id of the type of the toy  |
-| `minimum_age_id` | `integer` | **Required**. Id of the minimum age of the toy  |
+| `toy_type_id` | `integer` |  Id of the type of the toy  |
+| `minimum_age_id` | `integer` | Id of the minimum age of the toy  |
 
 #### 5 Delete a toy by ID
 
@@ -233,7 +233,7 @@ POST /api/santa
 | :-------- | :------- | :-------------------------     |
 | `name`    | `string` | **Required**. Name of kid    |
 | `surname`    | `string` | **Required**. Surname of kid    |
-| `image` | `string` | **Required**. Company of kid |
+| `image` | `string` |  Company of kid |
 | `age` | `integer` | **Required**. Age of kid  |
 | `attitude` | `boolean` | **Required**. Attitude of kid  |
 | `gender_id` | `integer` | **Required**. Id of the gender of the kid  |
@@ -257,13 +257,13 @@ PUT /api/santa/id
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `name`    | `string` | **Required**. Name of Kid    |
-| `surname`    | `string` | **Required**. Surname of Kid    |
-| `image` | `string` | **Required**. Company of Kid |
-| `age` | `integer` | **Required**. Age of Kid  |
-| `attitude` | `boolean` | **Required**. Attitude of Kid  |
-| `gender_id` | `integer` | **Required**. Id of the gender of the Kid  |
-| `country_id` | `integer` | **Required**. Id of the country of the Kid  |
+| `name`    | `string` |  Name of Kid    |
+| `surname`    | `string` |  Surname of Kid    |
+| `image` | `string` |  Company of Kid |
+| `age` | `integer` |  Age of Kid  |
+| `attitude` | `boolean` |  Attitude of Kid  |
+| `gender_id` | `integer` |  Id of the gender of the Kid  |
+| `country_id` | `integer` |  Id of the country of the Kid  |
 
 #### 5 Delete a kid by ID
 
@@ -443,7 +443,7 @@ GET /api/minimumAge
 - **Status Code:** 200
 - **Content Type:** application/json
 
-#### 2 Get a age range by ID
+#### 2 Get a mínimum Age by ID
 
 ```http
 GET /api/minimumAge/id
@@ -451,13 +451,13 @@ GET /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Age range ID     |
+| `id`      | `string` | **Required**. Mínimum Age ID     |
 
 #### Response:
 - **Status Code:** 200, 404
 - **Content Type:** application/json
 
-#### 3 Create a new age range
+#### 3 Create a new mínimum Age
 
 ```http
 POST /api/minimumAge
@@ -471,10 +471,10 @@ POST /api/minimumAge
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `min`    | `required|integer|min:0` | **Required**. Start of the age range     |
-| `max`    | `nullable|integer|gte:min` | **Required**. End of the age range    |
+| `min`    | `required|integer|min:0` | **Required**. Start of the mínimum Age     |
+| `max`    | `nullable|integer|gte:min` | **Required**. End of the mínimum Age    |
 
-#### 4 Update an existing age range by ID
+#### 4 Update an existing mínimum Age by ID
 
 ```http
 PUT /api/minimumAge/id
@@ -482,7 +482,7 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Age range ID     |
+| `id`      | `string` | **Required**. mínimum Age ID     |
 
 #### Response:
 - **Status Code:** 201, 404
@@ -492,10 +492,10 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `min`    | `required|integer|min:0` | **Required**. Start of the age range     |
-| `max`    | `nullable|integer|gte:min` | **Required**. End of the age range    |
+| `min`    | `required|integer|min:0` | **Required**. Start of the mínimum Age     |
+| `max`    | `nullable|integer|gte:min` | **Required**. End of the mínimum Age    |
 
-#### 5 Delete a age range by ID
+#### 5 Delete a mínimum Age by ID
 
 ```http
 DELETE /api/minimumAge/id
@@ -503,7 +503,7 @@ DELETE /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Age range ID     |
+| `id`      | `string` | **Required**. mínimum Age ID     |
 
 #### Response:
 - **Status Code:** 204, 404
