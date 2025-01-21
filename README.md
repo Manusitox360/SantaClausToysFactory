@@ -20,6 +20,9 @@ With this system, Santa Claus will be able to ensure that each child receives th
 - **Toy View**:
 ![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084615_phqe8q.png)
 
+- **Children and toys View**:
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737454271/Captura_de_pantalla_2025-01-21_110603_ol4esd.png)
+
 ## 🛠️🚀 Tech Stack
 - **Languages:** Html, Blade
 - **Frameworks:** Laravel, TailwindCSS
@@ -51,7 +54,7 @@ Below is a diagram of the database, showing different relationships between tabl
 ## 🔧⚙️ Installation
 - Clone repository
 ```
-git clone https://github.com/AntonioGuillen123/ChristmasToyFactory
+https://github.com/SantiVigna/SantaClausToysFactory.git
 ```
 
 - Install Composer dependencies
@@ -493,7 +496,7 @@ POST /api/minimumAge
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `min`      | `required/integer/min:0` | **Required**. Start of the minimum age     |
-| `max`      | `nullable/integer/gte:min` | **Required**. End of the minimum age     |
+| `max`      | `nullable/integer/gte:min` | End of the minimum age     |
 
 #### 4 Update an existing Minimum age by ID
 
@@ -514,7 +517,7 @@ PUT /api/minimumAge/id
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
 | `min`    | `required/integer/min:0` | **Required**. Start of the minimum age     |
-| `max`    | `nullable/integer/gte:min` | **Required**. End of the minimum age    |
+| `max`    | `nullable/integer/gte:min` | End of the minimum age    |
 
 #### 5 Delete a Minimum age by ID
 
