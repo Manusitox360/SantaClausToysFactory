@@ -30,10 +30,20 @@ With this system, Santa Claus will be able to ensure that each child receives th
 ## 📊📁 DB Diagram
 Below is a diagram of the database, showing different relationships between tables:
 
+- **kid - gender:** One to many relationship. A gender can have many kids, but each kid belongs to only one gender.
+
+- **kid - country:** One to many relationship. A country can have many kids, but each kid belongs to only one country.
+
 - **toy - minimum_age:** One to many relationship. A minimum age can have many toys, but each toy belongs to only one minimum age.
 
-- **kid - gender:** One to many relationship. A gender can have many kids, but each kid belongs to only one gender.
-- **kid - country:** One to many relationship. A country can have many kids, but each kid belongs to only one country.
+- **toy - kid:** Many to many relationship. A kid can have many toys, and each toy can have many kids. This relationship is represented by **kid_toy** pivot table.
+
+- **toy - toy_type:** One to many relationship. A toy_tipe can have many toys, but each toy belongs to only one toy.
+
+- **toy_type:** One to one polymorphic relationship. Each toy_type is associated with exactly one entity via the **associated_type** (indicating the entity type) and **associated_id** (pointing to the entity's specific identifier) ​​fields.
+	- **toy_type - plaything:** One to one. A plaything can have only one toy_type, and each toy_type can have only one plaything.
+	- **toy_type - trip:** One to one. A trip can have only one toy_type , and each toy_type can have only one trip.
+	- **toy_type - charcoal:** One to one. A charcoal can have only one toy_type , and each toy_type can have only one trip. 
 
 ![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737027164/ub1yq5swilimsynvxem5.png)
 
@@ -116,7 +126,7 @@ A folder called coverage-report will also have been generated with **100%** cove
 
 ## 📡🌐 Christmas Toy Factory API
 
-This API allows you to manage toy entries and provides CRUD (Create, Read, Update, Delete) operations for these.
+This API allows you to manage Christmas gift entries and provides CRUD (Create, Read, Update, Delete) operations for them.
 
 ### Toy
 
