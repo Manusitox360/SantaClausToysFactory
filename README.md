@@ -176,7 +176,7 @@ GET /api/elf/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Toy ID     |
+| `id`      | `integer` | **Required**. Toy ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -210,7 +210,7 @@ PUT /api/elf/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Toy ID     |
+| `id`      | `integer` | **Required**. Toy ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -234,7 +234,7 @@ DELETE /api/elf/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Toy ID     |
+| `id`      | `integer` | **Required**. Toy ID     |
 
 #### Response:
 - **Status Code:** 204, 404
@@ -260,7 +260,7 @@ GET /api/santa/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Toy ID     |
+| `id`      | `integer` | **Required**. Toy ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -296,7 +296,7 @@ PUT /api/santa/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. kid ID     |
+| `id`      | `integer` | **Required**. kid ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -348,7 +348,7 @@ GET /api/gender/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Genders ID     |
+| `id`      | `integer` | **Required**. Genders ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -378,7 +378,7 @@ PUT /api/gender/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Genders ID     |
+| `id`      | `integer` | **Required**. Genders ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -398,7 +398,7 @@ DELETE /api/gender/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Gender ID     |
+| `id`      | `integer` | **Required**. Gender ID     |
 
 #### Response:
 - **Status Code:** 204, 404
@@ -424,7 +424,7 @@ GET /api/country/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Countries ID     |
+| `id`      | `integer` | **Required**. Countries ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -454,7 +454,7 @@ PUT /api/country/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Countries ID     |
+| `id`      | `integer` | **Required**. Countries ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -474,7 +474,7 @@ DELETE /api/country/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Country ID     |
+| `id`      | `integer` | **Required**. Country ID     |
 
 #### Response:
 - **Status Code:** 204, 404
@@ -500,7 +500,7 @@ GET /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Minimum age ID     |
+| `id`      | `integer` | **Required**. Minimum age ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -520,8 +520,8 @@ POST /api/minimumAge
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `min`      | `integer/min:0` | **Required**. Minimum starting age for the toy     |
-| `max`      | `integer/gte:min` | Maximum age for the toy. Should be greater than or equal to `min`  |
+| `min`      | `integer` | **Required**. **Should be a natural number (min:0)**. Minimum starting age for the toy |
+| `max`      | `integer` | **Should be greater than or equal to `min` (gte:min)**. Maximum age for the toy  |
 
 #### 4 Update an existing Minimum age by ID
 
@@ -531,7 +531,7 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Minimum age ID     |
+| `id`      | `integer` | **Required**. Minimum age ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -541,8 +541,8 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `min`    | `integer/min:0` | **Required**. Minimum starting age for the toy |
-| `max`    | `integer/gte:min` | Maximum age for the toy. Should be greater than or equal to `min`    |
+| `min`    | `integer` | **Required**. **Should be a natural number (min:0)**. Minimum starting age for the toy |
+| `max`    | `integer` | **Should be greater than or equal to `min` (gte:min)**. Maximum age for the toy  |
 
 #### 5 Delete a Minimum age by ID
 
@@ -552,7 +552,7 @@ DELETE /api/minimumAge/id
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Minimum age ID     |
+| `id`      | `integer` | **Required**. Minimum age ID     |
 
 #### Response:
 - **Status Code:** 204, 404
