@@ -5,6 +5,12 @@ This project aims to develop a platform to help Santa Claus and his elves manage
 The application includes an intuitive and functional interface as well as an API that allows the elves to perform various essential tasks, such as managing toys.
 
 With this system, Santa Claus will be able to ensure that each child receives the perfect gift, thus ensuring a magical Christmas.
+
+---
+
+## Overview
+The platform consists of the following views:
+
 - **Index View**:
 ![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084343_gunjvt.png)
 
@@ -24,11 +30,26 @@ With this system, Santa Claus will be able to ensure that each child receives th
 ![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737454271/Captura_de_pantalla_2025-01-21_110603_ol4esd.png)
 
 ## 🛠️🚀 Tech Stack
-- **Languages:** Html, Blade
-- **Frameworks:** Laravel, TailwindCSS
-- **Server:** Xampp, Apache, Nodejs
-- **Database:** Mysql
-- **Others:** Composer, Postman
+
+### **Languages**:
+- HTML
+- Blade (Laravel template engine)
+
+### **Frameworks**:
+- Laravel
+- TailwindCSS
+
+### **Server**:
+- XAMPP
+- Apache
+- Node.js
+
+### **Database**:
+- MySQL
+
+### **Tools & Others**:
+- Composer
+- Postman
 
 ## 📊📁 DB Diagram
 Below is a diagram of the database, showing different relationships between tables:
@@ -52,7 +73,10 @@ Below is a diagram of the database, showing different relationships between tabl
 
 
 ## 🔧⚙️ Installation
-- Clone repository
+
+Follow these steps to install and set up the project:
+
+- Clone the repository
 ```
 https://github.com/SantiVigna/SantaClausToysFactory.git
 ```
@@ -62,7 +86,7 @@ https://github.com/SantiVigna/SantaClausToysFactory.git
 ```
 composer install
 ```
-- Install Nodejs dependencies
+- Install Node.js dependencies
 
 ```
 npm install
@@ -119,12 +143,13 @@ With the following command we run the tests and we will also generate a coverage
   php artisan test --coverage
 ```
 
-If everything is correct, everything should be OK.
+If everything is configured correctly, tests should pass, and the coverage report will show `100%` coverage.
 
+#### Test Summary:
 ![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737383833/Test_Coverage_tsoawe.png)
 
 
-A folder called coverage-report will also have been generated with **100%** coverage.
+#### Coverage Folder:
 ![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737025453/zdgkqvvq2v4wecofe9ft.png)
 
 ## 📡🌐 Christmas Toy Factory API
@@ -457,7 +482,7 @@ DELETE /api/country/id
 
 ### Minimum age (Toys)
 
-#### 1 Get all Minimum age entries
+#### 1 Get all Minimum Age entries
 
 ```http
 GET /api/minimumAge
@@ -467,7 +492,7 @@ GET /api/minimumAge
 - **Status Code:** 200
 - **Content Type:** application/json
 
-#### 2 Get a Minimum age by ID
+#### 2 Get a Minimum Age by ID
 
 ```http
 GET /api/minimumAge/id
@@ -481,7 +506,7 @@ GET /api/minimumAge/id
 - **Status Code:** 200, 404
 - **Content Type:** application/json
 
-#### 3 Create a new Minimum age
+#### 3 Create a new Minimum Age
 
 ```http
 POST /api/minimumAge
@@ -495,8 +520,8 @@ POST /api/minimumAge
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `min`      | `required/integer/min:0` | **Required**. Start of the minimum age     |
-| `max`      | `nullable/integer/gte:min` | End of the minimum age     |
+| `min`      | `integer/min:0` | **Required**. Minimum starting age for the toy     |
+| `max`      | `integer/gte:min` | Maximum age for the toy. Should be greater than or equal to `min`  |
 
 #### 4 Update an existing Minimum age by ID
 
@@ -516,8 +541,8 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `min`    | `required/integer/min:0` | **Required**. Start of the minimum age     |
-| `max`    | `nullable/integer/gte:min` | End of the minimum age    |
+| `min`    | `integer/min:0` | **Required**. Minimum starting age for the toy |
+| `max`    | `integer/gte:min` | Maximum age for the toy. Should be greater than or equal to `min`    |
 
 #### 5 Delete a Minimum age by ID
 
@@ -532,8 +557,6 @@ DELETE /api/minimumAge/id
 #### Response:
 - **Status Code:** 204, 404
 - **Content Type:** No-Content, application/json
-
-
 
 ## ✍️🙍 Authors
 # Sprint 2
