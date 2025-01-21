@@ -6,8 +6,19 @@ The application includes an intuitive and functional interface as well as an API
 
 With this system, Santa Claus will be able to ensure that each child receives the perfect gift, thus ensuring a magical Christmas.
 - **Index View**:
-![image](https://github.com/user-attachments/assets/2542b2fe-e6cf-4aa4-8ea0-cfd43a775b78)
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084343_gunjvt.png)
 
+- **Santaclaus View**:
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084424_gyvp8q.png)
+
+- **Kid View**:
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084452_cyvmun.png)
+
+- **Elf View**:
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084519_mxb6sj.png)
+
+- **Toy View**:
+![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084615_phqe8q.png)
 
 ## 🛠️🚀 Tech Stack
 - **Languages:** Html, Blade
@@ -52,7 +63,7 @@ In DB_CONNECTION will come mysqlite, change it to the bd you use (in this case M
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=christmas_toy_factory
+DB_DATABASE=santaclaus
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -469,10 +480,10 @@ POST /api/minimumAge
 
 #### Body: 
 
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `min`    | `required|integer|min:0` | **Required**. Start of the minimum age     |
-| `max`    | `nullable|integer|gte:min` | **Required**. End of the minimum age    |
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `min`      | `required/integer/min:0` | **Required**. Start of the minimum age     |
+| `max`      | `nullable/integer/gte:min` | **Required**. End of the minimum age     |
 
 #### 4 Update an existing Minimum age by ID
 
@@ -492,8 +503,8 @@ PUT /api/minimumAge/id
 
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
-| `min`    | `required|integer|min:0` | **Required**. Start of the minimum age     |
-| `max`    | `nullable|integer|gte:min` | **Required**. End of the minimum age    |
+| `min`    | `required/integer/min:0` | **Required**. Start of the minimum age     |
+| `max`    | `nullable/integer/gte:min` | **Required**. End of the minimum age    |
 
 #### 5 Delete a Minimum age by ID
 
