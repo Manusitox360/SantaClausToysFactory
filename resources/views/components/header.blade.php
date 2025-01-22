@@ -1,15 +1,12 @@
 <header class="sticky top-0 bg-candy-cane p-4 z-20">
     <nav class="bg-no-repeat bg-cover bg-inherit">
         <div class="flex flex-col sm:flex-row justify-between items-center px-4 max-w-full w-full">
-            <!-- Botón Santa Claus alineado a la izquierda -->
             <button>
                 <a href="{{ route('home') }}" class="flex justify-center items-center bg-[#530402] rounded py-1 px-2 transform hover:scale-110 transition-transform">
                     <img src="{{asset('img/logoHeader.png')}}" class="h-6 pr-1 sm:mr-3 sm:h-9" alt="Flowbite Logo" />
                     <span class="font-semibold text-white text-base sm:text-xl">Santa Claus</span>
                 </a>
             </button>
-
-            <!-- Contenedor para los botones de navegación centrados -->
             <div class="flex justify-center items-center">
                 <nav class="flex justify-start space-x-2 py-2 sm:py-0 sm:space-x-12 items-center">
                     <a href="{{ route('santa') }}" class="bg-[#530402] text-white hover:text-[#8b191d] transition rounded p-1 py-[0.4rem] transform hover:scale-110 transition-transform">
@@ -25,9 +22,6 @@
                     </a> 
                 </nav>
             </div>
-            
-
-            <!-- Botón para "Give Gifts" si estamos en la ruta santa -->
             @if (request()->routeIs('santa'))
                 <button class="transition hover:scale-110 duration-500 font-bold bg-[#530402] rounded py-1 sm:py-2">
                     <a class="font-semibold whitespace-nowrap text-white p-2 sm:p-4 text-base sm:text-xl" href="{{route('santaGifts')}}">🎁Give Gifts🎁</a>
