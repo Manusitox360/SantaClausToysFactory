@@ -140,7 +140,7 @@ To run test you should uncomment the following lines on the phpunit.xml file.
 With the following command we run the tests and we will also generate a coverage report
 
 ```bash
-  php artisan test --coverage
+  php artisan test --coverage-html=coverage-report
 ```
 
 If everything is configured correctly, tests should pass, and the coverage report will show `100%` coverage.
