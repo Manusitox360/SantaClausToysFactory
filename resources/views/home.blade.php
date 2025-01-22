@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('content')
-<section class="flex flex-col items-center justify-center overflow-auto h-[1500px] sm:h-[820px] md:h-[920px] xl:h-[829px]">
+<section class="flex flex-col items-center justify-center overflow-auto h-[1500px] sm:h-[820px] md:h-[920px] xl:h-[804px]">
     <div class="flex justify-center items-center flex-col text-center">
         <h1 class="text-4xl font-bold text-white p-2 z-10">🎅 Welcome to Santa Claus Toys Factory! 🎁</h1>
         <p class="text-lg text-white">

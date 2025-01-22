@@ -5,7 +5,7 @@
         <a href="{{route('elf')}}">Back To Toy List</a>
     </button>
 </div>
-<div class="px-[2rem] py-[1rem] lg:py-0 lg:px-[8rem] flex flex-wrap items-center justify-center h-[613px] sm:h-[686px] lg:h-[726px] xl:h-[813px]">
+<div class="px-[2rem] py-[1rem] lg:py-0 lg:px-[8rem] flex flex-wrap items-center justify-center h-[613px] sm:h-[686px] lg:h-[726px] xl:h-[788px]">
     <div class="w-full bg-[#ffffff80] border border-gray-200 rounded-lg shadow">
         <h5 class="text-xl uppercase font-bold text-black border-b border-black p-4 flex justify-between items-center">
             <button class="hidden lg:block ml-14 transition hover:scale-110 duration-500 uppercase font-bold bg-candy-cane rounded-lg px-4 py-2">
