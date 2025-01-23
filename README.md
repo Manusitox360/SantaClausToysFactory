@@ -6,77 +6,26 @@ The application includes an intuitive and functional interface as well as an API
 
 With this system, Santa Claus will be able to ensure that each child receives the perfect gift, thus ensuring a magical Christmas.
 
----
+## 📷 Screenshots 📷
+![image]()
 
-## Overview
-The platform consists of the following views:
+## 🛠️ Tech Stack 🚀
+- **Languages:** Html, Blade
+- **Frameworks:** Laravel, TailwindCSS
+- **Server:** Xampp, Apache, Nodejs
+- **Database:** Mysql
+- **Others:** Composer, Postman
 
-- **Index View**:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084343_gunjvt.png)
-
-- **Santaclaus View**:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084424_gyvp8q.png)
-
-- **Kid View**:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084452_cyvmun.png)
-
-- **Elf View**:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084519_mxb6sj.png)
-
-- **Toy View**:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737445685/Captura_de_pantalla_2025-01-21_084615_phqe8q.png)
-
-- **Children and toys View**:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737454271/Captura_de_pantalla_2025-01-21_110603_ol4esd.png)
-
-## 🛠️🚀 Tech Stack
-
-### **Languages**:
-- HTML
-- Blade (Laravel template engine)
-
-### **Frameworks**:
-- Laravel
-- TailwindCSS
-
-### **Server**:
-- XAMPP
-- Apache
-- Node.js
-
-### **Database**:
-- MySQL
-
-### **Tools & Others**:
-- Composer
-- Postman
-
-## 📊📁 DB Diagram
+## 📁 DB Diagram 📊
 Below is a diagram of the database, showing different relationships between tables:
-
-- **kid - gender:** One to many relationship. A gender can have many kids, but each kid belongs to only one gender.
-
-- **kid - country:** One to many relationship. A country can have many kids, but each kid belongs to only one country.
 
 - **toy - minimum_age:** One to many relationship. A minimum age can have many toys, but each toy belongs to only one minimum age.
 
-- **toy - kid:** Many to many relationship. A kid can have many toys, and each toy can have many kids. This relationship is represented by **kid_toy** pivot table.
-
-- **toy - toy_type:** One to many relationship. A toy_tipe can have many toys, but each toy belongs to only one toy.
-
-- **toy_type:** One to one polymorphic relationship. Each toy_type is associated with exactly one entity via the **associated_type** (indicating the entity type) and **associated_id** (pointing to the entity's specific identifier) ​​fields.
-	- **toy_type - plaything:** One to one. A plaything can have only one toy_type, and each toy_type can have only one plaything.
-	- **toy_type - trip:** One to one. A trip can have only one toy_type , and each toy_type can have only one trip.
-	- **toy_type - charcoal:** One to one. A charcoal can have only one toy_type , and each toy_type can have only one trip. 
-
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737027164/ub1yq5swilimsynvxem5.png)
+![image](https://res.cloudinary.com/dierpqujk/image/upload/v1734101541/imagen_2024-12-13_155219091_p0kr3s.png)
 
 
-## 🔧⚙️ Installation
-
-Follow these steps to install and set up the project:
-
-- Clone the repository
+## 🔧 Installation ⚙️
+- Clone repository
 ```
 https://github.com/SantiVigna/SantaClausToysFactory.git
 ```
@@ -86,7 +35,7 @@ https://github.com/SantiVigna/SantaClausToysFactory.git
 ```
 composer install
 ```
-- Install Node.js dependencies
+- Install Nodejs dependencies
 
 ```
 npm install
@@ -114,7 +63,7 @@ php artisan key:generate
 php artisan migrate
 ```
 
-## ▶️💻 Run Locally
+## ▶️ Run Locally 💻
 - How to run the Laravel server  
 ```
 php artisan serve
@@ -130,7 +79,7 @@ npm run dev
 npm run build
 ```
 
-## 🏃‍♂️🧪 Running Tests
+## 🏃‍♂️ Running Tests 🧪
 
 To run test you should uncomment the following lines on the phpunit.xml file.
 
@@ -143,25 +92,25 @@ With the following command we run the tests and we will also generate a coverage
   php artisan test --coverage-html=coverage-report
 ```
 
-If everything is configured correctly, tests should pass, and the coverage report will show `100%` coverage.
+If everything is correct, everything should be OK.
 
-#### Test Summary:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737383833/Test_Coverage_tsoawe.png)
+![image]()
 
 
-#### Coverage Folder:
-![image](https://res.cloudinary.com/del1j3jge/image/upload/v1737025453/zdgkqvvq2v4wecofe9ft.png)
+A folder called coverage-report will also have been generated with **AAAAAAAAAAaaaaaaaaaaaaaaaaa%** coverage.
 
-## 📡🌐 Christmas Toy Factory API
+![image]()
 
-This API allows you to manage Christmas gift entries and provides CRUD (Create, Read, Update, Delete) operations for them.
+## 📡 Christmas Toy Factory API 🌐
+
+This API allows you to manage toy entries and provides CRUD (Create, Read, Update, Delete) operations for these.
 
 ### Toy
 
 #### 1 Get all toy entries
 
 ```http
-GET /api/elf
+  GET /api/elve
 ```
 
 #### Response:
@@ -171,12 +120,12 @@ GET /api/elf
 #### 2 Get a toy by ID
 
 ```http
-GET /api/elf/id
+  GET /api/elve/id
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Toy ID     |
+| `id`      | `string` | **Required**. Toy ID     |
 
 #### Response:
 - **Status Code:** 200, 404
@@ -185,7 +134,7 @@ GET /api/elf/id
 #### 3 Create a new toy
 
 ```http
-POST /api/elf
+  POST /api/elve
 ```
 
 #### Response:
@@ -197,23 +146,22 @@ POST /api/elf
 | Parameter | Type     | Description                    |
 | :-------- | :------- | :-------------------------     |
 | `name`    | `string` | **Required**. Name of toy    |
-| `image` | `string` |  Company of toy |
+| `image` | `string` | **Required**. Company of toy |
 | `description` | `string` | **Required**. Status of toy  |
-| `toy_type_id` | `integer` | **Required**. Id of the type of the toy  |
-| `minimum_age_id` | `integer` | **Required**. Id of the minimum age of the toy  |
+| `minimum_age_id` | `string` | **Required**. Id of the minimum age of the toy  |
 
 #### 4 Update an existing toy by ID
 
 ```http
-PUT /api/elf/id
+  PUT /api/elve/id
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Toy ID     |
+| `id`      | `string` | **Required**. Toy ID     |
 
 #### Response:
-- **Status Code:** 200, 404
+- **Status Code:** 201, 404
 - **Content Type:** application/json
 
 #### Body: 
@@ -223,343 +171,24 @@ PUT /api/elf/id
 | `name`    | `string` | Name of toy    |
 | `image` | `string` | Company of toy |
 | `description` | `string` | Status of toy  |
-| `toy_type_id` | `integer` |  Id of the type of the toy  |
-| `minimum_age_id` | `integer` | Id of the minimum age of the toy  |
+| `minimum_age_id` | `string` | Id of the minimum age of the toy  |
 
 #### 5 Delete a toy by ID
 
 ```http
-DELETE /api/elf/id
+  DELETE /api/elve/id
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Toy ID     |
+| `id`      | `string` | **Required**. Toy ID     |
 
 #### Response:
 - **Status Code:** 204, 404
 - **Content Type:** No-Content, application/json
 
-### Kid
-
-#### 1 Get all kid entries
-
-```http
-GET /api/santa
-```
-
-#### Response:
-- **Status Code:** 200
-- **Content Type:** application/json
-
-#### 2 Get a kid by ID
-
-```http
-GET /api/santa/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Toy ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### 3 Create a new kid
-
-```http
-POST /api/santa
-```
-
-#### Response:
-- **Status Code:** 201
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `name`    | `string` | **Required**. Name of kid    |
-| `surname`    | `string` | **Required**. Surname of kid    |
-| `image` | `string` |  Company of kid |
-| `age` | `integer` | **Required**. Age of kid  |
-| `attitude` | `boolean` | **Required**. Attitude of kid  |
-| `gender_id` | `integer` | **Required**. Id of the gender of the kid  |
-| `country_id` | `integer` | **Required**. Id of the country of the kid  |
-
-#### 4 Update an existing kid by ID
-
-```http
-PUT /api/santa/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. kid ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `name`    | `string` |  Name of Kid    |
-| `surname`    | `string` |  Surname of Kid    |
-| `image` | `string` |  Company of Kid |
-| `age` | `integer` |  Age of Kid  |
-| `attitude` | `boolean` |  Attitude of Kid  |
-| `gender_id` | `integer` |  Id of the gender of the Kid  |
-| `country_id` | `integer` |  Id of the country of the Kid  |
-
-#### 5 Delete a kid by ID
-
-```http
-DELETE /api/santa/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. Kid ID     |
-
-#### Response:
-- **Status Code:** 204, 404
-- **Content Type:** No-Content, application/json
-
-### Gender
-
-#### 1 Get all gender entries
-
-```http
-GET /api/gender
-```
-
-#### Response:
-- **Status Code:** 200
-- **Content Type:** application/json
-
-#### 2 Get a gender by ID
-
-```http
-GET /api/gender/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Genders ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### 3 Create a new gender
-
-```http
-POST /api/gender
-```
-
-#### Response:
-- **Status Code:** 201
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `name`    | `string` | **Required**. Name of gender    |
-
-#### 4 Update an existing gender by ID
-
-```http
-PUT /api/gender/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Genders ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `name`    | `string` | **Required**. Name of gender    |
-
-#### 5 Delete a gender by ID
-
-```http
-DELETE /api/gender/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Gender ID     |
-
-#### Response:
-- **Status Code:** 204, 404
-- **Content Type:** No-Content, application/json
-
-### Country
-
-#### 1 Get all country entries
-
-```http
-GET /api/country
-```
-
-#### Response:
-- **Status Code:** 200
-- **Content Type:** application/json
-
-#### 2 Get a country by ID
-
-```http
-GET /api/country/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Countries ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### 3 Create a new country
-
-```http
-POST /api/country
-```
-
-#### Response:
-- **Status Code:** 201
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `name`    | `string` | **Required**. Name of country    |
-
-#### 4 Update an existing Country by ID
-
-```http
-PUT /api/country/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Countries ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `name`    | `string` | **Required**. Name of country    |
-
-#### 5 Delete a country by ID
-
-```http
-DELETE /api/country/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Country ID     |
-
-#### Response:
-- **Status Code:** 204, 404
-- **Content Type:** No-Content, application/json
-
-### Minimum age (Toys)
-
-#### 1 Get all Minimum Age entries
-
-```http
-GET /api/minimumAge
-```
-
-#### Response:
-- **Status Code:** 200
-- **Content Type:** application/json
-
-#### 2 Get a Minimum Age by ID
-
-```http
-GET /api/minimumAge/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Minimum age ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### 3 Create a new Minimum Age
-
-```http
-POST /api/minimumAge
-```
-
-#### Response:
-- **Status Code:** 201
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `min`      | `integer` | **Required**. **Should be a natural number (min:0)**. Minimum starting age for the toy |
-| `max`      | `integer` | **Should be greater than or equal to `min` (gte:min)**. Maximum age for the toy  |
-
-#### 4 Update an existing Minimum age by ID
-
-```http
-PUT /api/minimumAge/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Minimum age ID     |
-
-#### Response:
-- **Status Code:** 200, 404
-- **Content Type:** application/json
-
-#### Body: 
-
-| Parameter | Type     | Description                    |
-| :-------- | :------- | :-------------------------     |
-| `min`    | `integer` | **Required**. **Should be a natural number (min:0)**. Minimum starting age for the toy |
-| `max`    | `integer` | **Should be greater than or equal to `min` (gte:min)**. Maximum age for the toy  |
-
-#### 5 Delete a Minimum age by ID
-
-```http
-DELETE /api/minimumAge/id
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `integer` | **Required**. Minimum age ID     |
-
-#### Response:
-- **Status Code:** 204, 404
-- **Content Type:** No-Content, application/json
 
 ## ✍️🙍 Authors
-# Sprint 2
 - **Antonio Guillén:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/AntonioGuillen123)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/antonio-guill%C3%A9n-905b941ab)
 [![Correo](https://img.shields.io/badge/Email-Contacto-red?style=flat-square&logo=gmail)](mailto:antonioguillengarcia123@gmail.com)
@@ -579,17 +208,4 @@ DELETE /api/minimumAge/id
 - **Santino Vigna:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/SantiVigna)
 [![Correo](https://img.shields.io/badge/Email-Contacto-red?style=flat-square&logo=gmail)](mailto:ynotvigna@gmail.com)
 
-# Sprint 1
-
-- **Issam Chellaf:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/issamchlf)
-
-- **Jonathan Torreblanca:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/Leonkeneddy86)
-
-- **Matias Stadler:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/Matias-Stadler)
-
-- **Jenifer Moyano:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/soyJenifer)
-
-- **Fran Muñoz:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/Crudo7)
-
-- **René Barco:**  [![GitHub](https://img.shields.io/badge/GitHub-Perfil-black?style=flat-square&logo=github)](https://github.com/mrene42)
-
+🎈Tomar la informacion de su grupo🎈
